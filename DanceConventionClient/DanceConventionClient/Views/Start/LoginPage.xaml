@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DanceConventionClient"
+             x:Class="DanceConventionClient.LoginPage">
+
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Settings"
+					 Clicked="Settings_Clicked">
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+	<StackLayout Orientation="Vertical"
+				 VerticalOptions="Center"
+				 HorizontalOptions="Center">
+		<Label Text="danceConvention.net"
+				   HorizontalOptions="Center"
+				   VerticalOptions="CenterAndExpand"
+				   FontSize="Large"/>
+
+			<Label Text="Login:"
+				   FontSize="Large"/>
+			<Entry x:Name="loginEntry" />
+
+			<Label Text="Password:"
+				   FontSize="Large"/>
+			<Entry x:Name="passwordEntry" IsPassword="True"/>
+		
+		<Button x:Name="loginButton" 
+				Text="Login"
+				Clicked="Login"
+				HorizontalOptions="Center"
+				VerticalOptions="CenterAndExpand"
+				FontSize="Large"/>
+    </StackLayout>
+</ContentPage>

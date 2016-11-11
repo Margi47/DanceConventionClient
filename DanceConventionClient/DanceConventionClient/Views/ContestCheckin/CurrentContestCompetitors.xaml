@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DanceConventionClient.CurrentContestCompetitors">
+	<StackLayout>
+		<SearchBar x:Name="CompetitorsSearch"
+			   SearchButtonPressed="CompetitorsSearch_OnSearchButtonPressed"/>
+		<ListView x:Name="CompetitorsList"
+				  HasUnevenRows="True"
+				  ItemTapped="CompetitorsList_OnItemTapped">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding BibNumber}"/>
+							<Label Text="{Binding ParticipantName}"/>
+							<Label Text="{Binding CheckedIn}"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+	
+	
+</ContentPage>

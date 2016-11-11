@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TableView xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="DanceConventionClient.SignupView"
+		   x:Name="SignupTableView"
+		   Intent="Data"
+		   HasUnevenRows="True">
+		<TableRoot>
+			<TableSection>
+				<ViewCell Tapped="Cell_OnTapped">
+					<StackLayout>
+						<StackLayout Orientation="Horizontal">
+							<Label x:Name="Bib"/>
+							<Label x:Name="Name"/>
+						</StackLayout>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Paid: "/>
+							<Label x:Name="PaidAmount"/>
+							<Label Text="Owned: "/>
+							<Label x:Name="OwnedAmount"/>
+						</StackLayout>
+					</StackLayout>
+				</ViewCell>
+				<ViewCell>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="ALL AMOUNTS DISPLAYED IN: "/>
+						<Label x:Name="Currency"/>
+					</StackLayout>
+				</ViewCell>
+				<TextCell x:Name="Status"/>
+			</TableSection>
+
+			<TableSection>
+				<ViewCell>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Amount "/>
+						<Entry x:Name="PaymentAmount"
+								   Text="{Binding Text, Source={x:Reference OwnedAmount}}"/>
+						<Label Text="{Binding Text, Source={x:Reference Currency}}"/>
+					</StackLayout>
+				</ViewCell>
+				<ViewCell>
+					<StackLayout Orientation="Horizontal">
+						<Label Text="Comment  "/>
+						<Entry x:Name="Comment"/>
+					</StackLayout>
+				</ViewCell>
+				<ViewCell>
+					<Button Text="RecordPayment"
+								Clicked="PaymentButton_OnClicked"/>
+				</ViewCell>
+			</TableSection>
+
+			<TableSection>
+				<ViewCell>
+					<Button x:Name="AttendedButton"
+								Clicked="AttendedButton_OnClicked"/>
+				</ViewCell>
+			</TableSection>
+		</TableRoot>
+</TableView>

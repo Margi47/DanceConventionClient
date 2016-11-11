@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DanceConventionClient.ProfilePage"
+			 Title="Profile">
+	<StackLayout>
+		<Label x:Name="profileName"
+			   FontSize="Large"
+			   HorizontalOptions="Center"
+			   VerticalOptions="CenterAndExpand"/>
+		<Label x:Name="email"
+			   FontSize="Large"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center"/>
+		<Label x:Name="accessPermission"
+			   Text="Permission"
+			   FontSize="Large"
+			   HorizontalOptions="Center"
+			   VerticalOptions="Center"/>
+		<Button x:Name="logoutButton"
+				Text="Logout"
+				FontSize="Large"
+				HorizontalOptions="Center"
+				VerticalOptions="EndAndExpand"
+				Clicked="logoutButton_Clicked"/>
+	</StackLayout>
+</ContentPage>

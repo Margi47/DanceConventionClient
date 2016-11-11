@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ListView xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="DanceConventionClient.SignupListView"
+		  x:Name="CompetitorsList">
+	<ListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell>
+				<Label x:Name="ListLabel"
+							 Text="{Binding ParticipantName}"/>
+			</ViewCell>
+		</DataTemplate>
+	</ListView.ItemTemplate>
+</ListView>
