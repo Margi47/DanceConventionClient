@@ -12,7 +12,7 @@ namespace DanceConventionClient
 	{
 		public Signup CurrentSignup { get; set; }
 		public DanceEvent CurrentEvent { get; set; }
-		private IDCService _service;
+		private readonly IDCService _service;
 
 		public SignupView(DanceEvent danceEvent, Signup signup)
 		{

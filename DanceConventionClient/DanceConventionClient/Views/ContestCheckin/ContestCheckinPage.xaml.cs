@@ -47,7 +47,7 @@ namespace DanceConventionClient
 
 		private async void Camera_OnClicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new CameraPage());
+			await Navigation.PushAsync(new CameraPage() {FirstCall = true});
 		}
 
 

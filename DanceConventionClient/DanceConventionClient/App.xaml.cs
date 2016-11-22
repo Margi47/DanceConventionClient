@@ -28,11 +28,12 @@ namespace DanceConventionClient
 			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new LoginPage()));
 		}
 
-		public static void InitializeService(LoginResult login)
+		public static async Task InitializeService(LoginResult login)
 		{
 			MyService = login.Service;
 			Application.Current.Properties["userName"] = login.Login.Username;
 			Application.Current.Properties["password"] = login.Login.Password;
+			await App.Current.SavePropertiesAsync();
 		}
 
 		public static void NavigateToMainPage()
@@ -62,7 +63,7 @@ namespace DanceConventionClient
 
 				if (loginResult.Successful)
 				{
-					InitializeService(loginResult);
+					await InitializeService(loginResult);
 					NavigateToMainPage();
 					return;
 				}

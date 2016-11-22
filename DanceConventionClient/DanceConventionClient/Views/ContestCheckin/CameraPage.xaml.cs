@@ -16,6 +16,8 @@ namespace DanceConventionClient.Views.ContestCheckin
 	public partial class CameraPage : ContentPage
 	{
 		private readonly IDCService _service;
+		public bool FirstCall { get; set; }
+
 		public CameraPage()
 		{
 			InitializeComponent();
@@ -25,7 +27,11 @@ namespace DanceConventionClient.Views.ContestCheckin
 		protected override async void OnAppearing()
 		{
 			base.OnAppearing();
-			await ScanCode();
+			if (FirstCall)
+			{
+				FirstCall = false;
+				await ScanCode();				
+			}
 		}
 
 		public async Task ScanCode()
@@ -37,14 +43,7 @@ namespace DanceConventionClient.Views.ContestCheckin
 				Device.BeginInvokeOnMainThread(async () =>
 				{
 					scanPage.IsScanning = false;
-					var image = await MakePhoto();
 					await Navigation.PopAsync();
-					MainPhoto.Source = ImageSource.FromStream(() =>
-					{
-						var stream = image.GetStream();
-						image.Dispose();
-						return stream;
-					});
 
 					await MakeCheckin(result);
 				});
@@ -75,10 +74,5 @@ namespace DanceConventionClient.Views.ContestCheckin
 			}
 		}
 
-		public async Task<MediaFile> MakePhoto()
-		{
-			await CrossMedia.Current.Initialize();
-			return await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions());
-		}
 	}
 }

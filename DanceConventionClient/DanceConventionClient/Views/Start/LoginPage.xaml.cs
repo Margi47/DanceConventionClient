@@ -25,7 +25,7 @@ namespace DanceConventionClient
 			var loginResult = await factory.Login(login);
 			if (loginResult.Successful)
 			{
-				App.InitializeService(loginResult);
+				await App.InitializeService(loginResult);
 				App.NavigateToMainPage();
 			}
 			else

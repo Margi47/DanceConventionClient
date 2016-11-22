@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DanceConventionClient.Views.RegistrationDesk;
 using Xamarin.Forms;
 
 namespace DanceConventionClient
@@ -13,6 +13,7 @@ namespace DanceConventionClient
 	{
 		private readonly IDCService _service;
 		public DanceEvent CurrentEvent { get; set; }
+		public Signup CurrentSignup { get; set; }
 
 		public UserRegistrationPage(DanceEvent currentEvent)
 		{
@@ -26,19 +27,20 @@ namespace DanceConventionClient
 			base.OnAppearing();
 
 			var profile = await _service.GetProfile(); 
-			var signup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
+			CurrentSignup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
 
 			place.Text = CurrentEvent.Location;
-			name.Text = signup.ParticipantName;
-			pass.Detail = signup.SelectedPass;
-			invoicedAmount.Detail = signup.AmountInvoiced.ToString();
-			paidAmount.Detail = signup.AmountPaid.ToString();
+			name.Text = CurrentSignup.ParticipantName;
+			pass.Detail = CurrentSignup.SelectedPass;
+			invoicedAmount.Detail = CurrentSignup.AmountInvoiced.ToString();
+			paidAmount.Detail = CurrentSignup.AmountPaid.ToString();
 
-			contestsList.ItemsSource = signup.ContestSignups;
+			contestsList.ItemsSource = CurrentSignup.ContestSignups;
 		}
 
-		private void qrCode_Clicked(object sender, EventArgs e)
+		private async void qrCode_Clicked(object sender, EventArgs e)
 		{
+			await Navigation.PushAsync(new BarcodePage(CurrentEvent.Id, CurrentSignup.ParticipantId));
 
 		}
 	}
