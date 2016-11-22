@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using DanceConventionClient.Views.RegistrationDesk;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
@@ -52,16 +53,25 @@ namespace DanceConventionClient
 			var scanPage = new ZXingScannerPage();
 
 			scanPage.OnScanResult += (result) => {
-				// Stop scanning
-				scanPage.IsScanning = false;
 
-				// Pop the page and show the result
-				Device.BeginInvokeOnMainThread(() => {
-					Navigation.PopAsync();
-					InfoLabel.Text = result.Text;
+				Device.BeginInvokeOnMainThread(async () =>
+				{
+					scanPage.IsScanning = false;
+					await Navigation.PopAsync();
+
+					var elements = result.Text.Split('[', ':', ']');
+					int eventId;
+					int userId;
+					if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
+					{
+						var signup = await _service.GetSignup(eventId, userId);
+
+						ContentStack.Children.Clear();
+						ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
+					}
 				});
 			};
-			// Navigate to our scanner page
+
 			await Navigation.PushAsync(scanPage);
 		}
 
