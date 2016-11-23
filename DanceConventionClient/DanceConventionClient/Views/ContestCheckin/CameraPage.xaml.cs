@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
