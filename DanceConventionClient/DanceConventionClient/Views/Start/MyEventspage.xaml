@@ -4,15 +4,22 @@
              x:Class="DanceConventionClient.MyEventspage"
 			 Title="My events">
 
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Profile"/>
+	</ContentPage.ToolbarItems>
+
 	<StackLayout>
-		<ListView x:Name="currentEvents"
-				  HasUnevenRows="True"
-				  Header=""
+		<ListView x:Name="CurrentEvents"
+				  Style="{StaticResource ListViewStyle}"
 				  ItemTapped="events_ItemTapped">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
-					<Label Text="Current Events"/>
+					<Frame Style="{StaticResource HeaderFrame}"
+						   Padding="20,0,0,0">
+					<Label Text="Current Events"
+						   Style="{StaticResource Headerlabel}"/>
+					</Frame>
 				</DataTemplate>
 			</ListView.HeaderTemplate>
 
@@ -20,22 +27,27 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout>
-							<Label Text="{Binding Name}"/>
-							<Label Text="{Binding StartDate}"/>
+							<Label Text="{Binding Name}"
+								   Style="{StaticResource Itemlabel}"/>
+							<Label Text="{Binding StartDate}"
+								   Style="{StaticResource Detaillabel}"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
 
-		<ListView x:Name="pastEvents"
-				  HasUnevenRows="True"
-				  Header=""
+		<ListView x:Name="PastEvents"
+				  Style="{StaticResource ListViewStyle}"
 				  ItemTapped="events_ItemTapped">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
-					<Label Text="Past Events"/>
+					<Frame Style="{StaticResource HeaderFrame}"
+						   Padding="20,0,0,0">
+						<Label Text="Past Events"
+						   Style="{StaticResource Headerlabel}"/>
+					</Frame>
 				</DataTemplate>
 			</ListView.HeaderTemplate>
 
@@ -43,8 +55,10 @@
 				<DataTemplate>
 					<ViewCell>
 						<StackLayout>
-							<Label Text="{Binding Name}"/>
-							<Label Text="{Binding StartDate}"/>
+							<Label Text="{Binding Name}"
+								   Style="{StaticResource Itemlabel}"/>
+							<Label Text="{Binding StartDate}"
+								   Style="{StaticResource Detaillabel}"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

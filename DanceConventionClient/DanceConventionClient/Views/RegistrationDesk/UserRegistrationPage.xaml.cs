@@ -29,7 +29,7 @@ namespace DanceConventionClient
 			var profile = await _service.GetProfile(); 
 			CurrentSignup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
 
-			place.Text = CurrentEvent.Location;
+			Place.Text = CurrentEvent.Location;
 			name.Text = CurrentSignup.ParticipantName;
 			pass.Detail = CurrentSignup.SelectedPass;
 			invoicedAmount.Detail = CurrentSignup.AmountInvoiced.ToString();

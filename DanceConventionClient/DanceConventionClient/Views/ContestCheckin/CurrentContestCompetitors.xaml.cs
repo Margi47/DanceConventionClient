@@ -19,8 +19,8 @@ namespace DanceConventionClient
 			InitializeComponent();
 			_service = App.MyService;
 			CurrentContest = currentContest;
-
 			InitializeList();
+			Title = currentContest.Name;
 		}
 
 		private async void InitializeList()
@@ -28,7 +28,10 @@ namespace DanceConventionClient
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
 			if (competitors != null)
 			{
-				CompetitorsList.ItemsSource = competitors;
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					CompetitorsList.ItemsSource = competitors;
+				});
 			} 			
 		}
 

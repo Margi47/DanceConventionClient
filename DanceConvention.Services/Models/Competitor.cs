@@ -27,6 +27,15 @@ namespace DanceConventionClient.Services
 		[JsonProperty(PropertyName = "partnerName")]
 		public string PartnerName { get; set; }
 
+		[JsonIgnore]
+		public bool HasPartner
+		{
+			get
+			{
+				return !string.IsNullOrWhiteSpace(PartnerName);
+			}
+		}
+
 		[JsonProperty(PropertyName = "partnerCity")]
 		public string PatrnerCity { get; set; }
 

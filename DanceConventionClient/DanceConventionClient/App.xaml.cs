@@ -38,14 +38,7 @@ namespace DanceConventionClient
 
 		public static void NavigateToMainPage()
 		{
-			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new TabbedPage
-			{
-				Children =
-				{
-					new NavigationPage(new MyEventspage()),
-					new ProfilePage()
-				}
-			});
+			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new MyEventspage()));
 		}
 
 

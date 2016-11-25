@@ -2,9 +2,59 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanceConventionClient.App">
-  <Application.Resources>
+	<Application.Resources>
 
-    <!-- Application resource dictionary -->
+		<ResourceDictionary>
+			<Style TargetType="ContentPage">
+				<Setter Property="BackgroundColor" Value="White" />
+				<Setter Property="Padding" Value="5,15,5,15" />
+			</Style>
 
-  </Application.Resources>
+			<Style TargetType="NavigationPage">
+				<Setter Property="BarBackgroundColor" Value="Silver" />
+				<Setter Property="BarTextColor" Value="Black" />
+			</Style>
+
+			<Style x:Key="ListViewStyle" TargetType="ListView">
+				<Setter Property="SeparatorColor" Value="Silver" />
+				<Setter Property="HasUnevenRows" Value="True" />
+				<Setter Property="Header" Value="" />
+			</Style>
+			
+			<Style x:Key="Itemlabel" TargetType="Label">
+				<Setter Property="TextColor" Value="Black"/>
+				<Setter Property="FontSize" Value="15"/>
+				<Setter Property="Margin" Value="20,0,0,0"/>
+				<Setter Property="VerticalTextAlignment" Value="Center"/>
+				<Setter Property="HeightRequest" Value="20"/>
+			</Style>
+
+			<Style x:Key="Detaillabel" TargetType="Label">
+				<Setter Property="TextColor" Value="Black"/>
+				<Setter Property="FontSize" Value="12"/>
+				<Setter Property="Margin" Value="20,0,0,0"/>
+				<Setter Property="VerticalTextAlignment" Value="Center"/>
+				<Setter Property="HeightRequest" Value="18"/>
+			</Style>
+
+			<Style x:Key="Headerlabel" TargetType="Label">
+				<Setter Property="TextColor" Value="Black"/>
+				<Setter Property="FontAttributes" Value="Bold"/>
+				<Setter Property="FontSize" Value="15"/>
+				<Setter Property="HeightRequest" Value="30"/>
+				<Setter Property="VerticalTextAlignment" Value="Center"/>
+			</Style>
+
+			<Style x:Key="HeaderFrame" TargetType="Frame">
+				<Setter Property="OutlineColor" Value="Black"/>
+				<Setter Property="BackgroundColor" Value="Silver"/>
+			</Style>
+			
+			<Style x:Key="ButtonStyle" TargetType="Button">
+				<Setter Property="BackgroundColor" Value="Silver"/>
+				<Setter Property="TextColor" Value="Black"/>
+				<Setter Property="FontSize" Value="15"/>
+			</Style>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

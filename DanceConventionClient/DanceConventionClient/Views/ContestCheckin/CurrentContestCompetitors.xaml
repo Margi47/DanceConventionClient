@@ -7,15 +7,31 @@
 			   SearchButtonPressed="CompetitorsSearch_OnSearchButtonPressed"/>
 		<ListView x:Name="CompetitorsList"
 				  HasUnevenRows="True"
-				  ItemTapped="CompetitorsList_OnItemTapped">
+				  SeparatorColor="Silver"
+				  ItemTapped="CompetitorsList_OnItemTapped"
+				  HorizontalOptions="FillAndExpand">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>
-						<StackLayout Orientation="Horizontal">
-							<Label Text="{Binding BibNumber}"/>
-							<Label Text="{Binding ParticipantName}"/>
-							<Label Text="{Binding CheckedIn}"/>
+					<ViewCell Height="43">
+						<StackLayout HorizontalOptions="FillAndExpand"
+									 VerticalOptions="CenterAndExpand">
+							<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+								<Label Text="{Binding BibNumber}"
+									   Style="{StaticResource Itemlabel}"
+									   HorizontalOptions="Start"/>
+								<Label Text="{Binding ParticipantName}"
+									   Style="{StaticResource Itemlabel}"
+									   Margin="0,0,0,0"
+									   HorizontalOptions="StartAndExpand"/>
+								<Label Text="{Binding CheckedIn}"
+									   Style="{StaticResource Itemlabel}"
+									   HorizontalOptions="EndAndExpand"/>
+							</StackLayout>
+							<Label Text="{Binding PartnerName}"
+								   Style="{StaticResource Detaillabel}"
+								   IsVisible="{Binding HasPartner}"/>
 						</StackLayout>
+						
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>

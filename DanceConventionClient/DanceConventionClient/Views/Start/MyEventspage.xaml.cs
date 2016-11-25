@@ -11,12 +11,12 @@ namespace DanceConventionClient
 {
 	public partial class MyEventspage : ContentPage
 	{
-		public IDCService Service = App.MyService;
+		private readonly IDCService _service;
 
 		public MyEventspage()
 		{
 			InitializeComponent();
-			
+			_service = App.MyService;
 		}
 
 		protected override async void OnAppearing()
@@ -27,7 +27,7 @@ namespace DanceConventionClient
 
 		private async Task InitializeEvents()
 		{
-			var allEvents = await Service.GetEvents();
+			var allEvents = await _service.GetEvents();
 			var curEventSource = new List<DanceEvent>();
 			var pastEventsSource = new List<DanceEvent>();
 			var curTime = DateTime.Now.Date;
@@ -44,8 +44,8 @@ namespace DanceConventionClient
 				}
 			}
 
-			currentEvents.ItemsSource = curEventSource;
-			pastEvents.ItemsSource = pastEventsSource;
+			CurrentEvents.ItemsSource = curEventSource;
+			PastEvents.ItemsSource = pastEventsSource;
 		}
 
 		private async void events_ItemTapped(object sender, ItemTappedEventArgs e)

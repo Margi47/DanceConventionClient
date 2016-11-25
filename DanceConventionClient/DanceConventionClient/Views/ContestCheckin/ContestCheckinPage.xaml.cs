@@ -23,7 +23,7 @@ namespace DanceConventionClient
 			InitializeComponent();
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
-
+			Title = currentEvent.Name;
 			GetContests();
 		}
 

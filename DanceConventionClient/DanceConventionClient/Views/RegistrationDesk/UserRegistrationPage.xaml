@@ -1,20 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.UserRegistrationPage"
-			 x:Name="contPage">
+             x:Class="DanceConventionClient.UserRegistrationPage">
 
 	<TableView Intent="Data"
 			   HasUnevenRows="True">
 		<TableRoot>
-			<TableSection Title="Signup info">
-				<TextCell x:Name="place"/>
+			<TableSection>
+				<ViewCell>
+					<Frame Style="{StaticResource HeaderFrame}"
+						   Padding="20,0,0,0">
+						<Label Text="Signup Info"
+						   Style="{StaticResource Headerlabel}"/>
+					</Frame>
+				</ViewCell>
+
+				<ViewCell>
+					<Label x:Name="Place"
+						   Style="{StaticResource Itemlabel}"/>
+				</ViewCell>
+			
 				<TextCell x:Name="name"/>
 				<TextCell x:Name="pass" Text="Event pass"/>
 				<TextCell x:Name="invoicedAmount" Text="Invoiced"/>
 				<TextCell x:Name="paidAmount" Text="Paid"/>
 				<ViewCell>
-					<Button x:Name="qrCode" Text="Registration QR Code" Clicked="qrCode_Clicked"/>
+					<Button x:Name="QrCode" Text="Registration QR Code" Clicked="qrCode_Clicked" Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>
 			<TableSection Title="Contests">

@@ -28,14 +28,14 @@ namespace DanceConventionClient.Views.ContestCheckin
 			if (FirstCall)
 			{
 				FirstCall = false;
-				await ScanCode();				
+				await ScanCode();
 			}
 		}
 
 		public async Task ScanCode()
 		{
 			var scanPage = new ZXingScannerPage();
-
+			
 			scanPage.OnScanResult += (result) =>
 			{
 				Device.BeginInvokeOnMainThread(async () =>
@@ -46,8 +46,10 @@ namespace DanceConventionClient.Views.ContestCheckin
 					await MakeCheckin(result);
 				});
 			};
+
 			await Navigation.PushAsync(scanPage);
 		}
+		
 
 		private async Task MakeCheckin(Result result)
 		{

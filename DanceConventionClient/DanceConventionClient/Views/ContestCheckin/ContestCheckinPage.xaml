@@ -2,40 +2,46 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanceConventionClient.ContestCheckinPage">
-	<!--enable toolbaritem-->
-	<ContentPage.ToolbarItems>
-		<ToolbarItem x:Name="CameraButton"
-					Text="Camera"
-					Clicked="Camera_OnClicked"/>
-	</ContentPage.ToolbarItems>
-	
+
 	<StackLayout>
+		<Button x:Name="CameraButton"
+				Text="Scan QR Code" Style="{StaticResource ButtonStyle}"
+				Clicked="Camera_OnClicked"/>
+
 		<ListView x:Name="ContestsList" 
-				  HasUnevenRows="True"
-				  Header=""
+				  Style="{StaticResource ListViewStyle}"
 				  ItemTapped="ContestsList_OnItemTapped"
-				  IsVisible="False">
+				  IsVisible="False"
+				  VerticalOptions="StartAndExpand">
+
 			<ListView.HeaderTemplate>
 				<DataTemplate>
-					<Label Text="Contests"/>
+					<Frame Style="{StaticResource HeaderFrame}"
+						   Padding="20,0,0,0">
+						<Label Text="Contests"
+							   Style="{StaticResource Headerlabel}"/>
+					</Frame>
 				</DataTemplate>
 			</ListView.HeaderTemplate>
-			
+
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
-						<Label Text="{Binding Name}"/>
+						<Label Text="{Binding Name}"
+							   Style="{StaticResource Itemlabel}"
+							   HeightRequest="40"/>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
 		
-	  <Label Text="Click camera button for QR code check-in or select contest"/>
-	  <Label x:Name="NoResultLabel"
-			 Text="No contests available for check-in"
-			 IsVisible="True"/>
-	  <Label x:Name="ResultLabel"
-	   	     IsVisible="True"/>
+		<Label x:Name="NoResultLabel"
+			   Text="No contests available for check-in"
+			   HorizontalOptions="Center"
+			   VerticalOptions="CenterAndExpand"
+			   TextColor="Gray"
+			   FontSize="20"
+			   IsVisible="True"/>
 	</StackLayout>
 	
 </ContentPage>

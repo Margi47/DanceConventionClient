@@ -9,14 +9,17 @@
 		<Button x:Name="MyReg"
 				Text="My registration"
 				Clicked="MyRegistrationButtonOnClicked"
-				IsVisible="False"/>
+				IsVisible="False"
+				Style="{StaticResource ButtonStyle}"/>
 		<Button x:Name="ContestCheckin"
 				Text="Contest check-in"
 				Clicked="CheckinButton_Clicked"
-				IsVisible="False"/>
+				IsVisible="False"
+				Style="{StaticResource ButtonStyle}"/>
 		<Button x:Name="RegDesk"
 				Text="Registration desk"
 				Clicked="RegistrationDesk_Clicked"
-				IsVisible="False"/>
+				IsVisible="False"
+				Style="{StaticResource ButtonStyle}"/>
 	</StackLayout>
 </ContentPage>
