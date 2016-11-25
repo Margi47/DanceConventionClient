@@ -2,19 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanceConventionClient.RegistrationDeskPage">
-	<ContentPage.ToolbarItems>
-		<ToolbarItem x:Name="CameraButton"
-					Text="Camera"
-					Clicked="CameraButton_OnClicked"/>
-	</ContentPage.ToolbarItems>
-	
+
 	<StackLayout x:Name="MainRegistrationStack">
-	  <SearchBar x:Name="SearchBar"
+		<Button Text="Scan QR Code"
+				Style="{StaticResource ButtonStyle}"
+				Clicked="CameraButton_OnClicked"/>
+		
+		<SearchBar x:Name="SearchBar"
 				 SearchButtonPressed="OnSearchButtonPressed"/>
 
-		<StackLayout x:Name="ContentStack">
+		<StackLayout x:Name="ContentStack" VerticalOptions="FillAndExpand">
 			<Label x:Name="InfoLabel"
-				   Text="Enter participant name or scan QR code"/>
+				   Style="{StaticResource InfoLabel}">
+				<Label.Text>
+					Enter participant name or 
+					scan QR code
+				</Label.Text>
+			</Label>
 		</StackLayout>
 	</StackLayout>
 </ContentPage>

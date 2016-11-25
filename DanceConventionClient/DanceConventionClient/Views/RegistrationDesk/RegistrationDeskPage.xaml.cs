@@ -20,6 +20,7 @@ namespace DanceConventionClient
 			InitializeComponent();
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
+			Title = currentEvent.Name;
 		}
 
 		private async void OnSearchButtonPressed(object sender, EventArgs e)

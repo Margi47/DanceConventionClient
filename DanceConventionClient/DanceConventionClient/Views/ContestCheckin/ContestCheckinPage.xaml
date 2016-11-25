@@ -37,10 +37,7 @@
 		
 		<Label x:Name="NoResultLabel"
 			   Text="No contests available for check-in"
-			   HorizontalOptions="Center"
-			   VerticalOptions="CenterAndExpand"
-			   TextColor="Gray"
-			   FontSize="20"
+			   Style="{StaticResource InfoLabel}"
 			   IsVisible="True"/>
 	</StackLayout>
 	

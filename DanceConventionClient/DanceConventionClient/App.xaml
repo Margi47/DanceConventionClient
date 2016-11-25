@@ -55,6 +55,13 @@
 				<Setter Property="TextColor" Value="Black"/>
 				<Setter Property="FontSize" Value="15"/>
 			</Style>
+
+			<Style x:Key="InfoLabel" TargetType="Label">
+				<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+				<Setter Property="TextColor" Value="Gray"/>
+				<Setter Property="FontSize" Value="20"/>
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

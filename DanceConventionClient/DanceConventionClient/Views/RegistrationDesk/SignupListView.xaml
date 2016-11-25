@@ -2,12 +2,16 @@
 <ListView xmlns="http://xamarin.com/schemas/2014/forms"
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           x:Class="DanceConventionClient.SignupListView"
-		  x:Name="CompetitorsList">
+		  x:Name="CompetitorsList"
+		  SeparatorColor="Silver"
+		  HasUnevenRows="True">
 	<ListView.ItemTemplate>
 		<DataTemplate>
 			<ViewCell>
 				<Label x:Name="ListLabel"
-							 Text="{Binding ParticipantName}"/>
+					   Text="{Binding ParticipantName}"
+					   Style="{StaticResource Itemlabel}"
+					   HeightRequest="40"/>
 			</ViewCell>
 		</DataTemplate>
 	</ListView.ItemTemplate>
