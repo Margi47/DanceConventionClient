@@ -2,43 +2,109 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanceConventionClient.UserRegistrationPage">
-
 	<TableView Intent="Data"
-			   HasUnevenRows="True">
+		   HasUnevenRows="True">
 		<TableRoot>
 			<TableSection>
-				<ViewCell>
+				<ViewCell Height="40">
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
 						<Label Text="Signup Info"
-						   Style="{StaticResource Headerlabel}"/>
+							   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</ViewCell>
 
-				<ViewCell>
-					<Label x:Name="Place"
+				<ViewCell Height="40">
+					<StackLayout>
+						<Label x:Name="Place"
+					   Style="{StaticResource Itemlabel}"/>
+						<Label x:Name="Date"
+							   Style="{StaticResource Detaillabel}"/>
+					</StackLayout>
+				</ViewCell>
+
+				<ViewCell Height="40">
+					<Label x:Name="Name"
 						   Style="{StaticResource Itemlabel}"/>
 				</ViewCell>
-			
-				<TextCell x:Name="name"/>
-				<TextCell x:Name="pass" Text="Event pass"/>
-				<TextCell x:Name="invoicedAmount" Text="Invoiced"/>
-				<TextCell x:Name="paidAmount" Text="Paid"/>
+
+				<ViewCell Height="40">
+					<StackLayout Orientation="Horizontal"
+								 HorizontalOptions="FillAndExpand">
+						<Label Text="Event pass"
+							   Style="{StaticResource Itemlabel}"/>
+						<Label x:Name="Pass"
+							   Style="{StaticResource Itemlabel}"
+							   HorizontalOptions="EndAndExpand"
+							   Margin="0,0,15,0"/>
+					</StackLayout>
+				</ViewCell>
+
+				<ViewCell Height="40">
+					<StackLayout Orientation="Horizontal"
+								 HorizontalOptions="FillAndExpand">
+						<Label Text="Invoiced:"
+							   Style="{StaticResource Itemlabel}"
+							   HorizontalOptions="Start"/>
+						<Label x:Name="InvoicedAmount"
+							   Style="{StaticResource Itemlabel}"
+							   HorizontalOptions="StartAndExpand"
+							   Margin="0,0,0,0"/>
+						<Label x:Name="PaidLabel"
+							   Text="Paid:"
+							   Style="{StaticResource Itemlabel}"
+							   HorizontalOptions="EndAndExpand"/>
+						<Label x:Name="PaidAmount"
+							   Style="{StaticResource Itemlabel}"
+							   HorizontalOptions="End"
+							   Margin="0,0,15,0"/>
+					</StackLayout>
+				</ViewCell>
+
 				<ViewCell>
-					<Button x:Name="QrCode" Text="Registration QR Code" Clicked="qrCode_Clicked" Style="{StaticResource ButtonStyle}"/>
+					<Button Text="Registration QR Code" 
+							Clicked="qrCode_Clicked" 
+							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>
-			<TableSection Title="Contests">
+
+			<TableSection>
 				<ViewCell>
-					<ListView x:Name="contestsList"
-						  HasUnevenRows="True">
+					<ListView x:Name="AllContestsList"
+							  Style="{StaticResource ListViewStyle}">
+						<ListView.HeaderTemplate>
+							<DataTemplate>
+								<Frame Style="{StaticResource HeaderFrame}"
+									   Padding="20,0,0,0">
+									<Label Text="Contests"
+										   Style="{StaticResource Headerlabel}"/>
+								</Frame>
+							</DataTemplate>
+						</ListView.HeaderTemplate>
+
 						<ListView.ItemTemplate>
 							<DataTemplate>
-								<ViewCell>
-									<StackLayout>
-										<Label Text="{Binding ContestName}"/>
-										<Label Text="{Binding PartnerName }"/>
-										<Label Text="{Binding Role}"/>
+								<ViewCell Height="43">
+									<StackLayout Orientation="Horizontal"
+												 HorizontalOptions="FillAndExpand">
+										<StackLayout VerticalOptions="CenterAndExpand">
+											<Label Text="{Binding ContestName}"
+												   Style="{StaticResource Itemlabel}"
+												   VerticalOptions="CenterAndExpand"/>
+											<Label Text="{Binding PartnerName }"
+												   Style="{StaticResource Detaillabel}"
+												   IsVisible="{Binding HasPartner}"/>
+										</StackLayout>
+										<Label Text="&#xf222;"
+											   IsVisible="{Binding IsLeader}"
+											   HorizontalOptions="EndAndExpand"
+											   VerticalOptions="CenterAndExpand"
+											   Margin="0,0,15,0"/>
+										<Label Text="&#xf221;"
+											   IsVisible="{Binding IsFollower}"
+											   HorizontalOptions="EndAndExpand"
+											   VerticalOptions="CenterAndExpand"
+											   Margin="0,0,15,0"/>
 									</StackLayout>
 								</ViewCell>
 							</DataTemplate>

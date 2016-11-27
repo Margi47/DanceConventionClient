@@ -23,9 +23,11 @@
 									   Style="{StaticResource Itemlabel}"
 									   Margin="0,0,0,0"
 									   HorizontalOptions="StartAndExpand"/>
-								<Label Text="{Binding CheckedIn}"
-									   Style="{StaticResource Itemlabel}"
-									   HorizontalOptions="EndAndExpand"/>
+								<Label Text="&#xf00c;" 
+									   IsVisible="{Binding CheckedIn}"
+									   HorizontalOptions="EndAndExpand"
+									   Margin="0,0,15,0"
+									   TextColor="Blue"/>
 							</StackLayout>
 							<Label Text="{Binding PartnerName}"
 								   Style="{StaticResource Detaillabel}"

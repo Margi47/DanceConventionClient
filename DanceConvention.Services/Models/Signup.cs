@@ -15,7 +15,7 @@ namespace DanceConventionClient.Services
 		public decimal AmountOwed { get; set; }
 		public decimal AmountInvoiced { get; set; }
 		public string SelectedPass { get; set; }
-		public Contest[] ContestSignups { get; set; }
+		public ContestSignup[] ContestSignups { get; set; }
 		public string[] AvailableStateTransitions { get; set; }
 		public string Status { get; set; }
 		public bool Attended { get; set; }

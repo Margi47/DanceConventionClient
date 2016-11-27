@@ -47,6 +47,7 @@
     <Compile Include="Views\ContestCheckin\CurrentContestCompetitors.xaml.cs">
       <DependentUpon>CurrentContestCompetitors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FontAwesome.cs" />
     <Compile Include="Views\RegistrationDesk\BarcodePage.xaml.cs">
       <DependentUpon>BarcodePage.xaml</DependentUpon>
     </Compile>

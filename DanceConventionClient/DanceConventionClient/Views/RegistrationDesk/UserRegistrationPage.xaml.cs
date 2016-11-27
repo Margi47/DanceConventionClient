@@ -29,13 +29,29 @@ namespace DanceConventionClient
 			var profile = await _service.GetProfile(); 
 			CurrentSignup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
 
-			Place.Text = CurrentEvent.Location;
-			name.Text = CurrentSignup.ParticipantName;
-			pass.Detail = CurrentSignup.SelectedPass;
-			invoicedAmount.Detail = CurrentSignup.AmountInvoiced.ToString();
-			paidAmount.Detail = CurrentSignup.AmountPaid.ToString();
 
-			contestsList.ItemsSource = CurrentSignup.ContestSignups;
+
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				AllContestsList.ItemsSource = CurrentSignup.ContestSignups;
+				Place.Text = CurrentEvent.Location;
+				Date.Text = CurrentEvent.StartDate.ToString();
+				Name.Text = CurrentSignup.ParticipantName;
+				Pass.Text = CurrentSignup.SelectedPass;
+				InvoicedAmount.Text = CurrentSignup.AmountInvoiced.ToString();
+				PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
+
+				if(CurrentSignup.AmountPaid < CurrentSignup.AmountInvoiced)
+				{
+					PaidAmount.TextColor = Color.Red;
+					PaidLabel.TextColor = Color.Red;
+				}
+				else
+				{
+					PaidAmount.TextColor = Color.Blue;
+					PaidLabel.TextColor = Color.Blue;
+				}
+			});
 		}
 
 		private async void qrCode_Clicked(object sender, EventArgs e)
