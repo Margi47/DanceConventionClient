@@ -10,51 +10,95 @@
 				<ViewCell Tapped="Cell_OnTapped">
 					<StackLayout>
 						<StackLayout Orientation="Horizontal">
-							<Label x:Name="Bib"/>
-							<Label x:Name="Name"/>
+							<Label x:Name="Bib"
+								   Style="{StaticResource Itemlabel}"
+								   FontAttributes="Bold"
+								   FontSize="18"/>
+							<Label x:Name="Name"
+								   Style="{StaticResource Itemlabel}"
+								   FontSize="18"
+								   FontAttributes="Bold"
+								   Margin="0,0,0,0"/>
 						</StackLayout>
 						<StackLayout Orientation="Horizontal">
-							<Label Text="Paid: "/>
-							<Label x:Name="PaidAmount"/>
-							<Label Text="Owned: "/>
-							<Label x:Name="OwnedAmount"/>
+							<Label Text="Paid:"
+								   Style="{StaticResource Itemlabel}"
+								   TextColor="Blue"/>
+							<Label x:Name="PaidAmount"
+								   Style="{StaticResource Itemlabel}"
+								   Margin="0,0,0,0"
+								   TextColor="Blue"/>
+							<Label x:Name="OwedLabel" Text="Owed:"
+								   Style="{StaticResource Itemlabel}"/>
+							<Label x:Name="OwedAmount"
+								   Style="{StaticResource Itemlabel}"
+								   Margin="0,0,0,0"/>
 						</StackLayout>
 					</StackLayout>
 				</ViewCell>
 				<ViewCell>
-					<StackLayout Orientation="Horizontal">
-						<Label Text="ALL AMOUNTS DISPLAYED IN: "/>
-						<Label x:Name="Currency"/>
+					<StackLayout Orientation="Horizontal"
+								 HorizontalOptions="CenterAndExpand">
+						<Label Text="ALL AMOUNTS DISPLAYED IN: "
+							   Style="{StaticResource InfoLabel}"
+							   FontSize="13"
+							   HorizontalOptions="Center"/>
+						<Label x:Name="Currency"
+							   Style="{StaticResource InfoLabel}"
+							   FontSize="13"
+							   HorizontalOptions="Start"/>
 					</StackLayout>
 				</ViewCell>
-				<TextCell x:Name="Status"/>
-			</TableSection>
+			<ViewCell Height="30">
+				<Label x:Name="Status"
+					   TextColor="White"
+					   HorizontalOptions="FillAndExpand"
+					   HorizontalTextAlignment="Center"
+					   FontSize="18"
+					   VerticalOptions="FillAndExpand"
+					   Margin="0,0,0,0"
+					   BackgroundColor="Blue"/>
+			</ViewCell>
+		</TableSection>
 
 			<TableSection>
-				<ViewCell>
+				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal">
-						<Label Text="Amount "/>
+						<Label Text="Amount "
+							   Style="{StaticResource Itemlabel}"/>
 						<Entry x:Name="PaymentAmount"
-								   Text="{Binding Text, Source={x:Reference OwnedAmount}}"/>
-						<Label Text="{Binding Text, Source={x:Reference Currency}}"/>
+							   Style="{StaticResource EntryStyle}"/>
+						<Label Text="{Binding Text, Source={x:Reference Currency}}"
+							   Style="{StaticResource Itemlabel}"
+							   BackgroundColor="Silver"
+							   HorizontalOptions="EndAndExpand"
+							   VerticalOptions="Center"
+							   Margin="0,0,15,0"/>
 					</StackLayout>
 				</ViewCell>
-				<ViewCell>
+				<ViewCell  Height="40">
 					<StackLayout Orientation="Horizontal">
-						<Label Text="Comment  "/>
-						<Entry x:Name="Comment"/>
+						<Label Text="Comment  "
+							   Style="{StaticResource Itemlabel}"/>
+						<Entry x:Name="Comment"
+							   Style="{StaticResource EntryStyle}"/>
 					</StackLayout>
 				</ViewCell>
 				<ViewCell>
 					<Button Text="RecordPayment"
-								Clicked="PaymentButton_OnClicked"/>
+								Clicked="PaymentButton_OnClicked"
+							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>
 
 			<TableSection>
 				<ViewCell>
 					<Button x:Name="AttendedButton"
-								Clicked="AttendedButton_OnClicked"/>
+							Clicked="AttendedButton_OnClicked"
+							Style="{StaticResource ButtonStyle}"
+							TextColor="White"
+							BackgroundColor="Blue"
+							FontSize="18"/>
 				</ViewCell>
 			</TableSection>
 		</TableRoot>

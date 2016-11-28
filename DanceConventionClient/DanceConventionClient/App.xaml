@@ -62,6 +62,13 @@
 				<Setter Property="TextColor" Value="Gray"/>
 				<Setter Property="FontSize" Value="20"/>
 			</Style>
+
+			<Style x:Key="EntryStyle" TargetType="Entry">
+				<Setter Property="TextColor" Value="Black"/>
+				<Setter Property="FontSize" Value="15"/>
+				<Setter Property="Margin" Value="20,0,0,0"/>
+				<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

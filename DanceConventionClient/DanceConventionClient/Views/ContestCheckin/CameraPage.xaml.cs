@@ -59,7 +59,12 @@ namespace DanceConventionClient.Views.ContestCheckin
 			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
 			{
 				var signup = await _service.GetSignup(eventId, userId);
-				await _service.AllContestCheckin(eventId, userId, signup.BibNumber, true);
+				if (signup.BibNumber == null)
+				{
+					await DisplayAlert("Error", "Not signed up for currently active competitions", "OK");
+					return;
+				}
+				await _service.AllContestCheckin(eventId, userId, signup.BibNumber.Value, true);
 
 				var answer = await DisplayAlert("Successful", signup.ParticipantName + " was checked-in.", "Next", "Return");
 

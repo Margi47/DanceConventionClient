@@ -9,7 +9,7 @@ namespace DanceConventionClient.Services
 	public class Signup
 	{
 		public int ParticipantId { get; set; }
-		public int BibNumber { get; set; }
+		public int? BibNumber { get; set; }
 		public string ParticipantName { get; set; }
 		public decimal AmountPaid { get; set; }
 		public decimal AmountOwed { get; set; }

@@ -17,21 +17,41 @@ namespace DanceConventionClient
 		public SignupView(DanceEvent danceEvent, Signup signup)
 		{
 			InitializeComponent();
+
 			CurrentSignup = signup;
 			CurrentEvent = danceEvent;
+
 			_service = App.MyService;
+
 			InitTableInfo();
 		}
 
 		private void InitTableInfo()
 		{
-			Bib.Text = CurrentSignup.BibNumber.ToString();
+			if (CurrentSignup.BibNumber != null)
+			{
+				Bib.Text = "[" + CurrentSignup.BibNumber + "]";
+			}
+			
 			Name.Text = CurrentSignup.ParticipantName;
 			PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
-			OwnedAmount.Text = CurrentSignup.AmountOwed.ToString();
+			OwedAmount.Text = CurrentSignup.AmountOwed.ToString();
+
+			if (CurrentSignup.AmountOwed > 0)
+			{
+				OwedAmount.TextColor = Color.Red;
+				OwedLabel.TextColor = Color.Red;
+			}
+			else
+			{
+				OwedAmount.TextColor = Color.Blue;
+				OwedLabel.TextColor = Color.Blue;
+			}
+
 			Currency.Text = CurrentEvent.Currency;
 			Status.Text = CurrentSignup.Status;
-			AttendedButton.Text = CurrentSignup.Attended.ToString();
+			AttendedButton.Text = CurrentSignup.Attended ? "ATTENDED" : "CHECK IN";
+			PaymentAmount.Text = CurrentSignup.AmountOwed.ToString();
 		}
 
 
@@ -44,21 +64,50 @@ namespace DanceConventionClient
 		{
 			var amount = Decimal.Parse(PaymentAmount.Text);
 			var comment = Comment.Text;
+
 			if (amount > 0)
 			{
 				await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, amount, comment);
 				PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
+
+				var signup = await _service.GetSignup(CurrentEvent.Id, CurrentSignup.ParticipantId);
+
+				Device.BeginInvokeOnMainThread(() =>
+				{
+					CurrentSignup = signup;
+					InitTableInfo();
+				});
 			}
 			else
 			{
-				await App.Current.MainPage.DisplayAlert("Error", "Please enter payment amount", "OK");
-			}
-			
+				await Application.Current.MainPage.DisplayAlert("Error", "Please enter payment amount", "OK");
+			}		
 		}
 
-		private void AttendedButton_OnClicked(object sender, EventArgs e)
+		private async void AttendedButton_OnClicked(object sender, EventArgs e)
 		{
-			_service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+			if (CurrentSignup.Attended)
+			{
+				var answer =
+					await Application.Current.MainPage.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
+
+				if (answer)
+				{
+					await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+				}
+			}
+			else
+			{
+				await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+			}
+
+			var signup = await _service.GetSignup(CurrentEvent.Id, CurrentSignup.ParticipantId);
+
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				CurrentSignup = signup;
+				InitTableInfo();
+			});
 		}
 	}
 }

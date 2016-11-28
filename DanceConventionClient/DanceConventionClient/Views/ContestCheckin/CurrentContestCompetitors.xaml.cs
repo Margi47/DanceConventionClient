@@ -19,11 +19,17 @@ namespace DanceConventionClient
 			InitializeComponent();
 			_service = App.MyService;
 			CurrentContest = currentContest;
-			InitializeList();
 			Title = currentContest.Name;
 		}
 
-		private async void InitializeList()
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+
+			await InitializeList();
+		}
+
+		private async Task InitializeList()
 		{
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
 			if (competitors != null)
@@ -42,12 +48,12 @@ namespace DanceConventionClient
 			CompetitorsList.ItemsSource = result;
 		}
 
-		private void CompetitorsList_OnItemTapped(object sender, ItemTappedEventArgs e)
+		private async void CompetitorsList_OnItemTapped(object sender, ItemTappedEventArgs e)
 		{
 			var competitor = e.Item as Competitor;
-			_service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
+			await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
 				competitor.BibNumber, false);
-			InitializeList();
+			await InitializeList();
 		}
 	}
 }
