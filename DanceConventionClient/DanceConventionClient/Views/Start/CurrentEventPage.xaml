@@ -5,7 +5,11 @@
 			 Title="Event">
 
 	<StackLayout>
-		<Label x:Name="EventName"/>
+		<Label x:Name="EventName"
+			   FontSize="20"
+			   FontAttributes="Bold"
+			   HorizontalOptions="CenterAndExpand"
+			   TextColor="Black"/>
 		<Button x:Name="MyReg"
 				Text="My registration"
 				Clicked="MyRegistrationButtonOnClicked"

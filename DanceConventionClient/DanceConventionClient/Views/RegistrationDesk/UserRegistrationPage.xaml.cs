@@ -22,6 +22,7 @@ namespace DanceConventionClient
 
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
+			Title = CurrentEvent.Name;
 		}
 
 		protected override async void OnAppearing()

@@ -36,20 +36,26 @@ namespace DanceConventionClient
 			Name.Text = CurrentSignup.ParticipantName;
 			PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
 			OwedAmount.Text = CurrentSignup.AmountOwed.ToString();
-
-			if (CurrentSignup.AmountOwed > 0)
-			{
-				OwedAmount.TextColor = Color.Red;
-				OwedLabel.TextColor = Color.Red;
-			}
-			else
-			{
-				OwedAmount.TextColor = Color.Blue;
-				OwedLabel.TextColor = Color.Blue;
-			}
-
 			Currency.Text = CurrentEvent.Currency;
 			Status.Text = CurrentSignup.Status;
+
+			if (CurrentSignup.Status == "ATTENDED" || CurrentSignup.Status == "CANCELLED")
+			{
+				Status.BackgroundColor = Color.Blue;
+			}
+			else if (CurrentSignup.Status == "PAID")
+			{
+				Status.BackgroundColor = Color.Green;
+			}
+			else if (CurrentSignup.Status == "BOOKED")
+			{
+				Status.BackgroundColor = Color.Teal;
+			}
+			else if (CurrentSignup.Status == "WAITLIST")
+			{
+				Status.BackgroundColor = Color.Maroon;
+			}
+
 			AttendedButton.Text = CurrentSignup.Attended ? "ATTENDED" : "CHECK IN";
 			PaymentAmount.Text = CurrentSignup.AmountOwed.ToString();
 		}

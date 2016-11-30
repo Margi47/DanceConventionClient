@@ -26,6 +26,7 @@ namespace DanceConventionClient
 		{
 			base.OnAppearing();
 
+			EventName.Text = CurrentEvent.Name;
 			InitializeButtons();
 		}
 
