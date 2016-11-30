@@ -17,9 +17,11 @@ namespace DanceConventionClient
 		public CurrentContestCompetitors(Contest currentContest)
 		{
 			InitializeComponent();
+			ProfileItem.SetProfileButton(this);
+
 			_service = App.MyService;
 			CurrentContest = currentContest;
-			Title = currentContest.Name;
+			Title = currentContest.Name;			
 		}
 
 		protected override async void OnAppearing()

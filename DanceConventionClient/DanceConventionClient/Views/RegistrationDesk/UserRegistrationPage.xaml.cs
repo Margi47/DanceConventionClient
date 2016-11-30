@@ -18,6 +18,8 @@ namespace DanceConventionClient
 		public UserRegistrationPage(DanceEvent currentEvent)
 		{
 			InitializeComponent();
+			ProfileItem.SetProfileButton(this);
+
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
 		}
@@ -28,7 +30,6 @@ namespace DanceConventionClient
 
 			var profile = await _service.GetProfile(); 
 			CurrentSignup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
-
 
 
 			Device.BeginInvokeOnMainThread(() =>

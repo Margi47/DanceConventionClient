@@ -5,23 +5,20 @@
 			 Title="Profile">
 	<StackLayout>
 		<Label x:Name="profileName"
+			   Style="{StaticResource Itemlabel}"
 			   FontSize="Large"
-			   HorizontalOptions="Center"
-			   VerticalOptions="CenterAndExpand"/>
+			   FontAttributes="Bold"
+			   HeightRequest="40"
+			   Margin="20,40,0,0"/>
 		<Label x:Name="email"
-			   FontSize="Large"
-			   HorizontalOptions="Center"
-			   VerticalOptions="Center"/>
+			   Style="{StaticResource Itemlabel}"
+			   Margin="20,20,0,0"/>
 		<Label x:Name="accessPermission"
-			   Text="Permission"
-			   FontSize="Large"
-			   HorizontalOptions="Center"
-			   VerticalOptions="Center"/>
+			   Style="{StaticResource Itemlabel}"/>
 		<Button x:Name="logoutButton"
 				Text="Logout"
-				FontSize="Large"
-				HorizontalOptions="Center"
-				VerticalOptions="EndAndExpand"
-				Clicked="logoutButton_Clicked"/>
+				Style="{StaticResource ButtonStyle}"
+				Clicked="logoutButton_Clicked"
+				VerticalOptions="EndAndExpand"/>
 	</StackLayout>
 </ContentPage>

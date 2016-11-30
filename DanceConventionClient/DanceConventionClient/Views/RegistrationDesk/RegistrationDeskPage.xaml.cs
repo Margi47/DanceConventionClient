@@ -18,6 +18,8 @@ namespace DanceConventionClient
 		public RegistrationDeskPage(DanceEvent currentEvent)
 		{
 			InitializeComponent();
+			ProfileItem.SetProfileButton(this);
+
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
 			Title = currentEvent.Name;

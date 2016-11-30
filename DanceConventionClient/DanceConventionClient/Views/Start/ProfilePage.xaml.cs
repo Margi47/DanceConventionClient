@@ -27,7 +27,7 @@ namespace DanceConventionClient
 		{
 			var currentProfile = await Service.GetProfile();
 
-			profileName.Text = currentProfile.FirstName + " " + currentProfile.LastName;
+			profileName.Text = currentProfile.FullName;
 			email.Text = currentProfile.Email;
 			accessPermission.Text = currentProfile.Role;
 		}

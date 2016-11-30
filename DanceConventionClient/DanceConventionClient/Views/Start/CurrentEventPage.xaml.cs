@@ -16,6 +16,8 @@ namespace DanceConventionClient
 		public CurrentEventPage(DanceEvent currentEvent)
 		{
 			InitializeComponent();
+			ProfileItem.SetProfileButton(this);
+
 			CurrentEvent = currentEvent;
 			_service = App.MyService;
 		}
@@ -24,7 +26,7 @@ namespace DanceConventionClient
 		{
 			base.OnAppearing();
 
-			InitializeButtons();			
+			InitializeButtons();
 		}
 
 		private async void InitializeButtons()

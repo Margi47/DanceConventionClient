@@ -18,6 +18,9 @@ namespace DanceConventionClient.Services
 		[JsonProperty(PropertyName = "lastName")]
 		public string LastName { get; set; }
 
+		[JsonIgnore]
+		public string FullName => FirstName + " " + LastName;
+
 		[JsonProperty(PropertyName = "email")]
 		public string Email { get; set; }
 

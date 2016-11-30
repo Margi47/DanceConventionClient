@@ -12,7 +12,7 @@
 
 			<Style TargetType="NavigationPage">
 				<Setter Property="BarBackgroundColor" Value="Silver" />
-				<Setter Property="BarTextColor" Value="Black" />
+				<Setter Property="BarTextColor" Value="Black"/>
 			</Style>
 
 			<Style x:Key="ListViewStyle" TargetType="ListView">

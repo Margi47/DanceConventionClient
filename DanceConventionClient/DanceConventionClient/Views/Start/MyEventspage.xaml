@@ -4,10 +4,6 @@
              x:Class="DanceConventionClient.MyEventspage"
 			 Title="My events">
 
-	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="Profile"/>
-	</ContentPage.ToolbarItems>
-
 	<StackLayout>
 		<ListView x:Name="CurrentEvents"
 				  Style="{StaticResource ListViewStyle}"

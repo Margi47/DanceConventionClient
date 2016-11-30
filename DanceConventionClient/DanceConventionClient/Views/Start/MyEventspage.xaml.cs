@@ -16,6 +16,8 @@ namespace DanceConventionClient
 		public MyEventspage()
 		{
 			InitializeComponent();
+			ProfileItem.SetProfileButton(this);
+
 			_service = App.MyService;
 		}
 
