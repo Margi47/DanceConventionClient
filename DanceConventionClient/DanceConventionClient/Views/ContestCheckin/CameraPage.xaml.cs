@@ -15,6 +15,7 @@ namespace DanceConventionClient.Views.ContestCheckin
 	{
 		private readonly IDCService _service;
 		public bool FirstCall { get; set; }
+		private ZXingScannerView _zxing;
 
 		public CameraPage()
 		{
@@ -22,34 +23,33 @@ namespace DanceConventionClient.Views.ContestCheckin
 			_service = App.MyService;
 		}
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-			if (FirstCall)
-			{
-				FirstCall = false;
-				await ScanCode();
-			}
+			InitScanner();			
 		}
 
-		public async Task ScanCode()
+		public void InitScanner()
 		{
-			var scanPage = new ZXingScannerPage();
-			
-			scanPage.OnScanResult += (result) =>
+			_zxing = new ZXingScannerView
 			{
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					scanPage.IsScanning = false;
-					await Navigation.PopAsync();
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand
+			};
+
+			_zxing.OnScanResult += (result) =>
+				Device.BeginInvokeOnMainThread(async () => {
+
+					_zxing.IsAnalyzing = false;
+
+					MainGrid.Children.Clear();
 
 					await MakeCheckin(result);
 				});
-			};
-
-			await Navigation.PushAsync(scanPage);
+			
+			MainGrid.Children.Add(_zxing);
+			_zxing.IsScanning = true;
 		}
-		
 
 		private async Task MakeCheckin(Result result)
 		{
@@ -74,10 +74,9 @@ namespace DanceConventionClient.Views.ContestCheckin
 				}
 				else
 				{
-					await ScanCode();
+					InitScanner();
 				}
 			}
 		}
-
-	}
+	}	
 }

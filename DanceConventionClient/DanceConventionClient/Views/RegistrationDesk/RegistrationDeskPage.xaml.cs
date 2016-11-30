@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DanceConventionClient.Services;
 using DanceConventionClient.Views.RegistrationDesk;
 using Xamarin.Forms;
+using ZXing;
 using ZXing.Net.Mobile.Forms;
 
 namespace DanceConventionClient
@@ -53,30 +54,36 @@ namespace DanceConventionClient
 
 		private async void CameraButton_OnClicked(object sender, EventArgs e)
 		{
-			var scanPage = new ZXingScannerPage();
-
-			scanPage.OnScanResult += (result) => {
-
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					scanPage.IsScanning = false;
-					await Navigation.PopAsync();
-
-					var elements = result.Text.Split('[', ':', ']');
-					int eventId;
-					int userId;
-					if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
-					{
-						var signup = await _service.GetSignup(eventId, userId);
-
-						ContentStack.Children.Clear();
-						ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
-					}
-				});
+			var zxing = new ZXingScannerView
+			{
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
-			await Navigation.PushAsync(scanPage);
+			zxing.OnScanResult += (result) =>
+				Device.BeginInvokeOnMainThread(async () =>
+				{
+					zxing.IsAnalyzing = false;
+					await Navigation.PopAsync();
+
+					await ShowSignup(result);
+				});
+
+			ContentStack.Children.Clear();
+			await Navigation.PushAsync(new RegistrationCameraPage(zxing));
 		}
 
+		private async Task ShowSignup(Result result)
+		{
+			var elements = result.Text.Split('[', ':', ']');
+			int eventId;
+			int userId;
+
+			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
+			{
+				var signup = await _service.GetSignup(eventId, userId);
+				ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
+			}
+		}
 	}
 }
