@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services.Models;
+using Xamarin.Forms;
 
 namespace DanceConventionClient.Services
 {
@@ -15,7 +16,7 @@ namespace DanceConventionClient.Services
 		{
 			HttpClient httpClient = new HttpClient(new LoggingHandler(new HttpClientHandler()));
 
-			httpClient.BaseAddress = new Uri("https://sandbox.danceconvention.net/");
+			httpClient.BaseAddress = new Uri(Application.Current.Properties["url"].ToString());
 
 			var response = await httpClient.PostAsJsonAsync("/eventdirector/rest/mobile/auth", login);
 

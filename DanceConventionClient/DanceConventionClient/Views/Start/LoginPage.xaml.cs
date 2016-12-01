@@ -17,8 +17,8 @@ namespace DanceConventionClient
 
 		private async void Login(object sender, EventArgs e)
 		{
-			var userLogin = loginEntry.Text;
-			var userPassword = passwordEntry.Text;
+			var userLogin = LoginEntry.Text;
+			var userPassword = PasswordEntry.Text;
 
 			var login = new DCLogin { Username = userLogin, Password = userPassword };
 			var factory = new DCServiceFactory();

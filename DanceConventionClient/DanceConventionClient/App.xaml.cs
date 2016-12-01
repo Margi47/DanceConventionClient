@@ -44,6 +44,11 @@ namespace DanceConventionClient
 
 		protected override async void OnStart()
 		{
+			if (!Properties.ContainsKey("url"))
+			{
+				Application.Current.Properties["url"] = "https://danceconvention.net";
+			}
+
 			if (Properties.ContainsKey("userName") && Properties.ContainsKey("password"))
 			{
 				var login = new DCLogin()

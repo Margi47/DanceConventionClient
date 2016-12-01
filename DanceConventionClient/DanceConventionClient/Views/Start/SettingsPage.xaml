@@ -5,9 +5,18 @@
 			 Title="Settings">
 	
 	<StackLayout>
-		<Label Text="ServerURL"
-			   FontSize="Large"/>
-		<Label Text="Http://danceconvention.net"
-			   FontSize="Large"/>
+		<Label Text="Server URL"
+			   Style="{StaticResource Itemlabel}"
+			   FontAttributes="Bold"
+			   Margin="20,20,0,0"/>
+		<Entry x:Name="UrlEntry"
+			   Style="{StaticResource EntryStyle}"/>
+		<Button Text="Submit"
+				Clicked="Button_OnClicked"
+				Style="{StaticResource ButtonStyle}"
+				Margin="0,20,0,0"/>
+		<Label x:Name="InfoLabel" Text="URL has been changed"
+			   Style="{StaticResource InfoLabel}"
+			   IsVisible="False"/>
 	</StackLayout>
 </ContentPage>
