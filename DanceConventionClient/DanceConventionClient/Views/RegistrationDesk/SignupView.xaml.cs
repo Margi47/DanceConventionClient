@@ -30,7 +30,7 @@ namespace DanceConventionClient
 		{
 			if (CurrentSignup.BibNumber != null)
 			{
-				Bib.Text = "[" + CurrentSignup.BibNumber + "]";
+				Bib.Text = CurrentSignup.BibNumberString;
 			}
 			
 			Name.Text = CurrentSignup.ParticipantName;

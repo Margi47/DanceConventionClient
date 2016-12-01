@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace DanceConventionClient.Services
 {
@@ -10,6 +11,17 @@ namespace DanceConventionClient.Services
 	{
 		public int ParticipantId { get; set; }
 		public int? BibNumber { get; set; }
+
+		[JsonIgnore]
+		public string BibNumberString
+		{
+			get
+			{
+				return "[" + BibNumber + "]";
+				
+			}
+		}
+
 		public string ParticipantName { get; set; }
 		public decimal AmountPaid { get; set; }
 		public decimal AmountOwed { get; set; }

@@ -51,6 +51,15 @@ namespace DanceConventionClient.Services
 		[JsonProperty(PropertyName = "bibNumber")]
 		public int BibNumber { get; set; }
 
+		[JsonIgnore]
+		public string BibNumberString
+		{
+			get
+			{
+				return "[" + BibNumber + "]";
+			}
+		}
+
 		[JsonProperty(PropertyName = "role")]
 		public string Role { get; set; }
 

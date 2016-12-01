@@ -13,25 +13,28 @@
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell Height="43">
-						<StackLayout HorizontalOptions="FillAndExpand"
+						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+							<StackLayout HorizontalOptions="FillAndExpand"
 									 VerticalOptions="CenterAndExpand">
-							<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-								<Label Text="{Binding BibNumber}"
+								<StackLayout Orientation="Horizontal">
+									<Label Text="{Binding BibNumberString}"
 									   Style="{StaticResource Itemlabel}"
 									   HorizontalOptions="Start"/>
-								<Label Text="{Binding ParticipantName}"
+									<Label Text="{Binding ParticipantName}"
 									   Style="{StaticResource Itemlabel}"
 									   Margin="0,0,0,0"
 									   HorizontalOptions="StartAndExpand"/>
-								<Label Text="&#xf00c;" 
-									   IsVisible="{Binding CheckedIn}"
-									   HorizontalOptions="EndAndExpand"
-									   Margin="0,0,15,0"
-									   TextColor="Blue"/>
-							</StackLayout>
-							<Label Text="{Binding PartnerName}"
+								</StackLayout>
+								<Label Text="{Binding PartnerName}"
 								   Style="{StaticResource Detaillabel}"
 								   IsVisible="{Binding HasPartner}"/>
+							</StackLayout>
+							<Label Text="&#xf00c;" 
+									   IsVisible="{Binding CheckedIn}"
+									   HorizontalOptions="EndAndExpand"
+								   VerticalOptions="Center"
+									   Margin="0,0,15,0"
+									   TextColor="Blue"/>
 						</StackLayout>
 						
 					</ViewCell>
