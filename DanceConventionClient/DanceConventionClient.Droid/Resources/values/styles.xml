@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
+  <style name="Theme.Splash"
+         parent="android:Theme">
+    <item name="android:windowBackground">@drawable/dcnet_logo_fb</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:colorBackground">#FFFFFF</item>
+    <item name="android:backgroundDimEnabled">false</item>
+  </style>
+  
+  
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
   <!-- Base theme applied no matter what API -->
