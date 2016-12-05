@@ -6,7 +6,8 @@
 	<StackLayout>
 		<Button x:Name="CameraButton"
 				Text="Scan QR Code" Style="{StaticResource ButtonStyle}"
-				Clicked="Camera_OnClicked"/>
+				Clicked="Camera_OnClicked"
+				IsEnabled="False"/>
 
 		<ListView x:Name="ContestsList" 
 				  Style="{StaticResource ListViewStyle}"

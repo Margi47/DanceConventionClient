@@ -34,7 +34,7 @@ namespace DanceConventionClient
 		{
 			//show only complete contests
 			var contests = await _service.GetContests(CurrentEvent.Id);
-			if (contests != null)
+			if (contests.Length > 0)
 			{
 				ContestsList.ItemsSource = contests;
 				ChangeVisibility();
@@ -45,6 +45,7 @@ namespace DanceConventionClient
 		{
 			ContestsList.IsVisible = true;
 			NoResultLabel.IsVisible = false;
+			CameraButton.IsEnabled = true;
 		}
 
 

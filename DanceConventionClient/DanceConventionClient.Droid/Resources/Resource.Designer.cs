@@ -2215,8 +2215,11 @@ namespace DanceConventionClient.Droid
 			// aapt resource value: 0x7f0200a3
 			public const int mr_ic_play_light = 2130837667;
 			
+			// aapt resource value: 0x7f0200a5
+			public const int notification_template_icon_bg = 2130837669;
+			
 			// aapt resource value: 0x7f0200a4
-			public const int notification_template_icon_bg = 2130837668;
+			public const int SplashImage = 2130837668;
 			
 			static Drawable()
 			{

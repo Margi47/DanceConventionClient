@@ -89,7 +89,7 @@ namespace DanceConventionClient.Services
 
 		public async Task<Contest[]> GetContests(int eventId)
 		{
-			HttpResponseMessage response = await _client.GetAsync($"/eventdirector/rest/mobile/event/{eventId}/contests");
+			HttpResponseMessage response = await _client.GetAsync($"/eventdirector/rest/mobile/event/{eventId}/contests?checkin=true");
 			response.EnsureSuccessStatusCode();
 			var competitions = await response.Content.ReadAsAsync<Contest[]>();
 			return competitions;
