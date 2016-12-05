@@ -37,7 +37,7 @@ namespace DanceConventionClient
 			{
 				AllContestsList.ItemsSource = CurrentSignup.ContestSignups;
 				Place.Text = CurrentEvent.Location;
-				Date.Text = CurrentEvent.StartDate.ToString();
+				Date.Text = CurrentEvent.EventDates;
 				Name.Text = CurrentSignup.ParticipantName;
 				Pass.Text = CurrentSignup.SelectedPass;
 				InvoicedAmount.Text = CurrentSignup.AmountInvoiced.ToString();

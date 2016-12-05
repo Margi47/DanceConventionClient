@@ -25,7 +25,7 @@
 						<StackLayout>
 							<Label Text="{Binding Name}"
 								   Style="{StaticResource Itemlabel}"/>
-							<Label Text="{Binding StartDate}"
+							<Label Text="{Binding EventDates}"
 								   Style="{StaticResource Detaillabel}"/>
 						</StackLayout>
 					</ViewCell>

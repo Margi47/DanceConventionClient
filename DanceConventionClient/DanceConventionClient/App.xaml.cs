@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace DanceConventionClient
@@ -21,6 +22,14 @@ namespace DanceConventionClient
 			InitializeComponent();
 
 			MainPage=new StartPage();
+
+			Device.BeginInvokeOnMainThread((() =>
+			{
+				JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+				{
+					DateTimeZoneHandling = DateTimeZoneHandling.Utc
+				};
+			}));
 		}
 
 		public static void NavigateToLoginPage()
@@ -44,6 +53,8 @@ namespace DanceConventionClient
 
 		protected override async void OnStart()
 		{
+			
+
 			if (!Properties.ContainsKey("url"))
 			{
 				Application.Current.Properties["url"] = "https://danceconvention.net";
