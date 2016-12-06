@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -6,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Net;
+using Serilog;
 
 namespace DanceConventionClient.Droid
 {
@@ -26,6 +28,11 @@ namespace DanceConventionClient.Droid
 
 			ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
+			Log.Logger = new LoggerConfiguration()
+                .WriteTo.RollingFile(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "JCA_log-{Date}.txt")
+                ,outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}")
+                .WriteTo.AndroidLog()
+                .CreateLogger();
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

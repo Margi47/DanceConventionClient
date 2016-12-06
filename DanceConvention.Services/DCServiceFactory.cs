@@ -6,12 +6,18 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services.Models;
+using Serilog;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.Services
 {
 	public class DCServiceFactory
 	{
+		private readonly ILogger _logger;
+		public DCServiceFactory()
+		{
+			_logger = Log.ForContext(GetType());
+		}
 		public async Task<LoginResult> Login(DCLogin login)
 		{
 			HttpClient httpClient = new HttpClient(new LoggingHandler(new HttpClientHandler()));
@@ -22,6 +28,7 @@ namespace DanceConventionClient.Services
 
 			if (response.StatusCode == HttpStatusCode.OK)
 			{
+				_logger.Information("Login succeded:{@Login}", login);
 				var service = new DCService(httpClient);
 				var result = new LoginResult()
 				{
@@ -32,6 +39,7 @@ namespace DanceConventionClient.Services
 			}
 			else if (response.StatusCode == HttpStatusCode.Unauthorized)
 			{
+				_logger.Information("Login invalid:{@Login}", login);
 				var result = new LoginResult()
 				{
 					ErrorMessage = "Invalid Username or Password"
@@ -40,6 +48,7 @@ namespace DanceConventionClient.Services
 			}
 			else
 			{
+				_logger.Information("Login failed:{@Login}", login);
 				var result = new LoginResult()
 				{
 					ErrorMessage = "Login failed"

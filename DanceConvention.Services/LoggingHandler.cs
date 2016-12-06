@@ -6,34 +6,33 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace DanceConventionClient.Services
 {
 	public class LoggingHandler : DelegatingHandler
 	{
+		private readonly ILogger _logger;
 		public LoggingHandler(HttpMessageHandler innerHandler)
 			: base(innerHandler)
 		{
+			_logger = Serilog.Log.ForContext(GetType());
 		}
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			Debug.WriteLine("Request:");
-			Debug.WriteLine(request.ToString());
+			
 			if (request.Content != null)
 			{
-				Debug.WriteLine(await request.Content.ReadAsStringAsync());
+				_logger.Verbose("Sending request {HttpRequest}", request);
 			}
 
-			HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
-
-			Debug.WriteLine("Response:");
-			Debug.WriteLine(response.ToString());
+			var response = await base.SendAsync(request, cancellationToken);
+			
 			if (response.Content != null)
 			{
-				Debug.WriteLine(await response.Content.ReadAsStringAsync());
+				_logger.Verbose("Received response {HttpResponse}", response);
 			}
-
 
 			return response;
 		}

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
 using Newtonsoft.Json;
+using Serilog;
 using Xamarin.Forms;
 
 namespace DanceConventionClient
@@ -16,12 +17,15 @@ namespace DanceConventionClient
 	public partial class App : Application
 	{
 		public static IDCService MyService { get; set; }
+		private readonly ILogger _logger;
 
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage=new StartPage();
+			_logger = Log.ForContext(GetType());
+
+			MainPage =new StartPage();
 
 			Device.BeginInvokeOnMainThread((() =>
 			{
@@ -53,8 +57,6 @@ namespace DanceConventionClient
 
 		protected override async void OnStart()
 		{
-			
-
 			if (!Properties.ContainsKey("url"))
 			{
 				Application.Current.Properties["url"] = "https://danceconvention.net";
@@ -74,11 +76,13 @@ namespace DanceConventionClient
 				{
 					await InitializeService(loginResult);
 					NavigateToMainPage();
+					_logger.Information("Navigation to events page with properties:{UserName}, {Password}, {Url}", Properties["userName"], Properties["password"], Properties["url"]);
 					return;
 				}
 			}
 
 			NavigateToLoginPage();
+			_logger.Information("Navigation to login page with properties:{UserName}, {Password}, {Url}", Properties["userName"], Properties["password"], Properties["url"]);
 		}
 
 		protected override void OnSleep()
