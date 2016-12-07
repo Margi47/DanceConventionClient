@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DanceConventionClient.Services.Models;
 
 namespace DanceConventionClient.Services
 {
 	public interface IDCService
 	{
+		Task<LoginResult> Login(DCLogin login);
 		Task<Profile> GetProfile();
 		Task<DanceEvent[]> GetEvents();
 		Task<EventPermission[]> GetPermissions(int eventId);

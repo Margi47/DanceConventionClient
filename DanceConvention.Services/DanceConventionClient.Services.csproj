@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DCService.cs" />
-    <Compile Include="DCServiceFactory.cs" />
+    <Compile Include="DCServiceVrapper.cs" />
     <Compile Include="HttpClientExtensions.cs" />
     <Compile Include="IDCService.cs" />
     <Compile Include="LoggingHandler.cs" />

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using DanceConventionClient.Services.Models;
 using Serilog;
+using Xamarin.Forms;
 
 namespace DanceConventionClient.Services
 {
@@ -13,10 +16,45 @@ namespace DanceConventionClient.Services
 		private readonly HttpClient _client;
 		private readonly ILogger _logger;
 
-		public DCService(HttpClient client)
+		public DCService()
 		{
-			_client = client;
 			_logger = Log.ForContext(GetType());
+
+			_client = new HttpClient(new LoggingHandler(new HttpClientHandler()));
+			_client.BaseAddress = new Uri(Application.Current.Properties["url"].ToString());
+		}
+
+		public async Task<LoginResult> Login(DCLogin login)
+		{
+			var response = await _client.PostAsJsonAsync("/eventdirector/rest/mobile/auth", login);
+
+			if (response.StatusCode == HttpStatusCode.OK)
+			{
+				_logger.Information("Login succeded:{@Login}", login);
+				var result = new LoginResult()
+				{
+					Login = login,
+				};
+				return result;
+			}
+			else if (response.StatusCode == HttpStatusCode.Unauthorized)
+			{
+				_logger.Information("Login invalid:{@Login}", login);
+				var result = new LoginResult()
+				{
+					ErrorMessage = "Invalid Username or Password"
+				};
+				return result;
+			}
+			else
+			{
+				_logger.Information("Login failed:{@Login}", login);
+				var result = new LoginResult()
+				{
+					ErrorMessage = "Login failed"
+				};
+				return result;
+			}
 		}
 
 		public async Task<Profile> GetProfile()

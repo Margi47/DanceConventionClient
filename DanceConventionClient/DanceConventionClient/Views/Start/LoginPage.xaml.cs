@@ -21,11 +21,11 @@ namespace DanceConventionClient
 			var userPassword = PasswordEntry.Text;
 
 			var login = new DCLogin { Username = userLogin, Password = userPassword };
-			var factory = new DCServiceFactory();
-			var loginResult = await factory.Login(login);
+			var service = new DCServiceVrapper();
+			var loginResult = await service.Login(login);
 			if (loginResult.Successful)
 			{
-				await App.InitializeService(loginResult);
+				await App.InitializeService(loginResult, service);
 				App.NavigateToMainPage();
 			}
 			else

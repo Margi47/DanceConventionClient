@@ -41,9 +41,9 @@ namespace DanceConventionClient
 			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new LoginPage()));
 		}
 
-		public static async Task InitializeService(LoginResult login)
+		public static async Task InitializeService(LoginResult login, IDCService service)
 		{
-			MyService = login.Service;
+			MyService = service;
 			Application.Current.Properties["userName"] = login.Login.Username;
 			Application.Current.Properties["password"] = login.Login.Password;
 			await App.Current.SavePropertiesAsync();
@@ -69,12 +69,13 @@ namespace DanceConventionClient
 					Username = Properties["userName"].ToString(),
 					Password = Properties["password"].ToString()
 				};
-				var factory = new DCServiceFactory();
-				var loginResult = await factory.Login(login);
+				var service = new DCServiceVrapper();
+				var loginResult = await service.Login(login);
 
 				if (loginResult.Successful)
 				{
-					await InitializeService(loginResult);
+					
+					await InitializeService(loginResult, service);
 					NavigateToMainPage();
 					_logger.Information("Navigation to events page with properties:{UserName}, {Password}, {Url}", Properties["userName"], Properties["password"], Properties["url"]);
 					return;
