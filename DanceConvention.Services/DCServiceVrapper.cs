@@ -42,7 +42,7 @@ namespace DanceConventionClient.Services
 
 		public Task<LoginResult> Login(DCLogin login)
 		{
-			return _service.Login(login);
+			return RetryIfFails((service) => service.Login(login));
 		}
 
 		public Task<Profile> GetProfile()
