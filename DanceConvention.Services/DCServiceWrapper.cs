@@ -10,13 +10,13 @@ using Xamarin.Forms;
 
 namespace DanceConventionClient.Services
 {
-	public class DCServiceVrapper:IDCService
+	public class DCServiceWrapper:IDCService
 	{
 		private readonly IDCService _service;
 		private readonly ILogger _logger;
 		private const int RETRY_COUNT = 3;
 
-		public DCServiceVrapper()
+		public DCServiceWrapper()
 		{
 			_service = new DCService();
 			_logger = Log.ForContext(GetType());

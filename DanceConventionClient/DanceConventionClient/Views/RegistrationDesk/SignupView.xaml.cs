@@ -74,7 +74,8 @@ namespace DanceConventionClient
 			if (amount > 0)
 			{
 				await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, amount, comment);
-				PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
+
+				Device.BeginInvokeOnMainThread((() => PaidAmount.Text = CurrentSignup.AmountPaid.ToString()));
 
 				var signup = await _service.GetSignup(CurrentEvent.Id, CurrentSignup.ParticipantId);
 

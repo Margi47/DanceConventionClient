@@ -21,7 +21,7 @@ namespace DanceConventionClient
 			var userPassword = PasswordEntry.Text;
 
 			var login = new DCLogin { Username = userLogin, Password = userPassword };
-			var service = new DCServiceVrapper();
+			var service = new DCServiceWrapper();
 			var loginResult = await service.Login(login);
 			if (loginResult.Successful)
 			{

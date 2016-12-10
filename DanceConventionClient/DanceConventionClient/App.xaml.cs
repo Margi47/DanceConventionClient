@@ -27,13 +27,10 @@ namespace DanceConventionClient
 
 			MainPage =new StartPage();
 
-			Device.BeginInvokeOnMainThread((() =>
+			JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 			{
-				JsonConvert.DefaultSettings = () => new JsonSerializerSettings
-				{
-					DateTimeZoneHandling = DateTimeZoneHandling.Utc
-				};
-			}));
+				DateTimeZoneHandling = DateTimeZoneHandling.Utc
+			};
 		}
 
 		public static void NavigateToLoginPage()
@@ -69,21 +66,20 @@ namespace DanceConventionClient
 					Username = Properties["userName"].ToString(),
 					Password = Properties["password"].ToString()
 				};
-				var service = new DCServiceVrapper();
+				var service = new DCServiceWrapper();
 				var loginResult = await service.Login(login);
 
 				if (loginResult.Successful)
 				{
-					
 					await InitializeService(loginResult, service);
+					_logger.Information("Navigating to events page {Url} for user {User}", Properties["url"], Properties["userName"]);					
 					NavigateToMainPage();
-					_logger.Information("Navigation to events page with properties:{UserName}, {Password}, {Url}", Properties["userName"], Properties["password"], Properties["url"]);
 					return;
 				}
 			}
 
+			_logger.Information("Navigating to login page {Url} for user {User}", Properties["url"], Properties["userName"]);
 			NavigateToLoginPage();
-			_logger.Information("Navigation to login page with properties:{UserName}, {Password}, {Url}", Properties["userName"], Properties["password"], Properties["url"]);
 		}
 
 		protected override void OnSleep()

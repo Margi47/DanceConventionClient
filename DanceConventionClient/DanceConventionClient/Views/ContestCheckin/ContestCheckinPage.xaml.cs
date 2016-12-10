@@ -32,20 +32,25 @@ namespace DanceConventionClient
 
 		private async void GetContests()
 		{
-			//show only complete contests
 			var contests = await _service.GetContests(CurrentEvent.Id);
 			if (contests.Length > 0)
 			{
-				ContestsList.ItemsSource = contests;
-				ChangeVisibility();
+				Device.BeginInvokeOnMainThread((() =>
+				{
+					ContestsList.ItemsSource = contests;
+					ChangeVisibility();
+				}));			
 			}			 
 		}
 
 		private void ChangeVisibility()
 		{
-			ContestsList.IsVisible = true;
-			NoResultLabel.IsVisible = false;
-			CameraButton.IsEnabled = true;
+			Device.BeginInvokeOnMainThread((() =>
+			{
+				ContestsList.IsVisible = true;
+				NoResultLabel.IsVisible = false;
+				CameraButton.IsEnabled = true;
+			}));		
 		}
 
 

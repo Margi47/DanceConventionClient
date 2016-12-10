@@ -21,18 +21,12 @@ namespace DanceConventionClient.Services
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			
-			if (request.Content != null)
-			{
-				_logger.Verbose("Sending request {HttpRequest}", request);
-			}
+
+			_logger.Verbose("Sending request {@HttpRequest}", request);
 
 			var response = await base.SendAsync(request, cancellationToken);
-			
-			if (response.Content != null)
-			{
-				_logger.Verbose("Received response {HttpResponse}", response);
-			}
+
+			_logger.Verbose("Received response {@HttpResponse}", response);
 
 			return response;
 		}

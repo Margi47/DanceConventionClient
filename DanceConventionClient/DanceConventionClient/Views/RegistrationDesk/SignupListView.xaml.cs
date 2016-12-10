@@ -10,12 +10,9 @@ namespace DanceConventionClient
 {
 	public partial class SignupListView : ListView
 	{
-		private readonly IDCService _service;
-
 		public SignupListView(Signup[] signups)
 		{
 			InitializeComponent();
-			_service = App.MyService;
 
 			ItemsSource = signups;
 		}

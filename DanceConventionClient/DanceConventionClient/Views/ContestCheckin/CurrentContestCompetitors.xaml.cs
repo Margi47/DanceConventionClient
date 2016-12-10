@@ -47,7 +47,7 @@ namespace DanceConventionClient
 		{
 			var keyword = CompetitorsSearch.Text;
 			var result = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, keyword);
-			CompetitorsList.ItemsSource = result;
+			Device.BeginInvokeOnMainThread(()=> CompetitorsList.ItemsSource = result);
 		}
 
 		private async void CompetitorsList_OnItemTapped(object sender, ItemTappedEventArgs e)

@@ -45,9 +45,12 @@ namespace DanceConventionClient
 					pastEventsSource.Add(ev);
 				}
 			}
-
-			CurrentEvents.ItemsSource = curEventSource;
-			PastEvents.ItemsSource = pastEventsSource;
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				CurrentEvents.ItemsSource = curEventSource;
+				PastEvents.ItemsSource = pastEventsSource;
+			});
+			
 		}
 
 		private async void events_ItemTapped(object sender, ItemTappedEventArgs e)

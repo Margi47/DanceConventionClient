@@ -39,8 +39,11 @@ namespace DanceConventionClient
 			var signupPermissions = new string[]
 				{"SIGNED_UP_FOR_EVENT", "INVOICE_OWNER", "SIGNUP_HOST", "SIGNUP_OWNER"};
 
-			RegDesk.IsVisible = ContestCheckin.IsVisible = permissions.Any(p => staffPermissions.Contains(p.Permission));
-			MyReg.IsVisible = permissions.Any(p => signupPermissions.Contains(p.Permission));
+			Device.BeginInvokeOnMainThread((() =>
+			{
+				RegDesk.IsVisible = ContestCheckin.IsVisible = permissions.Any(p => staffPermissions.Contains(p.Permission));
+				MyReg.IsVisible = permissions.Any(p => signupPermissions.Contains(p.Permission));	
+			}));
 		}
 
 		private void MyRegistrationButtonOnClicked(object sender, EventArgs eventArgs)

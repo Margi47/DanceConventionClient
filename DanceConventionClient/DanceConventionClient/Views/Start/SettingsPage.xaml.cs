@@ -23,8 +23,8 @@ namespace DanceConventionClient
 		private async void Button_OnClicked(object sender, EventArgs e)
 		{
 			Application.Current.Properties["url"] = UrlEntry.Text;
-			await Application.Current.SavePropertiesAsync();
 			_logger.Information("Changing url to {Url}", UrlEntry.Text);
+			await Application.Current.SavePropertiesAsync();
 			InfoLabel.IsVisible = true;
 		}
 

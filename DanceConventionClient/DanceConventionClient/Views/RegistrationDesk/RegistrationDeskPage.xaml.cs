@@ -34,13 +34,16 @@ namespace DanceConventionClient
 
 			if (signupList.ItemsSource != null)
 			{
-				ContentStack.Children.Clear();
-				ContentStack.Children.Add(signupList);
-				signupList.ItemTapped += SignupListOnItemTapped;
+				Device.BeginInvokeOnMainThread((() =>
+				{
+					ContentStack.Children.Clear();
+					ContentStack.Children.Add(signupList);
+					signupList.ItemTapped += SignupListOnItemTapped;
+				}));			
 			}
 			else
 			{
-				InfoLabel.Text = "No Results";
+				Device.BeginInvokeOnMainThread((() => InfoLabel.Text = "No Results"));				
 			}			
 		}
 
