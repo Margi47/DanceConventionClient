@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages.Start
 {
 	public partial class CurrentEventPage : ContentPage
 	{

@@ -5,9 +5,11 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PropertyChanged;
 
 namespace DanceConventionClient.Services
 {
+	[ImplementPropertyChanged]
 	public class DanceEvent
 	{
 		public int Id { get; set; }

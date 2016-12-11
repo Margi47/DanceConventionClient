@@ -6,8 +6,10 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DanceConventionClient.PageModels;
 using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
+using FreshMvvm;
 using Newtonsoft.Json;
 using Serilog;
 using Xamarin.Forms;
@@ -48,7 +50,9 @@ namespace DanceConventionClient
 
 		public static void NavigateToMainPage()
 		{
-			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new MyEventspage()));
+			var page = FreshPageModelResolver.ResolvePageModel<MyEventsPageModel>();
+			var container = new FreshNavigationContainer(page);
+			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = container);
 		}
 
 

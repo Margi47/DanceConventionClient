@@ -39,48 +39,50 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProfileItem.cs" />
-    <Compile Include="Views\ContestCheckin\CameraPage.xaml.cs">
+    <Compile Include="PageModels\CurrentEventPageModel.cs" />
+    <Compile Include="PageModels\MyEventsPageModel.cs" />
+    <Compile Include="Pages\ContestCheckin\CameraPage.xaml.cs">
       <DependentUpon>CameraPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ContestCheckin\ContestCheckinPage.xaml.cs">
+    <Compile Include="Pages\ContestCheckin\ContestCheckinPage.xaml.cs">
       <DependentUpon>ContestCheckinPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ContestCheckin\CurrentContestCompetitors.xaml.cs">
+    <Compile Include="Pages\ContestCheckin\CurrentContestCompetitors.xaml.cs">
       <DependentUpon>CurrentContestCompetitors.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FontAwesome.cs" />
-    <Compile Include="Views\RegistrationDesk\BarcodePage.xaml.cs">
+    <Compile Include="Pages\FontAwesome.cs" />
+    <Compile Include="Pages\RegistrationDesk\BarcodePage.xaml.cs">
       <DependentUpon>BarcodePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegistrationDesk\RegistrationCameraPage.xaml.cs">
+    <Compile Include="Pages\RegistrationDesk\RegistrationCameraPage.xaml.cs">
       <DependentUpon>RegistrationCameraPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegistrationDesk\RegistrationDeskPage.xaml.cs">
+    <Compile Include="Pages\RegistrationDesk\RegistrationDeskPage.xaml.cs">
       <DependentUpon>RegistrationDeskPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegistrationDesk\SignupListView.xaml.cs">
+    <Compile Include="Pages\RegistrationDesk\SignupListView.xaml.cs">
       <DependentUpon>SignupListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegistrationDesk\SignupView.xaml.cs">
+    <Compile Include="Pages\RegistrationDesk\SignupView.xaml.cs">
       <DependentUpon>SignupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegistrationDesk\UserRegistrationPage.xaml.cs">
+    <Compile Include="Pages\RegistrationDesk\UserRegistrationPage.xaml.cs">
       <DependentUpon>UserRegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Start\CurrentEventPage.xaml.cs">
+    <Compile Include="Pages\Start\CurrentEventPage.xaml.cs">
       <DependentUpon>CurrentEventPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Start\LoginPage.xaml.cs">
+    <Compile Include="Pages\Start\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Start\MyEventspage.xaml.cs">
-      <DependentUpon>MyEventspage.xaml</DependentUpon>
+    <Compile Include="Pages\MyEventsPage.xaml.cs">
+      <DependentUpon>MyEventsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Start\ProfilePage.xaml.cs">
+    <Compile Include="Pages\Start\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Start\SettingsPage.xaml.cs">
+    <Compile Include="Pages\Start\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StartPage.xaml.cs">
@@ -88,7 +90,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Start\LoginPage.xaml">
+    <EmbeddedResource Include="Pages\Start\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="App.xaml">
@@ -101,9 +103,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FreshIOC, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshIOC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FreshMvvm, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=1.52.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.52.1\lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Serilog.2.3.0\lib\netstandard1.0\Serilog.dll</HintPath>
@@ -151,17 +165,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Start\ProfilePage.xaml">
+    <EmbeddedResource Include="Pages\Start\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Start\MyEventspage.xaml">
+    <EmbeddedResource Include="Pages\MyEventsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Start\SettingsPage.xaml">
+    <EmbeddedResource Include="Pages\Start\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -172,12 +186,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Start\CurrentEventPage.xaml">
+    <EmbeddedResource Include="Pages\Start\CurrentEventPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\UserRegistrationPage.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\UserRegistrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -189,52 +203,55 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ContestCheckin\ContestCheckinPage.xaml">
+    <EmbeddedResource Include="Pages\ContestCheckin\ContestCheckinPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\RegistrationDeskPage.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\RegistrationDeskPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ContestCheckin\CurrentContestCompetitors.xaml">
+    <EmbeddedResource Include="Pages\ContestCheckin\CurrentContestCompetitors.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\SignupView.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\SignupView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\SignupListView.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\SignupListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ContestCheckin\CameraPage.xaml">
+    <EmbeddedResource Include="Pages\ContestCheckin\CameraPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\BarcodePage.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\BarcodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\RegistrationDesk\RegistrationCameraPage.xaml">
+    <EmbeddedResource Include="Pages\RegistrationDesk\RegistrationCameraPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -244,6 +261,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.2\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
 </Project>
