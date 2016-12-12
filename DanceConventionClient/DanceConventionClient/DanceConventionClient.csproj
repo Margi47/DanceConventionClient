@@ -38,6 +38,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageModels\BarcodePageModel.cs" />
+    <Compile Include="PageModels\UserRegistrationPageModel.cs" />
     <Compile Include="ProfileItem.cs" />
     <Compile Include="PageModels\CurrentEventPageModel.cs" />
     <Compile Include="PageModels\MyEventsPageModel.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="Pages\Start\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyEventsPage.xaml.cs">
+    <Compile Include="Pages\Start\MyEventsPage.xaml.cs">
       <DependentUpon>MyEventsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Start\ProfilePage.xaml.cs">
@@ -170,7 +172,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MyEventsPage.xaml">
+    <EmbeddedResource Include="Pages\Start\MyEventsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

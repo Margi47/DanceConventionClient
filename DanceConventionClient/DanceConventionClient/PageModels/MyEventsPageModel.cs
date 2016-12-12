@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
+	[ImplementPropertyChanged]
 	public class MyEventsPageModel:FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
-		public List<DanceEvent> CurretntEvents { get; set; }
+		public List<DanceEvent> CurrentEvents { get; set; }
 		public List<DanceEvent> PastEvents { get; set; }
 
 		public MyEventsPageModel()
@@ -44,7 +46,7 @@ namespace DanceConventionClient.PageModels
 				}
 			}
 
-			CurretntEvents = curEv;
+			CurrentEvents = curEv;
 			PastEvents = pastev;
 		}
 

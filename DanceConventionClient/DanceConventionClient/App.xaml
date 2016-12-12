@@ -10,7 +10,7 @@
 				<Setter Property="Padding" Value="5,15,5,15" />
 			</Style>
 
-			<Style TargetType="NavigationPage">
+			<Style x:Key="PageStyle" TargetType="NavigationPage">
 				<Setter Property="BarBackgroundColor" Value="Silver" />
 				<Setter Property="BarTextColor" Value="Black"/>
 			</Style>

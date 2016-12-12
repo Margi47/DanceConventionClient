@@ -52,6 +52,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Signup.cs" />
+    <Compile Include="Models\SignupIdentifier.cs" />
     <Compile Include="Models\SignupState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

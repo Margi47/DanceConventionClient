@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.UserRegistrationPage">
+             x:Class="DanceConventionClient.Pages.UserRegistrationPage"
+			 Title="{Binding CurrentEvent.Name}">
+	
 	<TableView Intent="Data"
 		   HasUnevenRows="True">
 		<TableRoot>
@@ -16,15 +18,15 @@
 
 				<ViewCell Height="40">
 					<StackLayout>
-						<Label x:Name="Place"
-					   Style="{StaticResource Itemlabel}"/>
-						<Label x:Name="Date"
+						<Label Text="{Binding CurrentEvent.Location}"
+							   Style="{StaticResource Itemlabel}"/>
+						<Label Text="{Binding CurrentEvent.EventDates}"
 							   Style="{StaticResource Detaillabel}"/>
 					</StackLayout>
 				</ViewCell>
 
 				<ViewCell Height="40">
-					<Label x:Name="Name"
+					<Label Text="{Binding CurrentSignup.ParticipantName}"
 						   Style="{StaticResource Itemlabel}"/>
 				</ViewCell>
 
@@ -33,7 +35,7 @@
 								 HorizontalOptions="FillAndExpand">
 						<Label Text="Event pass"
 							   Style="{StaticResource Itemlabel}"/>
-						<Label x:Name="Pass"
+						<Label Text="{Binding CurrentSignup.SelectedPass}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="EndAndExpand"
 							   Margin="0,0,15,0"/>
@@ -46,31 +48,32 @@
 						<Label Text="Invoiced:"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="Start"/>
-						<Label x:Name="InvoicedAmount"
+						<Label Text="{Binding CurrentSignup.AmountInvoiced}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="StartAndExpand"
 							   Margin="0,0,0,0"/>
-						<Label x:Name="PaidLabel"
-							   Text="Paid:"
+						<Label Text="Paid:"
 							   Style="{StaticResource Itemlabel}"
-							   HorizontalOptions="EndAndExpand"/>
-						<Label x:Name="PaidAmount"
+							   HorizontalOptions="EndAndExpand"
+							   TextColor="{Binding TextColor}"/>
+						<Label Text="{Binding CurrentSignup.AmountPaid}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="End"
+							   TextColor="{Binding TextColor}"
 							   Margin="0,0,15,0"/>
 					</StackLayout>
 				</ViewCell>
 
 				<ViewCell>
 					<Button Text="Registration QR Code" 
-							Clicked="qrCode_Clicked" 
+							 Command="{Binding QrCodeCommand}"
 							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>
 
 			<TableSection>
 				<ViewCell>
-					<ListView x:Name="AllContestsList"
+					<ListView ItemsSource="{Binding CurrentSignup.ContestSignups}"
 							  Style="{StaticResource ListViewStyle}">
 						<ListView.HeaderTemplate>
 							<DataTemplate>

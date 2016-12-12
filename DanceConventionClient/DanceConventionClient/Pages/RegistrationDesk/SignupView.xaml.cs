@@ -63,7 +63,7 @@ namespace DanceConventionClient
 
 		private async void Cell_OnTapped(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new UserRegistrationPage(CurrentEvent));
+			//await Navigation.PushAsync(new UserRegistrationPage(CurrentEvent));
 		}
 
 		private async void PaymentButton_OnClicked(object sender, EventArgs e)

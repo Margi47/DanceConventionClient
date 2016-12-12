@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DanceConventionClient.Pages.MyEventsPage"
-			 Title="My events">
+			 Title="My events"
+			 Style="{StaticResource PageStyle}">
 
-	<StackLayout>
-		<ListView x:Name="CurrentEvents"
-				  Style="{StaticResource ListViewStyle}"
+		<StackLayout>
+		<ListView Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SelectedEvent}">
+				  SelectedItem="{Binding SeectedEvent}">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
@@ -34,10 +34,9 @@
 			</ListView.ItemTemplate>
 		</ListView>
 
-		<ListView x:Name="PastEvents"
-				  Style="{StaticResource ListViewStyle}"
+		<ListView Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding PastEvents}"
-				  SelectedItem="{Binding SelectedEvent}">
+				  SelectedItem="{Binding ContactSelected}">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
