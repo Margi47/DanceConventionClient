@@ -22,6 +22,7 @@
 		
 		<Button Text="Registration desk"				
 				IsVisible="{Binding IsStaff}"
-				Style="{StaticResource ButtonStyle}"/>
+				Style="{StaticResource ButtonStyle}"
+				Command="{Binding RegistrationCommand}"/>
 	</StackLayout>
 </ContentPage>

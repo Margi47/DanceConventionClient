@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TableView xmlns="http://xamarin.com/schemas/2014/forms"
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-           x:Class="DanceConventionClient.SignupView"
+           x:Class="DanceConventionClient.Pages.SignupView"
 		   x:Name="SignupTableView"
 		   Intent="Data"
 		   HasUnevenRows="True">
 		<TableRoot>
 			<TableSection>
-				<ViewCell Tapped="Cell_OnTapped">
+				<ViewCell >
 					<StackLayout>
 						<StackLayout Orientation="Horizontal">
-							<Label x:Name="Bib"
+						<Label Text="{Binding CurrentSignup.BibNumberString}"
 								   Style="{StaticResource Itemlabel}"
 								   FontAttributes="Bold"
 								   FontSize="18"/>
-							<Label x:Name="Name"
+						<Label Text="{Binding CurrentSignup.ParticipantName}"
 								   Style="{StaticResource Itemlabel}"
 								   FontSize="18"
 								   FontAttributes="Bold"
@@ -24,14 +24,14 @@
 							<Label Text="Paid:"
 								   Style="{StaticResource Itemlabel}"
 								   TextColor="Blue"/>
-							<Label x:Name="PaidAmount"
+						<Label Text="{Binding CurrentSignup.AmountPaid}"
 								   Style="{StaticResource Itemlabel}"
 								   Margin="0,0,0,0"
 								   TextColor="Blue"/>
 							<Label x:Name="OwedLabel" Text="Owed:"
 								   Style="{StaticResource Itemlabel}"
 								   TextColor="Red"/>
-							<Label x:Name="OwedAmount"
+						<Label Text="{Binding CurrentSignup.AmountOwed}"
 								   Style="{StaticResource Itemlabel}"
 								   Margin="0,0,0,0"
 								   TextColor="Red"/>
@@ -53,6 +53,7 @@
 				</ViewCell>
 			<ViewCell Height="30">
 				<Label x:Name="Status"
+					   Text="{Binding CurrentSignup.Status}"
 					   TextColor="White"
 					   HorizontalOptions="FillAndExpand"
 					   HorizontalTextAlignment="Center"
@@ -68,7 +69,7 @@
 					<StackLayout Orientation="Horizontal">
 						<Label Text="Amount "
 							   Style="{StaticResource Itemlabel}"/>
-						<Entry x:Name="PaymentAmount"
+					<Entry Text="{Binding CurrentSignup.AmountOwed}"
 							   Style="{StaticResource EntryStyle}"/>
 						<Label Text="{Binding Text, Source={x:Reference Currency}}"
 							   Style="{StaticResource Itemlabel}"
@@ -88,15 +89,16 @@
 				</ViewCell>
 				<ViewCell>
 					<Button Text="RecordPayment"
-								Clicked="PaymentButton_OnClicked"
+								
 							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>
 
 			<TableSection>
 				<ViewCell>
-					<Button x:Name="AttendedButton"
-							Clicked="AttendedButton_OnClicked"
+				<Button Text="{Binding CurrentSignup.Attended}" 
+							x:Name="AttendedButton"
+							
 							Style="{StaticResource ButtonStyle}"
 							TextColor="White"
 							BackgroundColor="Blue"

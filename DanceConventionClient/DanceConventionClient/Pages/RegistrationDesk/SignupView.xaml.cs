@@ -6,36 +6,20 @@ using System.Threading.Tasks;
 using DanceConventionClient.Services;
 using Xamarin.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages
 {
 	public partial class SignupView : TableView
 	{
-		public Signup CurrentSignup { get; set; }
-		public DanceEvent CurrentEvent { get; set; }
-		private readonly IDCService _service;
 
-		public SignupView(DanceEvent danceEvent, Signup signup)
+		public SignupView()
 		{
 			InitializeComponent();
 
-			CurrentSignup = signup;
-			CurrentEvent = danceEvent;
-
-			_service = App.MyService;
-
-			InitTableInfo();
+			//InitTableInfo();
 		}
 
-		private void InitTableInfo()
+		/*private void InitTableInfo()
 		{
-			if (CurrentSignup.BibNumber != null)
-			{
-				Bib.Text = CurrentSignup.BibNumberString;
-			}
-			
-			Name.Text = CurrentSignup.ParticipantName;
-			PaidAmount.Text = CurrentSignup.AmountPaid.ToString();
-			OwedAmount.Text = CurrentSignup.AmountOwed.ToString();
 			Currency.Text = CurrentEvent.Currency;
 			Status.Text = CurrentSignup.Status;
 
@@ -115,6 +99,6 @@ namespace DanceConventionClient
 				CurrentSignup = signup;
 				InitTableInfo();
 			});
-		}
+		}*/
 	}
 }

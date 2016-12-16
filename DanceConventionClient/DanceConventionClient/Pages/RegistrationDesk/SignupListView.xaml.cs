@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 using DanceConventionClient.Services;
 using Xamarin.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages
 {
 	public partial class SignupListView : ListView
 	{
-		public SignupListView(Signup[] signups)
+		public SignupListView()
 		{
 			InitializeComponent();
 
-			ItemsSource = signups;
 		}
 	}
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using DanceConventionClient.Services.Models;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -13,7 +14,7 @@ namespace DanceConventionClient.PageModels
 	public class CurrentEventPageModel:FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
-
+		private SignupIdentifier _identifier;
 		public DanceEvent CurrentEvent { get; set; }		
 		public bool IsStaff { get; set; }
 		public bool IsCompetitor { get; set; }
@@ -27,8 +28,11 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			CurrentEvent = initData as DanceEvent;
+			var profile = await _service.GetProfile();
+			var signup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
+			_identifier = new SignupIdentifier {Event = CurrentEvent, Participant = signup};
 			await InitializeButtons();
-		}
+		} 
 
 
 		private async Task InitializeButtons()
@@ -44,17 +48,17 @@ namespace DanceConventionClient.PageModels
 			IsCompetitor = permissions.Any(p => signupPermissions.Contains(p.Permission));
 		}
 
-		public Command MyRegistrationCommand
+		public Command<SignupIdentifier> MyRegistrationCommand
 		{
 			get
 			{
-				return new Command(async (dEvent) => {
-					await CoreMethods.PushPageModel<UserRegistrationPageModel>(CurrentEvent);
+				return new Command<SignupIdentifier>(async (user) => {
+					await CoreMethods.PushPageModel<UserRegistrationPageModel>(this._identifier);
 				});
 			}
 		}
 
-		/*public Command<DanceEvent> ContactSlected
+/*		public Command<DanceEvent> ContactSlected
 		{
 			get
 			{
@@ -63,15 +67,16 @@ namespace DanceConventionClient.PageModels
 				});
 			}
 		}
+}*/
 
-		public Command<DanceEvent> ContactSelected
+		public Command<DanceEvent> RegistrationCommand
 		{
 			get
 			{
 				return new Command<DanceEvent>(async (dEvent) => {
-					await CoreMethods.PushPageModel<CurrentEventPageModel>(dEvent);
+					await CoreMethods.PushPageModel<RegistrationDeskPageModel>(CurrentEvent);
 				});
 			}
-		}*/
+		}
 	}
 }

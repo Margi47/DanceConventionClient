@@ -9,72 +9,18 @@ using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages
 {
 	public partial class RegistrationDeskPage : ContentPage
 	{
-		public DanceEvent CurrentEvent { get; set; }
-		private readonly IDCService _service;
-
-		public RegistrationDeskPage(DanceEvent currentEvent)
+		public RegistrationDeskPage()
 		{
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);
-
-			CurrentEvent = currentEvent;
-			_service = App.MyService;
-			Title = currentEvent.Name;
 		}
 
-		private async void OnSearchButtonPressed(object sender, EventArgs e)
-		{
-			var keyword = SearchBar.Text;
-			var signups = await _service.SearchSignups(CurrentEvent.Id, keyword);
-			var signupList = new SignupListView(signups);
 
-			if (signupList.ItemsSource != null)
-			{
-				Device.BeginInvokeOnMainThread((() =>
-				{
-					ContentStack.Children.Clear();
-					ContentStack.Children.Add(signupList);
-					signupList.ItemTapped += SignupListOnItemTapped;
-				}));			
-			}
-			else
-			{
-				Device.BeginInvokeOnMainThread((() => InfoLabel.Text = "No Results"));				
-			}			
-		}
-
-		private void SignupListOnItemTapped(object sender, ItemTappedEventArgs itemTappedEventArgs)
-		{
-			var signup = itemTappedEventArgs.Item as Signup;
-
-			ContentStack.Children.Clear();
-			ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
-		}
-
-		private async void CameraButton_OnClicked(object sender, EventArgs e)
-		{
-			var zxing = new ZXingScannerView
-			{
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand
-			};
-
-			zxing.OnScanResult += (result) =>
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					zxing.IsAnalyzing = false;
-					await Navigation.PopAsync();
-
-					await ShowSignup(result);
-				});
-
-			ContentStack.Children.Clear();
-			await Navigation.PushAsync(new RegistrationCameraPage(zxing));
-		}
+		/*
 
 		private async Task ShowSignup(Result result)
 		{
@@ -87,6 +33,6 @@ namespace DanceConventionClient
 				var signup = await _service.GetSignup(eventId, userId);
 				ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
 			}
-		}
+		}*/
 	}
 }

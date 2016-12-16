@@ -1,19 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.RegistrationDeskPage">
+             xmlns:pages="clr-namespace:DanceConventionClient.Pages;assembly=DanceConventionClient"
+             x:Class="DanceConventionClient.Pages.RegistrationDeskPage">
 
 	<StackLayout x:Name="MainRegistrationStack">
 		<Button Text="Scan QR Code"
 				Style="{StaticResource ButtonStyle}"
-				Clicked="CameraButton_OnClicked"/>
+				/>
 		
 		<SearchBar x:Name="SearchBar"
-				 SearchButtonPressed="OnSearchButtonPressed"/>
+				   SearchCommand="{Binding SearchCommand}"
+				   Text ="{Binding Text, Mode=TwoWay}"/>
 
 		<StackLayout x:Name="ContentStack" VerticalOptions="FillAndExpand">
-			<Label x:Name="InfoLabel"
-				   Style="{StaticResource InfoLabel}">
+			<pages:SignupListView ItemsSource="{Binding SignupList}" 
+								  IsVisible="{Binding ShowSignupList}"
+								  HasUnevenRows="True"
+								  SelectedItem="{Binding SelectedItem}">
+			</pages:SignupListView>
+
+			<pages:SignupView IsVisible="{Binding ShowCurrentSignup}">
+			</pages:SignupView>
+
+			<Label IsVisible="{Binding ShowInfo}"
+					   Style="{StaticResource InfoLabel}">
 				<Label.Text>
 					Enter participant name or 
 					scan QR code

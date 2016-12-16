@@ -9,9 +9,7 @@ namespace DanceConventionClient.Services.Models
 {
 	public class SignupIdentifier
 	{
-		[JsonIgnore]
-		public int EventId { get; set; }
-		[JsonIgnore]
-		public int ParticipantId { get; set; }
+		public DanceEvent Event { get; set; }
+		public Signup Participant { get; set; }
 	}
 }

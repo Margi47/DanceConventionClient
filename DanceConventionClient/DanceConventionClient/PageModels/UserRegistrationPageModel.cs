@@ -13,26 +13,17 @@ namespace DanceConventionClient.PageModels
 	[ImplementPropertyChanged]
 	public class UserRegistrationPageModel:FreshMvvm.FreshBasePageModel
 	{
-		private readonly IDCService _service;
 		public Signup CurrentSignup { get; set; }
 		public DanceEvent CurrentEvent { get; set; }
 		public Color TextColor { get; set; }
 		public SignupIdentifier Identifier { get; set; }
 
-		public UserRegistrationPageModel()
-		{
-			_service = App.MyService;
-		}
-
-		public override async void Init(object initData)
+		public override void Init(object initData)
 		{
 			base.Init(initData);
-			CurrentEvent = initData as DanceEvent;
-
-			var profile = await _service.GetProfile();
-			CurrentSignup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
-
-			Identifier = new SignupIdentifier() { EventId = CurrentEvent.Id, ParticipantId = CurrentSignup.ParticipantId };
+			Identifier = initData as SignupIdentifier;
+			CurrentEvent = Identifier.Event;
+			CurrentSignup = Identifier.Participant;
 
 			TextColor = CurrentSignup.AmountPaid >= CurrentSignup.AmountInvoiced ? Color.Blue : Color.Red;
 		}

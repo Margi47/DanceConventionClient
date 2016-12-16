@@ -50,7 +50,7 @@ namespace DanceConventionClient.PageModels
 			PastEvents = pastev;
 		}
 
-		public DanceEvent SeectedEvent
+		public DanceEvent SelectedEvent
 		{
 			get
 			{

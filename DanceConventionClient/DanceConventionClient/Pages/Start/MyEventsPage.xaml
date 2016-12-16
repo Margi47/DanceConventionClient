@@ -8,7 +8,7 @@
 		<StackLayout>
 		<ListView Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SeectedEvent}">
+				  SelectedItem="{Binding SelectedEvent}">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
@@ -36,7 +36,7 @@
 
 		<ListView Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding PastEvents}"
-				  SelectedItem="{Binding ContactSelected}">
+				  SelectedItem="{Binding SelectedEvent}">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>
