@@ -65,7 +65,7 @@
 					   FontSize="18"
 					   VerticalOptions="FillAndExpand"
 					   Margin="0,0,0,0"
-					   BackgroundColor="Blue"/>
+					   BackgroundColor="{Binding StatusColor}"/>
 			</ViewCell>
 		</TableSection>
 
@@ -101,7 +101,7 @@
 
 			<TableSection>
 				<ViewCell>
-				<Button Text="{Binding CurrentSignup.Attended}" 
+				<Button Text="{Binding CurrentSignup.AttendedString}" 
 							x:Name="AttendedButton"
 							
 							Style="{StaticResource ButtonStyle}"

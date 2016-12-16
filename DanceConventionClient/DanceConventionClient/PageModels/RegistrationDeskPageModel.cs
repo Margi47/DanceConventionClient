@@ -24,6 +24,7 @@ namespace DanceConventionClient.PageModels
 
 		public Signup CurrentSignup { get; set; }
 		public bool ShowCurrentSignup { get; set; }
+		public Color StatusColor { get; set; }
 
 		public RegistrationDeskPageModel()
 		{
@@ -87,8 +88,29 @@ namespace DanceConventionClient.PageModels
 				{
 					CurrentSignup = signup;
 					SetVisibility(false, false, true);
+					GetStatusColor();
 				});				
 			}			
+		}
+
+		private void GetStatusColor()
+		{
+			if (CurrentSignup.Status == "ATTENDED" || CurrentSignup.Status == "CANCELLED" || CurrentSignup.Status == "APPROVED")
+			{
+				StatusColor = Color.Blue;
+			}
+			else if (CurrentSignup.Status == "PAID")
+			{
+				StatusColor = Color.Green;
+			}
+			else if (CurrentSignup.Status == "BOOKED")
+			{
+				StatusColor = Color.Teal;
+			}
+			else if (CurrentSignup.Status == "WAITLIST")
+			{
+				StatusColor = Color.Maroon;
+			}
 		}
 
 		public Command TableTapCommand

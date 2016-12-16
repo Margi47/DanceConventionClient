@@ -35,5 +35,14 @@ namespace DanceConventionClient.Services
 		public string[] AvailableStateTransitions { get; set; }
 		public string Status { get; set; }
 		public bool Attended { get; set; }
+
+		[JsonIgnore]
+		public string AttendedString
+		{
+			get
+			{
+				return Attended ? "ATTENDED" : "CHECK IN"; ;
+			}
+		}
 	}
 }
