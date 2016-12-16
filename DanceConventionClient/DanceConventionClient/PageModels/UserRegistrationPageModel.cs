@@ -22,7 +22,7 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			Identifier = initData as SignupIdentifier;
-			CurrentEvent = Identifier.Event;
+			CurrentEvent = Identifier.CurrentEvent;
 			CurrentSignup = Identifier.Participant;
 
 			TextColor = CurrentSignup.AmountPaid >= CurrentSignup.AmountInvoiced ? Color.Blue : Color.Red;

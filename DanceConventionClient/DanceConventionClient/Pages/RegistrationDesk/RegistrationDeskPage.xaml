@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:DanceConventionClient.Pages;assembly=DanceConventionClient"
-             x:Class="DanceConventionClient.Pages.RegistrationDeskPage">
+             x:Class="DanceConventionClient.Pages.RegistrationDeskPage"
+			 Title="{Binding CurrentEvent.Name}">
 
 	<StackLayout x:Name="MainRegistrationStack">
 		<Button Text="Scan QR Code"
@@ -24,12 +25,8 @@
 			</pages:SignupView>
 
 			<Label IsVisible="{Binding ShowInfo}"
-					   Style="{StaticResource InfoLabel}">
-				<Label.Text>
-					Enter participant name or 
-					scan QR code
-				</Label.Text>
-			</Label>
+				   Style="{StaticResource InfoLabel}"
+				   Text="{Binding InfoText, Mode=TwoWay}"/>
 		</StackLayout>
 	</StackLayout>
 </ContentPage>

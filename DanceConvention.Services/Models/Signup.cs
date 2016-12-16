@@ -17,8 +17,12 @@ namespace DanceConventionClient.Services
 		{
 			get
 			{
-				return "[" + BibNumber + "]";
-				
+				if (BibNumber != null)
+				{
+					return "[" + BibNumber + "]";
+				}
+
+				return string.Empty;
 			}
 		}
 

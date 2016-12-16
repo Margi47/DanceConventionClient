@@ -26,7 +26,7 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			var identifier = initData as SignupIdentifier;
-			InitializeCode(identifier.Event.Id, identifier.Participant.ParticipantId);
+			InitializeCode(identifier.CurrentEvent.Id, identifier.Participant.ParticipantId);
 		}
 
 		private void InitializeCode(int eventId, int userId)

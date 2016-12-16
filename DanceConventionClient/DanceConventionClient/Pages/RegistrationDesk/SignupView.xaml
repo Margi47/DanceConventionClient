@@ -9,12 +9,17 @@
 			<TableSection>
 				<ViewCell >
 					<StackLayout>
+						<StackLayout.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding TableTapCommand}"/>
+						</StackLayout.GestureRecognizers>
+						
 						<StackLayout Orientation="Horizontal">
-						<Label Text="{Binding CurrentSignup.BibNumberString}"
+							<Label Text="{Binding CurrentSignup.BibNumberString}"
 								   Style="{StaticResource Itemlabel}"
 								   FontAttributes="Bold"
-								   FontSize="18"/>
-						<Label Text="{Binding CurrentSignup.ParticipantName}"
+								   FontSize="18"
+								   HeightRequest="22"/>
+							<Label Text="{Binding CurrentSignup.ParticipantName}"
 								   Style="{StaticResource Itemlabel}"
 								   FontSize="18"
 								   FontAttributes="Bold"
@@ -45,7 +50,7 @@
 							   Style="{StaticResource InfoLabel}"
 							   FontSize="13"
 							   HorizontalOptions="Center"/>
-						<Label x:Name="Currency"
+						<Label Text="{Binding CurrentEvent.Currency}"
 							   Style="{StaticResource InfoLabel}"
 							   FontSize="13"
 							   HorizontalOptions="Start"/>
@@ -71,7 +76,7 @@
 							   Style="{StaticResource Itemlabel}"/>
 					<Entry Text="{Binding CurrentSignup.AmountOwed}"
 							   Style="{StaticResource EntryStyle}"/>
-						<Label Text="{Binding Text, Source={x:Reference Currency}}"
+						<Label Text="{Binding CurrentEvent.Currency}"
 							   Style="{StaticResource Itemlabel}"
 							   BackgroundColor="Silver"
 							   HorizontalOptions="EndAndExpand"

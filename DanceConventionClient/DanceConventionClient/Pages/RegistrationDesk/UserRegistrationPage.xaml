@@ -33,7 +33,7 @@
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal"
 								 HorizontalOptions="FillAndExpand">
-						<Label Text="Event pass"
+						<Label Text="CurrentEvent pass"
 							   Style="{StaticResource Itemlabel}"/>
 						<Label Text="{Binding CurrentSignup.SelectedPass}"
 							   Style="{StaticResource Itemlabel}"

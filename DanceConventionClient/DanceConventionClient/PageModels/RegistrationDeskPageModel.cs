@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using DanceConventionClient.Services.Models;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -15,6 +16,7 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public DanceEvent CurrentEvent { get; set; }
 		public bool ShowInfo { get; set; }
+		public string InfoText { get; set; }
 
 		public string Text { get; set; }
 		public List<Signup> SignupList { get; set; }
@@ -27,6 +29,7 @@ namespace DanceConventionClient.PageModels
 		{
 			_service = App.MyService;
 			SetVisibility(true, false, false);
+			InfoText = "Enter participant name \n or scan QR code";
 		}
 
 		public override void Init(object initData)
@@ -47,10 +50,18 @@ namespace DanceConventionClient.PageModels
 			get
 			{
 				return new Command(async (dEvent) => {
-					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);
-					SignupList = signups.ToList();
-					SetVisibility(false, true, false);
-					RaisePropertyChanged();
+					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);					
+					if (signups.Length > 0)
+					{
+						SignupList = signups.ToList();
+						SetVisibility(false, true, false);
+						RaisePropertyChanged();
+					}
+					else
+					{
+						InfoText = "No Results";
+						RaisePropertyChanged();
+					}
 				});
 			}
 		}
@@ -80,5 +91,16 @@ namespace DanceConventionClient.PageModels
 			}			
 		}
 
+		public Command TableTapCommand
+		{
+			get
+			{
+				return new Command(async () =>
+				{
+					var identifier = new SignupIdentifier{CurrentEvent = CurrentEvent, Participant = CurrentSignup};
+					await CoreMethods.PushPageModel<UserRegistrationPageModel>(identifier);
+				});
+			}
+		}
 	}
 }

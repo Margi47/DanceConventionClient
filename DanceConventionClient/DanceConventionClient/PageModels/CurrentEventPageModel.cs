@@ -30,7 +30,7 @@ namespace DanceConventionClient.PageModels
 			CurrentEvent = initData as DanceEvent;
 			var profile = await _service.GetProfile();
 			var signup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
-			_identifier = new SignupIdentifier {Event = CurrentEvent, Participant = signup};
+			_identifier = new SignupIdentifier {CurrentEvent = CurrentEvent, Participant = signup};
 			await InitializeButtons();
 		} 
 

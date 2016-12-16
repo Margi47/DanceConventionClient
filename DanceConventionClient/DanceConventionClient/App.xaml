@@ -58,6 +58,7 @@
 
 			<Style x:Key="InfoLabel" TargetType="Label">
 				<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+				<Setter Property="HorizontalTextAlignment" Value="Center"/>
 				<Setter Property="VerticalOptions" Value="CenterAndExpand"/>
 				<Setter Property="TextColor" Value="Gray"/>
 				<Setter Property="FontSize" Value="20"/>
