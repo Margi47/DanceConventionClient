@@ -53,21 +53,20 @@ namespace DanceConventionClient.PageModels
 			get
 			{
 				return new Command<SignupIdentifier>(async (user) => {
-					await CoreMethods.PushPageModel<UserRegistrationPageModel>(this._identifier);
+					await CoreMethods.PushPageModel<UserRegistrationPageModel>(_identifier);
 				});
 			}
 		}
 
-/*		public Command<DanceEvent> ContactSlected
+		public Command<DanceEvent> ContestCheckinCommand
 		{
 			get
 			{
 				return new Command<DanceEvent>(async (dEvent) => {
-					await CoreMethods.PushPageModel<CurrentEventPageModel>(dEvent);
+					await CoreMethods.PushPageModel<ContestCheckinPageModel>(CurrentEvent);
 				});
 			}
 		}
-}*/
 
 		public Command<DanceEvent> RegistrationCommand
 		{

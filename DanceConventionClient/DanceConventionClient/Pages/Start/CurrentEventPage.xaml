@@ -16,7 +16,8 @@
 				IsVisible="{Binding IsCompetitor}"
 				Style="{StaticResource ButtonStyle}"/>
 		
-		<Button Text="Contest check-in"				
+		<Button Text="Contest check-in"
+				Command="{Binding ContestCheckinCommand}"
 				IsVisible="{Binding IsStaff}"
 				Style="{StaticResource ButtonStyle}"/>
 		

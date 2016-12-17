@@ -5,24 +5,21 @@
              x:Class="DanceConventionClient.Pages.RegistrationDeskPage"
 			 Title="{Binding CurrentEvent.Name}">
 
-	<StackLayout x:Name="MainRegistrationStack">
+	<StackLayout>
 		<Button Text="Scan QR Code"
 				Style="{StaticResource ButtonStyle}"
 				/>
 		
-		<SearchBar x:Name="SearchBar"
-				   SearchCommand="{Binding SearchCommand}"
+		<SearchBar SearchCommand="{Binding SearchCommand}"
 				   Text ="{Binding Text, Mode=TwoWay}"/>
 
-		<StackLayout x:Name="ContentStack" VerticalOptions="FillAndExpand">
+		<StackLayout VerticalOptions="FillAndExpand">
 			<pages:SignupListView ItemsSource="{Binding SignupList}" 
 								  IsVisible="{Binding ShowSignupList}"
 								  HasUnevenRows="True"
-								  SelectedItem="{Binding SelectedItem}">
-			</pages:SignupListView>
+								  SelectedItem="{Binding SelectedItem}"/>
 
-			<pages:SignupView IsVisible="{Binding ShowCurrentSignup}">
-			</pages:SignupView>
+			<pages:SignupView IsVisible="{Binding ShowCurrentSignup}"/>
 
 			<Label IsVisible="{Binding ShowInfo}"
 				   Style="{StaticResource InfoLabel}"

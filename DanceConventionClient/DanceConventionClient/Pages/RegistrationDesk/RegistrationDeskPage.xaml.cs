@@ -18,21 +18,5 @@ namespace DanceConventionClient.Pages
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);
 		}
-
-
-		/*
-
-		private async Task ShowSignup(Result result)
-		{
-			var elements = result.Text.Split('[', ':', ']');
-			int eventId;
-			int userId;
-
-			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
-			{
-				var signup = await _service.GetSignup(eventId, userId);
-				ContentStack.Children.Add(new SignupView(CurrentEvent, signup));
-			}
-		}*/
 	}
 }

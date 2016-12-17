@@ -11,48 +11,18 @@ using ZXing;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages
 {
 	public partial class ContestCheckinPage : ContentPage
 	{
-		private readonly IDCService _service;
-		public DanceEvent CurrentEvent { get; set; }
+
 
 		public ContestCheckinPage(DanceEvent currentEvent)
 		{
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);
 
-			CurrentEvent = currentEvent;
-			_service = App.MyService;
-
-			Title = currentEvent.Name;
-			GetContests();
 		}
-
-		private async void GetContests()
-		{
-			var contests = await _service.GetContests(CurrentEvent.Id);
-			if (contests.Length > 0)
-			{
-				Device.BeginInvokeOnMainThread((() =>
-				{
-					ContestsList.ItemsSource = contests;
-					ChangeVisibility();
-				}));			
-			}			 
-		}
-
-		private void ChangeVisibility()
-		{
-			Device.BeginInvokeOnMainThread((() =>
-			{
-				ContestsList.IsVisible = true;
-				NoResultLabel.IsVisible = false;
-				CameraButton.IsEnabled = true;
-			}));		
-		}
-
 
 		private async void Camera_OnClicked(object sender, EventArgs e)
 		{

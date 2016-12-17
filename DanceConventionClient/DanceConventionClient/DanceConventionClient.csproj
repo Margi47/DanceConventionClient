@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageModels\BarcodePageModel.cs" />
+    <Compile Include="PageModels\ContestCheckinPageModel.cs" />
     <Compile Include="PageModels\RegistrationDeskPageModel.cs" />
     <Compile Include="PageModels\UserRegistrationPageModel.cs" />
     <Compile Include="ProfileItem.cs" />

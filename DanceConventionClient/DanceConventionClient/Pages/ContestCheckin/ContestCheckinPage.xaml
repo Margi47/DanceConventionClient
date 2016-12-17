@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.ContestCheckinPage">
+             x:Class="DanceConventionClient.Pages.ContestCheckinPage"
+			 Title="{Binding CurrentEvent.Name}">
 
 	<StackLayout>
 		<Button x:Name="CameraButton"
-				Text="Scan QR Code" Style="{StaticResource ButtonStyle}"
-				Clicked="Camera_OnClicked"
-				IsEnabled="False"/>
+				Text="Scan QR Code" 
+				Style="{StaticResource ButtonStyle}"
+				
+				IsEnabled="{Binding CameraEnabled}"/>
 
-		<ListView x:Name="ContestsList" 
+		<ListView ItemsSource="{Binding ContestsList}" 
 				  Style="{StaticResource ListViewStyle}"
-				  ItemTapped="ContestsList_OnItemTapped"
-				  IsVisible="False"
+				  IsVisible="{Binding ShowList}"		  
 				  VerticalOptions="StartAndExpand">
 
 			<ListView.HeaderTemplate>
@@ -36,10 +37,9 @@
 			</ListView.ItemTemplate>
 		</ListView>
 		
-		<Label x:Name="NoResultLabel"
-			   Text="No contests available for check-in"
+		<Label Text="No contests available for check-in"
 			   Style="{StaticResource InfoLabel}"
-			   IsVisible="True"/>
+			   IsVisible="{Binding ShowInfo}"/>
 	</StackLayout>
 	
 </ContentPage>
