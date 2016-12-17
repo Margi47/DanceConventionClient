@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
@@ -25,5 +26,34 @@ namespace DanceConventionClient.PageModels
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
 			Competitors = competitors.ToList();
 		}
+
+		public Competitor SelectedCompetitor
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+				SelectedItemCommand.Execute(value);
+				RaisePropertyChanged();
+			}
+		}
+
+		public Command<Competitor> SelectedItemCommand
+		{
+			get
+			{
+				return new Command<Competitor>(async (competitor) =>
+				{
+					await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
+					competitor.BibNumber, false);
+					var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
+					Competitors = competitors.ToList();
+				});
+			}
+		}
+
+
 	}
 }

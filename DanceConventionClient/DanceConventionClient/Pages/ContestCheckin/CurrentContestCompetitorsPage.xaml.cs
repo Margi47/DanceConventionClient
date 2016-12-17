@@ -11,7 +11,7 @@ namespace DanceConventionClient.Pages
 {
 	public partial class CurrentContestCompetitorsPage : ContentPage
 	{
-		public CurrentContestCompetitorsPage(Contest currentContest)
+		public CurrentContestCompetitorsPage()
 		{
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);			

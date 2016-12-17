@@ -10,7 +10,7 @@
 		<ListView ItemsSource="{Binding Competitors}"
 				  HasUnevenRows="True"
 				  SeparatorColor="Silver"
-				  
+				  SelectedItem="{Binding SelectedCompetitor}"
 				  HorizontalOptions="FillAndExpand">
 			<ListView.ItemTemplate>
 				<DataTemplate>
