@@ -8,7 +8,7 @@
 		<Button x:Name="CameraButton"
 				Text="Scan QR Code" 
 				Style="{StaticResource ButtonStyle}"
-				
+				Command="{Binding CameraCommand}"
 				IsEnabled="{Binding CameraEnabled}"/>
 
 		<ListView ItemsSource="{Binding ContestsList}" 

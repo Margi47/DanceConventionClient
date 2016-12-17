@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
-using DanceConventionClient.Views.ContestCheckin;
 using Xamarin.Forms;
 using ZXing;
 using ZXing.Mobile;
@@ -17,7 +16,7 @@ namespace DanceConventionClient.Pages
 	{
 
 
-		public ContestCheckinPage(DanceEvent currentEvent)
+		public ContestCheckinPage()
 		{
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);
@@ -27,12 +26,7 @@ namespace DanceConventionClient.Pages
 		/*private async void Camera_OnClicked(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new CameraPage() {FirstCall = true});
-		}
-
-
-		private async void ContestsList_OnItemTapped(object sender, ItemTappedEventArgs e)
-		{
-			await Navigation.PushAsync(new CurrentContestCompetitorsPage(e.Item as Contest));
 		}*/
+
 	}
 }

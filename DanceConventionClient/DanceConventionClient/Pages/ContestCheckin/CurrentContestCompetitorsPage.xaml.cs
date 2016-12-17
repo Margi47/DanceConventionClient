@@ -16,12 +16,5 @@ namespace DanceConventionClient.Pages
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);			
 		}
-
-		/*private async void CompetitorsSearch_OnSearchButtonPressed(object sender, EventArgs e)
-		{
-			var keyword = CompetitorsSearch.Text;
-			var result = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, keyword);
-			Device.BeginInvokeOnMainThread(()=> CompetitorsList.ItemsSource = result);
-		}*/
 	}
 }

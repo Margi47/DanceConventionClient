@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.Views.ContestCheckin.CameraPage">
+             x:Class="DanceConventionClient.Pages.CameraPage">
 
 	<Grid x:Name ="MainGrid"
 				 BackgroundColor="Black"
 				 HorizontalOptions="FillAndExpand"
 				 VerticalOptions="FillAndExpand">
-
+		<Grid.Children>
+			<ContentView Content="{Binding ScannerView}"
+						 IsVisible="{Binding ShowScanner}"/>
+		</Grid.Children>
 	</Grid>
 </ContentPage>

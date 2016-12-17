@@ -13,8 +13,10 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public Contest CurrentContest { get; set; }
 		public List<Competitor> Competitors { get; set; }
+
 		public string Text { get; set; }
 		public string InfoText { get; set; }
+
 		public bool ShowInfo { get; set; }
 		public bool ShowList { get; set; }
 

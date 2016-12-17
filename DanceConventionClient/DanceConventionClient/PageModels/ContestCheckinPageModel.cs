@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
@@ -58,6 +59,17 @@ namespace DanceConventionClient.PageModels
 			{
 				CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value);
 				RaisePropertyChanged();
+			}
+		}
+
+		public Command CameraCommand
+		{
+			get
+			{
+				return new Command(() =>
+				{
+					CoreMethods.PushPageModel<CameraPageModel>();
+				});
 			}
 		}
 	}
