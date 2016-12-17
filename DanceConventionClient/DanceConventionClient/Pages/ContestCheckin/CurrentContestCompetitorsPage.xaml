@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DanceConventionClient.CurrentContestCompetitors">
+             x:Class="DanceConventionClient.Pages.CurrentContestCompetitorsPage"
+			 Title="{Binding CurrentContest.Name}">
+	
 	<StackLayout>
 		<SearchBar x:Name="CompetitorsSearch"
-			   SearchButtonPressed="CompetitorsSearch_OnSearchButtonPressed"/>
-		<ListView x:Name="CompetitorsList"
+			   />
+		<ListView ItemsSource="{Binding Competitors}"
 				  HasUnevenRows="True"
 				  SeparatorColor="Silver"
-				  ItemTapped="CompetitorsList_OnItemTapped"
+				  
 				  HorizontalOptions="FillAndExpand">
 			<ListView.ItemTemplate>
 				<DataTemplate>

@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="PageModels\BarcodePageModel.cs" />
     <Compile Include="PageModels\ContestCheckinPageModel.cs" />
+    <Compile Include="PageModels\CurrentContestCompetitorsPageModel.cs" />
     <Compile Include="PageModels\RegistrationDeskPageModel.cs" />
     <Compile Include="PageModels\UserRegistrationPageModel.cs" />
     <Compile Include="ProfileItem.cs" />
@@ -51,8 +52,8 @@
     <Compile Include="Pages\ContestCheckin\ContestCheckinPage.xaml.cs">
       <DependentUpon>ContestCheckinPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ContestCheckin\CurrentContestCompetitors.xaml.cs">
-      <DependentUpon>CurrentContestCompetitors.xaml</DependentUpon>
+    <Compile Include="Pages\ContestCheckin\CurrentContestCompetitorsPage.xaml.cs">
+      <DependentUpon>CurrentContestCompetitorsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FontAwesome.cs" />
     <Compile Include="Pages\RegistrationDesk\BarcodePage.xaml.cs">
@@ -219,7 +220,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\ContestCheckin\CurrentContestCompetitors.xaml">
+    <EmbeddedResource Include="Pages\ContestCheckin\CurrentContestCompetitorsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

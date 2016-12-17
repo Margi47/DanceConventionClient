@@ -14,7 +14,8 @@
 		<ListView ItemsSource="{Binding ContestsList}" 
 				  Style="{StaticResource ListViewStyle}"
 				  IsVisible="{Binding ShowList}"		  
-				  VerticalOptions="StartAndExpand">
+				  VerticalOptions="StartAndExpand"
+				  SelectedItem="{Binding SelectedContest}">
 
 			<ListView.HeaderTemplate>
 				<DataTemplate>

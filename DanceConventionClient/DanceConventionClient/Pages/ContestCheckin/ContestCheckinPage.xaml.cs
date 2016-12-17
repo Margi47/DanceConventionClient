@@ -24,7 +24,7 @@ namespace DanceConventionClient.Pages
 
 		}
 
-		private async void Camera_OnClicked(object sender, EventArgs e)
+		/*private async void Camera_OnClicked(object sender, EventArgs e)
 		{
 			await Navigation.PushAsync(new CameraPage() {FirstCall = true});
 		}
@@ -32,7 +32,7 @@ namespace DanceConventionClient.Pages
 
 		private async void ContestsList_OnItemTapped(object sender, ItemTappedEventArgs e)
 		{
-			await Navigation.PushAsync(new CurrentContestCompetitors(e.Item as Contest));
-		}
+			await Navigation.PushAsync(new CurrentContestCompetitorsPage(e.Item as Contest));
+		}*/
 	}
 }

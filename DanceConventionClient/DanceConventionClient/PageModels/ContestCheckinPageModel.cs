@@ -47,5 +47,18 @@ namespace DanceConventionClient.PageModels
 			ShowList = list;
 			ShowInfo = info;
 		}
+
+		public Contest SelectedContest
+		{
+			get
+			{
+				return null;
+			}
+			set
+			{
+				CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value);
+				RaisePropertyChanged();
+			}
+		}
 	}
 }
