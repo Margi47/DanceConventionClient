@@ -26,6 +26,9 @@ namespace DanceConventionClient.PageModels
 		public bool ShowCurrentSignup { get; set; }
 		public Color StatusColor { get; set; }
 
+		public decimal PaymentAmount { get; set; }
+		public string PaymentComment { get; set; }
+
 		public RegistrationDeskPageModel()
 		{
 			_service = App.MyService;
@@ -89,6 +92,7 @@ namespace DanceConventionClient.PageModels
 					CurrentSignup = signup;
 					SetVisibility(false, false, true);
 					GetStatusColor();
+					PaymentAmount = CurrentSignup.AmountOwed;
 				});				
 			}			
 		}
@@ -138,17 +142,37 @@ namespace DanceConventionClient.PageModels
 						if (answer)
 						{
 							var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-							CurrentSignup = signup;
-							RaisePropertyChanged();
+							CurrentSignup = signup;							
 						}
 					}
 					else
 					{
 						var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-						CurrentSignup = signup;
-						RaisePropertyChanged();
+						CurrentSignup = signup;						
 					}
 
+					RaisePropertyChanged();
+				});
+			}
+		}
+
+		public Command PaymentCommand
+		{
+			get
+			{
+				return new Command(async() =>
+				{
+					if (PaymentAmount > 0)
+					{
+						var signup = await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, PaymentAmount, PaymentComment);
+						CurrentSignup = signup;
+						PaymentAmount = CurrentSignup.AmountOwed;
+						RaisePropertyChanged();
+					}
+					else
+					{
+						await Application.Current.MainPage.DisplayAlert("Error", "Please enter payment amount", "OK");
+					}
 				});
 			}
 		}

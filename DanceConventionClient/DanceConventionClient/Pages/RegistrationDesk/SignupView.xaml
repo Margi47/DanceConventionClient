@@ -74,7 +74,7 @@
 					<StackLayout Orientation="Horizontal">
 						<Label Text="Amount "
 							   Style="{StaticResource Itemlabel}"/>
-					<Entry Text="{Binding CurrentSignup.AmountOwed}"
+						<Entry Text="{Binding PaymentAmount, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
 						<Label Text="{Binding CurrentEvent.Currency}"
 							   Style="{StaticResource Itemlabel}"
@@ -88,13 +88,13 @@
 					<StackLayout Orientation="Horizontal">
 						<Label Text="Comment  "
 							   Style="{StaticResource Itemlabel}"/>
-						<Entry x:Name="Comment"
+						<Entry Text="{Binding PaymentComment, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
 					</StackLayout>
 				</ViewCell>
 				<ViewCell>
 					<Button Text="RecordPayment"
-								
+							Command="{Binding PaymentCommand}"	
 							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
 			</TableSection>

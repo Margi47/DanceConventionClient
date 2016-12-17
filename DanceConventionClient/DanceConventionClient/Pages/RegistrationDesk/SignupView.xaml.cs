@@ -49,30 +49,7 @@ namespace DanceConventionClient.Pages
 			}		
 		}
 
-		private async void AttendedButton_OnClicked(object sender, EventArgs e)
-		{
-			if (CurrentSignup.Attended)
-			{
-				var answer =
-					await Application.Current.MainPage.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
-
-				if (answer)
-				{
-					await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-				}
-			}
-			else
-			{
-				await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-			}
-
-			var signup = await _service.GetSignup(CurrentEvent.Id, CurrentSignup.ParticipantId);
-
-			Device.BeginInvokeOnMainThread(() =>
-			{
-				CurrentSignup = signup;
-				InitTableInfo();
-			});
+		
 		}*/
 	}
 }
