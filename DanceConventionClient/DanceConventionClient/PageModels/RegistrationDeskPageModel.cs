@@ -124,5 +124,33 @@ namespace DanceConventionClient.PageModels
 				});
 			}
 		}
+
+		public Command CheckinCommand
+		{
+			get
+			{
+				return new Command(async() =>
+				{
+					if (CurrentSignup.Attended)
+					{
+						var answer = await CoreMethods.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
+
+						if (answer)
+						{
+							var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+							CurrentSignup = signup;
+							RaisePropertyChanged();
+						}
+					}
+					else
+					{
+						var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+						CurrentSignup = signup;
+						RaisePropertyChanged();
+					}
+
+				});
+			}
+		}
 	}
 }

@@ -20,20 +20,9 @@ namespace DanceConventionClient.Pages
 
 		/*private void InitTableInfo()
 		{
-			Currency.Text = CurrentEvent.Currency;
-			Status.Text = CurrentSignup.Status;
-
 			
-
-			AttendedButton.Text = CurrentSignup.Attended ? "ATTENDED" : "CHECK IN";
-			PaymentAmount.Text = CurrentSignup.AmountOwed.ToString();
 		}
 
-
-		private async void Cell_OnTapped(object sender, EventArgs e)
-		{
-			//await Navigation.PushAsync(new UserRegistrationPage(CurrentEvent));
-		}
 
 		private async void PaymentButton_OnClicked(object sender, EventArgs e)
 		{

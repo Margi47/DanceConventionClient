@@ -101,9 +101,8 @@
 
 			<TableSection>
 				<ViewCell>
-				<Button Text="{Binding CurrentSignup.AttendedString}" 
-							x:Name="AttendedButton"
-							
+					<Button Text="{Binding CurrentSignup.AttendedString}" 
+							Command="{Binding CheckinCommand}"
 							Style="{StaticResource ButtonStyle}"
 							TextColor="White"
 							BackgroundColor="Blue"
