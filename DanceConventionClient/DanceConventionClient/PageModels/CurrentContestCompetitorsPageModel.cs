@@ -13,6 +13,10 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public Contest CurrentContest { get; set; }
 		public List<Competitor> Competitors { get; set; }
+		public string Text { get; set; }
+		public string InfoText { get; set; }
+		public bool ShowInfo { get; set; }
+		public bool ShowList { get; set; }
 
 		public CurrentContestCompetitorsPageModel()
 		{
@@ -24,7 +28,21 @@ namespace DanceConventionClient.PageModels
 			base.Init(initData);
 			CurrentContest = initData as Contest;
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
-			Competitors = competitors.ToList();
+			if (competitors.Length > 0)
+			{
+				Competitors = competitors.ToList();
+				SetVisibility(true, false);
+			}
+			else
+			{
+				SetVisibility(false, true);
+			}
+		}
+
+		private void SetVisibility(bool list, bool info)
+		{
+			ShowList = list;
+			ShowInfo = info;		
 		}
 
 		public Competitor SelectedCompetitor
@@ -54,6 +72,24 @@ namespace DanceConventionClient.PageModels
 			}
 		}
 
-
+		public Command SearchCommand
+		{
+			get
+			{
+				return new Command(async() =>
+				{
+					var competitors = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, Text);
+					if (competitors.Length > 0)
+					{
+						Competitors = competitors.ToList();
+						SetVisibility(true, false);
+					}
+					else
+					{
+						SetVisibility(false, true);
+					}
+				});
+			}
+		}
 	}
 }

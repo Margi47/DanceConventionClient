@@ -5,13 +5,15 @@
 			 Title="{Binding CurrentContest.Name}">
 	
 	<StackLayout>
-		<SearchBar x:Name="CompetitorsSearch"
-			   />
+		<SearchBar Text="{Binding Text, Mode=TwoWay}"
+				   SearchCommand="{Binding SearchCommand}"/>
+		
 		<ListView ItemsSource="{Binding Competitors}"
 				  HasUnevenRows="True"
 				  SeparatorColor="Silver"
 				  SelectedItem="{Binding SelectedCompetitor}"
-				  HorizontalOptions="FillAndExpand">
+				  HorizontalOptions="FillAndExpand"
+				  IsVisible="{Binding ShowList}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell Height="43">
@@ -43,6 +45,10 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
+		
+		<Label Text="No Results"
+			   Style="{StaticResource InfoLabel}"
+			   IsVisible="{Binding ShowInfo}"/>
 	</StackLayout>
 	
 	

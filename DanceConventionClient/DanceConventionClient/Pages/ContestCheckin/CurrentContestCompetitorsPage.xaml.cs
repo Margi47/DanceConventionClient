@@ -22,14 +22,6 @@ namespace DanceConventionClient.Pages
 			var keyword = CompetitorsSearch.Text;
 			var result = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, keyword);
 			Device.BeginInvokeOnMainThread(()=> CompetitorsList.ItemsSource = result);
-		}
-
-		private async void CompetitorsList_OnItemTapped(object sender, ItemTappedEventArgs e)
-		{
-			var competitor = e.Item as Competitor;
-			await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
-				competitor.BibNumber, false);
-			await InitializeList();
 		}*/
 	}
 }
