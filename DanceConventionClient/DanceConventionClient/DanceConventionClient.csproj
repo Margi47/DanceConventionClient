@@ -42,6 +42,7 @@
     <Compile Include="PageModels\CameraPageModel.cs" />
     <Compile Include="PageModels\ContestCheckinPageModel.cs" />
     <Compile Include="PageModels\CurrentContestCompetitorsPageModel.cs" />
+    <Compile Include="PageModels\ProfilePageModel.cs" />
     <Compile Include="PageModels\RegistrationDeskPageModel.cs" />
     <Compile Include="PageModels\UserRegistrationPageModel.cs" />
     <Compile Include="ProfileItem.cs" />

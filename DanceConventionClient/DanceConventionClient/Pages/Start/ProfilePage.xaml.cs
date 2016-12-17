@@ -7,39 +7,21 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace DanceConventionClient
+namespace DanceConventionClient.Pages
 {
 	public partial class ProfilePage : ContentPage
 	{
-		public IDCService Service= App.MyService;
 		public ProfilePage()
 		{
 			InitializeComponent();
 		}
 
-		protected override async void OnAppearing()
-		{
-			base.OnAppearing();
-			await InitializeData();
-		}
-
-		private async Task InitializeData()
-		{
-			var currentProfile = await Service.GetProfile();
-
-			profileName.Text = currentProfile.FullName;
-			email.Text = currentProfile.Email;
-			accessPermission.Text = currentProfile.Role;
-		}
-
-		private void logoutButton_Clicked(object sender, EventArgs e)
+		/*private void logoutButton_Clicked(object sender, EventArgs e)
 		{
 			Application.Current.Properties.Remove("userName");
 			Application.Current.Properties.Remove("password");
 
 			App.NavigateToLoginPage();
-
-
-		}
+		}*/
 	}
 }
