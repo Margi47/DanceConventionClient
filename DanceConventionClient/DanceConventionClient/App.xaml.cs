@@ -85,7 +85,7 @@ namespace DanceConventionClient
 				}
 			}
 
-			_logger.Information("Navigating to login page {Url} for user {User}", Properties["url"], Properties["userName"]);
+			_logger.Information("Navigating to login page {Url}", Properties["url"]);
 			NavigateToLoginPage();
 		}
 
