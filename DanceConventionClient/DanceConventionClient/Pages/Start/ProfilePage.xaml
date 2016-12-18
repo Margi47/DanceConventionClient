@@ -15,10 +15,9 @@
 			   Margin="20,20,0,0"/>
 		<Label Text="{Binding CurrentProfile.Role}"
 			   Style="{StaticResource Itemlabel}"/>
-		<Button x:Name="logoutButton"
-				Text="Logout"
+		<Button Text="Logout"
 				Style="{StaticResource ButtonStyle}"
-				Clicked="logoutButton_Clicked"
+				Command="{Binding LogoutCommand}"
 				VerticalOptions="EndAndExpand"/>
 	</StackLayout>
 </ContentPage>

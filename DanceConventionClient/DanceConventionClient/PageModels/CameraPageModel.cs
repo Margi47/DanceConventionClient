@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using PropertyChanged;
 using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
 
 namespace DanceConventionClient.PageModels
 {
+	[ImplementPropertyChanged]
 	public class CameraPageModel:FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
@@ -24,6 +26,7 @@ namespace DanceConventionClient.PageModels
 		public override void Init(object initData)
 		{
 			base.Init(initData);
+			InitScanner();
 
 		}
 
@@ -39,7 +42,7 @@ namespace DanceConventionClient.PageModels
 				Device.BeginInvokeOnMainThread(async () => {
 
 					zxing.IsAnalyzing = false;
-					ShowScanner = false;
+					ScannerView = null;
 					await MakeCheckin(result);
 				});
 

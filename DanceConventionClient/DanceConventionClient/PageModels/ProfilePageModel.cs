@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
@@ -21,6 +22,20 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			CurrentProfile = await _service.GetProfile();
+		}
+
+		public Command LogoutCommand
+		{
+			get
+			{
+				return new Command(() =>
+				{
+					Application.Current.Properties.Remove("userName");
+					Application.Current.Properties.Remove("password");
+
+					App.NavigateToLoginPage();
+				});
+			}
 		}
 	}
 }

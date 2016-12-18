@@ -15,13 +15,5 @@ namespace DanceConventionClient.Pages
 		{
 			InitializeComponent();
 		}
-
-		private void logoutButton_Clicked(object sender, EventArgs e)
-		{
-			Application.Current.Properties.Remove("userName");
-			Application.Current.Properties.Remove("password");
-
-			App.NavigateToLoginPage();
-		}
 	}
 }

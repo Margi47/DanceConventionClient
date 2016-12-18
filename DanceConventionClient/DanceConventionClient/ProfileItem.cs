@@ -26,10 +26,9 @@ namespace DanceConventionClient
 					Command = new Command(() =>
 					{
 						var model = FreshPageModelResolver.ResolvePageModel<ProfilePageModel>();
-						var container = new FreshNavigationContainer(model);
 						Device.BeginInvokeOnMainThread(async () =>
 						{
-							await page.Navigation.PushAsync(container);
+							await page.Navigation.PushAsync(model);
 						});
 					})
 				});
