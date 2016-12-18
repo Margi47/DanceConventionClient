@@ -52,7 +52,7 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command<SignupIdentifier>(async (user) => {
+				return new Command<SignupIdentifier>(async (user) => {					
 					await CoreMethods.PushPageModel<UserRegistrationPageModel>(_identifier);
 				});
 			}

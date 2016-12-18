@@ -15,6 +15,7 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public List<DanceEvent> CurrentEvents { get; set; }
 		public List<DanceEvent> PastEvents { get; set; }
+		public Color BackgroundColor { get; set; }
 
 		public MyEventsPageModel()
 		{
@@ -24,6 +25,7 @@ namespace DanceConventionClient.PageModels
 		public override async void Init(object initData)
 		{
 			base.Init(initData);
+			BackgroundColor = Color.Transparent;
 			await InitializeEvents();		
 		}
 
@@ -58,6 +60,7 @@ namespace DanceConventionClient.PageModels
 			}
 			set
 			{
+				ClickColorInitialiser.ChangeColor(BackgroundColor);
 				CoreMethods.PushPageModel<CurrentEventPageModel>(value);
 				RaisePropertyChanged();
 			}

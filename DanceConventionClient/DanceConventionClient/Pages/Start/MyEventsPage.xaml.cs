@@ -16,6 +16,5 @@ namespace DanceConventionClient.Pages
 			InitializeComponent();
 			ProfileItem.SetProfileButton(this);
 		}
-
 	}
 }

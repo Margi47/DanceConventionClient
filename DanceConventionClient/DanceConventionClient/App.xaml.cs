@@ -39,7 +39,7 @@ namespace DanceConventionClient
 		public static void NavigateToLoginPage()
 		{
 			var page = FreshPageModelResolver.ResolvePageModel<LoginPageModel>();
-			var container = new FreshNavigationContainer(page);
+			var container = new FreshNavigationContainer(page) { BarBackgroundColor = Color.Silver, BarTextColor = Color.Black };
 			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = container);
 		}
 
@@ -54,7 +54,7 @@ namespace DanceConventionClient
 		public static void NavigateToMainPage()
 		{
 			var page = FreshPageModelResolver.ResolvePageModel<MyEventsPageModel>();
-			var container = new FreshNavigationContainer(page);
+			var container = new FreshNavigationContainer(page) {BarBackgroundColor = Color.Silver, BarTextColor = Color.Black};
 			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = container);
 		}
 

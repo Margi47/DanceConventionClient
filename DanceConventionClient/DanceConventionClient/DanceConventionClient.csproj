@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClickColorInitialiser.cs" />
     <Compile Include="PageModels\BarcodePageModel.cs" />
     <Compile Include="PageModels\CameraPageModel.cs" />
     <Compile Include="PageModels\ContestCheckinPageModel.cs" />

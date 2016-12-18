@@ -5,11 +5,13 @@
 			 Title="My events"
 			 Style="{StaticResource PageStyle}">
 
-		<StackLayout>
-		<ListView Style="{StaticResource ListViewStyle}"
+		<StackLayout Margin="0,3,0,0">
+		<ListView x:Name="ListView1"
+			Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SelectedEvent}">
-
+				  SelectedItem="{Binding SelectedEvent}"
+				  >
+			
 			<ListView.HeaderTemplate>
 				<DataTemplate>
 					<Frame Style="{StaticResource HeaderFrame}"
