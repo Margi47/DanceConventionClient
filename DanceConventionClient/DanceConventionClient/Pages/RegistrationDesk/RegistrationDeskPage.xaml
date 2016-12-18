@@ -8,7 +8,7 @@
 	<StackLayout>
 		<Button Text="Scan QR Code"
 				Style="{StaticResource ButtonStyle}"
-				/>
+				Command="{Binding ScannerCommand}"/>
 		
 		<SearchBar SearchCommand="{Binding SearchCommand}"
 				   Text ="{Binding Text, Mode=TwoWay}"/>

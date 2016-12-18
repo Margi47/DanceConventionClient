@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DanceConventionClient.Pages;
 using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
 using PropertyChanged;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.Net.Mobile.Forms;
 
 namespace DanceConventionClient.PageModels
 {
@@ -174,6 +177,48 @@ namespace DanceConventionClient.PageModels
 						await Application.Current.MainPage.DisplayAlert("Error", "Please enter payment amount", "OK");
 					}
 				});
+			}
+		}
+
+		public Command ScannerCommand
+		{
+			get
+			{
+				return new Command(async () =>
+				{
+					var zxing = new ZXingScannerView
+					{
+						HorizontalOptions = LayoutOptions.FillAndExpand,
+						VerticalOptions = LayoutOptions.FillAndExpand
+					};
+
+					zxing.OnScanResult += (result) =>
+						Device.BeginInvokeOnMainThread(async () =>
+						{
+							zxing.IsAnalyzing = false;
+							await CoreMethods.PopPageModel();
+
+							await ShowSignup(result);
+						});
+
+					await CoreMethods.PushPageModel<RegistrationCameraPageModel>(zxing);
+				});
+			}
+		}
+
+		private async Task ShowSignup(Result result)
+		{
+			var elements = result.Text.Split('[', ':', ']');
+			int eventId;
+			int userId;
+
+			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
+			{
+				var signup = await _service.GetSignup(eventId, userId);
+				CurrentSignup = signup;
+				SetVisibility(false, false,true);
+				GetStatusColor();
+				PaymentAmount = CurrentSignup.AmountOwed;
 			}
 		}
 	}

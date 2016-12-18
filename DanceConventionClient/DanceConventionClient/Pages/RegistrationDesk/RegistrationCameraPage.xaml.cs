@@ -7,17 +7,14 @@ using DanceConventionClient.Services;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
-namespace DanceConventionClient.Views.RegistrationDesk
+namespace DanceConventionClient.Pages
 {
 	public partial class RegistrationCameraPage : ContentPage
 	{
 
-		public RegistrationCameraPage(ZXingScannerView zxing)
+		public RegistrationCameraPage()
 		{
 			InitializeComponent();
-
-			MainGrid.Children.Add(zxing);
-			zxing.IsScanning = true;
 		}
 	}
 }
