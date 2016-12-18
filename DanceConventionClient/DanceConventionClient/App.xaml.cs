@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.PageModels;
+using DanceConventionClient.Pages;
 using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
 using FreshMvvm;
@@ -37,7 +38,9 @@ namespace DanceConventionClient
 
 		public static void NavigateToLoginPage()
 		{
-			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new NavigationPage(new LoginPage()));
+			var page = FreshPageModelResolver.ResolvePageModel<LoginPageModel>();
+			var container = new FreshNavigationContainer(page);
+			Device.BeginInvokeOnMainThread(() => App.Current.MainPage = container);
 		}
 
 		public static async Task InitializeService(LoginResult login, IDCService service)

@@ -25,13 +25,9 @@ namespace DanceConventionClient
 					Order = ToolbarItemOrder.Primary,
 					Command = new Command(() =>
 					{
-
-						var pageRes = FreshPageModelResolver.ResolvePageModel<ProfilePageModel>();
-						
-						var container = new FreshNavigationContainer(pageRes);
 						Device.BeginInvokeOnMainThread(async () =>
 						{
-							await container.PushPage(new ProfilePage(), new ProfilePageModel());
+							await page.Navigation.PushAsync(new ProfilePage());
 						});
 					})
 				});
