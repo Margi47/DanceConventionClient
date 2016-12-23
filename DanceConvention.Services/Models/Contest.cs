@@ -11,14 +11,8 @@ namespace DanceConventionClient.Services
 	{
 		[JsonProperty(PropertyName = "id")]
 		public int CompetitionId { get; set; }
-
-		[JsonProperty(PropertyName = "name")]
 		public string Name { get; set; }
-
-		[JsonProperty(PropertyName = "divisionType")]
 		public string DivisionType { get; set; }
-
-		[JsonProperty(PropertyName = "eventId")]
 		public int EventId { get; set; }
 	}
 }

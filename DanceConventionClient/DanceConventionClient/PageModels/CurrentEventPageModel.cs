@@ -10,12 +10,11 @@ using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	[ImplementPropertyChanged]
-	public class CurrentEventPageModel:FreshMvvm.FreshBasePageModel
+	public class CurrentEventPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		private SignupIdentifier _identifier;
-		public DanceEvent CurrentEvent { get; set; }		
+		public DanceEvent CurrentEvent { get; set; }
 		public bool IsStaff { get; set; }
 		public bool IsCompetitor { get; set; }
 
@@ -32,7 +31,7 @@ namespace DanceConventionClient.PageModels
 			var signup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
 			_identifier = new SignupIdentifier {CurrentEvent = CurrentEvent, Participant = signup};
 			await InitializeButtons();
-		} 
+		}
 
 
 		private async Task InitializeButtons()
@@ -52,7 +51,7 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command<SignupIdentifier>(async (user) => {					
+				return new Command<SignupIdentifier>(async (user) => {
 					await CoreMethods.PushPageModel<UserRegistrationPageModel>(_identifier);
 				});
 			}

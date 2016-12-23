@@ -31,7 +31,7 @@ namespace DanceConventionClient.Droid
 			Log.Logger = new LoggerConfiguration()
                 .WriteTo.RollingFile(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DanceConvention_log-{Date}.txt")
                 ,outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}")
-                .WriteTo.AndroidLog()
+                .WriteTo.AndroidLog().MinimumLevel.Verbose()
                 .CreateLogger();
 		}
 

@@ -10,8 +10,7 @@ using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	[ImplementPropertyChanged]
-	public class UserRegistrationPageModel:FreshMvvm.FreshBasePageModel
+	public class UserRegistrationPageModel : FreshMvvm.FreshBasePageModel
 	{
 		public Signup CurrentSignup { get; set; }
 		public DanceEvent CurrentEvent { get; set; }
@@ -24,7 +23,6 @@ namespace DanceConventionClient.PageModels
 			Identifier = initData as SignupIdentifier;
 			CurrentEvent = Identifier.CurrentEvent;
 			CurrentSignup = Identifier.Participant;
-
 			TextColor = CurrentSignup.AmountPaid >= CurrentSignup.AmountInvoiced ? Color.Blue : Color.Red;
 		}
 

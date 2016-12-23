@@ -9,8 +9,7 @@ using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	[ImplementPropertyChanged]
-	public class MyEventsPageModel:FreshMvvm.FreshBasePageModel
+	public class MyEventsPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public List<DanceEvent> CurrentEvents { get; set; }
@@ -26,44 +25,36 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			BackgroundColor = Color.Transparent;
-			await InitializeEvents();		
+			await InitializeEvents();
 		}
 
 		private async Task InitializeEvents()
 		{
-			var curEv = new List<DanceEvent>();
-			var pastev = new List<DanceEvent>();
+			var currentEvents = new List<DanceEvent>();
+			var pastEvents = new List<DanceEvent>();
 			var allEvents = await _service.GetEvents();
-			var curTime = DateTime.Now;
+			var currentTime = DateTime.Now;
 
 			foreach (var ev in allEvents)
 			{
-				if (ev.EndDate >= curTime)
+				if (ev.EndDate >= currentTime)
 				{
-					curEv.Add(ev);
+					currentEvents.Add(ev);
 				}
 				else
 				{
-					pastev.Add(ev);
+					pastEvents.Add(ev);
 				}
 			}
 
-			CurrentEvents = curEv;
-			PastEvents = pastev;
+			CurrentEvents = currentEvents;
+			PastEvents = pastEvents;
 		}
 
 		public DanceEvent SelectedEvent
 		{
-			get
-			{
-				return null;
-			}
-			set
-			{
-				ClickColorInitialiser.ChangeColor(BackgroundColor);
-				CoreMethods.PushPageModel<CurrentEventPageModel>(value);
-				RaisePropertyChanged();
-			}
+			get { return null; }
+			set { CoreMethods.PushPageModel<CurrentEventPageModel>(value); }
 		}
 	}
 }

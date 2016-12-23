@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PropertyChanged;
 using Serilog;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
+	[ImplementPropertyChanged]
 	public class SettingsPageModel:FreshMvvm.FreshBasePageModel
 	{
 		public string Url { get; set; }

@@ -38,7 +38,7 @@ namespace DanceConventionClient.Services
 				};
 				return result;
 			}
-			else if (response.StatusCode == HttpStatusCode.Unauthorized)
+			else if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.BadRequest)
 			{
 				_logger.Information("User {UserName} was not authorized", login.Username);
 				var result = new LoginResult()
@@ -49,10 +49,10 @@ namespace DanceConventionClient.Services
 			}
 			else
 			{
-				_logger.Information("User {UserName} was not logined", login.Username);
+				_logger.Information("Login failed for user {UserName} - received {StatusCode} status code, {Reason}, {Response}", login.Username, response.StatusCode, response.ReasonPhrase, response.Content);
 				var result = new LoginResult()
 				{
-					ErrorMessage = "Login failed"
+					ErrorMessage = "Login failed: " + response.ReasonPhrase
 				};
 				return result;
 			}

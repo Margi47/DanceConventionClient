@@ -9,7 +9,7 @@ using ZXing.Net.Mobile.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class BarcodePageModel:FreshMvvm.FreshBasePageModel
+	public class BarcodePageModel : FreshMvvm.FreshBasePageModel
 	{
 		public ZXingBarcodeImageView Barcode { get; set; }
 
@@ -30,7 +30,7 @@ namespace DanceConventionClient.PageModels
 		}
 
 		private void InitializeCode(int eventId, int userId)
-		{			
+		{
 			Barcode.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
 			Barcode.BarcodeOptions.Width = 300;
 			Barcode.BarcodeOptions.Height = 300;

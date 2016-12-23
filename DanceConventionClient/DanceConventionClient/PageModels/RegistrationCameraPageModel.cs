@@ -8,7 +8,7 @@ using ZXing.Net.Mobile.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class RegistrationCameraPageModel:FreshMvvm.FreshBasePageModel
+	public class RegistrationCameraPageModel : FreshMvvm.FreshBasePageModel
 	{
 		public View Zxing { get; set; }
 

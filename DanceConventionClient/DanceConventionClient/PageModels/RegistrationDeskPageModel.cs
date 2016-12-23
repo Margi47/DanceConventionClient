@@ -14,7 +14,7 @@ using ZXing.Net.Mobile.Forms;
 namespace DanceConventionClient.PageModels
 {
 	[ImplementPropertyChanged]
-	public class RegistrationDeskPageModel:FreshMvvm.FreshBasePageModel
+	public class RegistrationDeskPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public DanceEvent CurrentEvent { get; set; }
@@ -56,18 +56,17 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async (dEvent) => {
-					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);					
+				return new Command(async (dEvent) =>
+				{
+					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);
 					if (signups.Length > 0)
 					{
 						SignupList = signups.ToList();
 						SetVisibility(false, true, false);
-						RaisePropertyChanged();
 					}
 					else
 					{
 						InfoText = "No Results";
-						RaisePropertyChanged();
 					}
 				});
 			}
@@ -75,15 +74,8 @@ namespace DanceConventionClient.PageModels
 
 		public Signup SelectedItem
 		{
-			get
-			{
-				return null;
-			}
-			set
-			{
-				SelectedItemCommand.Execute(value);
-				RaisePropertyChanged();
-			}
+			get { return null; }
+			set { SelectedItemCommand.Execute(value); }
 		}
 
 		public Command<Signup> SelectedItemCommand
@@ -96,8 +88,8 @@ namespace DanceConventionClient.PageModels
 					SetVisibility(false, false, true);
 					GetStatusColor();
 					PaymentAmount = CurrentSignup.AmountOwed;
-				});				
-			}			
+				});
+			}
 		}
 
 		private void GetStatusColor()
@@ -126,7 +118,7 @@ namespace DanceConventionClient.PageModels
 			{
 				return new Command(async () =>
 				{
-					var identifier = new SignupIdentifier{CurrentEvent = CurrentEvent, Participant = CurrentSignup};
+					var identifier = new SignupIdentifier {CurrentEvent = CurrentEvent, Participant = CurrentSignup};
 					await CoreMethods.PushPageModel<UserRegistrationPageModel>(identifier);
 				});
 			}
@@ -136,25 +128,24 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async() =>
+				return new Command(async () =>
 				{
 					if (CurrentSignup.Attended)
 					{
-						var answer = await CoreMethods.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
+						var answer =
+							await CoreMethods.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
 
 						if (answer)
 						{
 							var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-							CurrentSignup = signup;							
+							CurrentSignup = signup;
 						}
 					}
 					else
 					{
 						var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
-						CurrentSignup = signup;						
+						CurrentSignup = signup;
 					}
-
-					RaisePropertyChanged();
 				});
 			}
 		}
@@ -163,18 +154,18 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async() =>
+				return new Command(async () =>
 				{
 					if (PaymentAmount > 0)
 					{
-						var signup = await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, PaymentAmount, PaymentComment);
+						var signup =
+							await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, PaymentAmount, PaymentComment);
 						CurrentSignup = signup;
 						PaymentAmount = CurrentSignup.AmountOwed;
-						RaisePropertyChanged();
 					}
 					else
 					{
-						await Application.Current.MainPage.DisplayAlert("Error", "Please enter payment amount", "OK");
+						await CoreMethods.DisplayAlert("Error", "Please enter payment amount", "OK");
 					}
 				});
 			}
@@ -197,7 +188,6 @@ namespace DanceConventionClient.PageModels
 						{
 							zxing.IsAnalyzing = false;
 							await CoreMethods.PopPageModel();
-
 							await ShowSignup(result);
 						});
 
@@ -216,7 +206,7 @@ namespace DanceConventionClient.PageModels
 			{
 				var signup = await _service.GetSignup(eventId, userId);
 				CurrentSignup = signup;
-				SetVisibility(false, false,true);
+				SetVisibility(false, false, true);
 				GetStatusColor();
 				PaymentAmount = CurrentSignup.AmountOwed;
 			}

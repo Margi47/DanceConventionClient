@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class CurrentContestCompetitorsPageModel:FreshMvvm.FreshBasePageModel
+	[ImplementPropertyChanged]
+	public class CurrentContestCompetitorsPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public Contest CurrentContest { get; set; }
@@ -28,6 +30,7 @@ namespace DanceConventionClient.PageModels
 		public override async void Init(object initData)
 		{
 			base.Init(initData);
+
 			CurrentContest = initData as Contest;
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
 			if (competitors.Length > 0)
@@ -44,20 +47,13 @@ namespace DanceConventionClient.PageModels
 		private void SetVisibility(bool list, bool info)
 		{
 			ShowList = list;
-			ShowInfo = info;		
+			ShowInfo = info;
 		}
 
 		public Competitor SelectedCompetitor
 		{
-			get
-			{
-				return null;
-			}
-			set
-			{
-				SelectedItemCommand.Execute(value);
-				RaisePropertyChanged();
-			}
+			get { return null; }
+			set { SelectedItemCommand.Execute(value); }
 		}
 
 		public Command<Competitor> SelectedItemCommand
@@ -67,7 +63,7 @@ namespace DanceConventionClient.PageModels
 				return new Command<Competitor>(async (competitor) =>
 				{
 					await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
-					competitor.BibNumber, false);
+						competitor.BibNumber, false);
 					var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
 					Competitors = competitors.ToList();
 				});
@@ -78,7 +74,7 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async() =>
+				return new Command(async () =>
 				{
 					var competitors = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, Text);
 					if (competitors.Length > 0)

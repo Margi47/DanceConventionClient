@@ -9,13 +9,8 @@ namespace DanceConventionClient.Services
 {
 	public class EntranceInf
 	{
-		[JsonProperty(PropertyName = "bibNumber")]
 		public int BibNumber { get; set; }
-
-		[JsonProperty(PropertyName = "entranceId")]
 		public int EntranceId { get; set; }
-
-		[JsonProperty(PropertyName = "participantName")]
 		public string ParticipantName { get; set; }
 	}
 }

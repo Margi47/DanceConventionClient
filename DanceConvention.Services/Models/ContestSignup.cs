@@ -12,34 +12,19 @@ namespace DanceConventionClient.Services
 		public int ContestId { get; set; }
 		public string ContestName { get; set; }
 		public string PartnerName { get; set; }
+
 		[JsonIgnore]
-		public bool HasPartner
-		{
-			get
-			{
-				return !string.IsNullOrWhiteSpace(PartnerName);
-			}
-		}
+		public bool HasPartner => !string.IsNullOrWhiteSpace(PartnerName);
+
 		public int ParticipantId { get; set; }
 		public int EventId { get; set; }
 		public string DivisionType { get; set; }
 		public string Role { get; set; }
-		[JsonIgnore]
-		public bool IsLeader
-		{
-			get 
-			{
-				return Role == "LEADER";
-			}
-		}
 
 		[JsonIgnore]
-		public bool IsFollower
-		{
-			get
-			{
-				return Role == "FOLLOWER";
-			}
-		}
+		public bool IsLeader => Role == "LEADER";
+
+		[JsonIgnore]
+		public bool IsFollower => Role == "FOLLOWER";
 	}
 }

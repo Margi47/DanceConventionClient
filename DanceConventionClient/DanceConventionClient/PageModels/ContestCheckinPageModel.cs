@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class ContestCheckinPageModel:FreshMvvm.FreshBasePageModel
+	[ImplementPropertyChanged]
+	public class ContestCheckinPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public DanceEvent CurrentEvent { get; set; }
@@ -32,14 +34,12 @@ namespace DanceConventionClient.PageModels
 			if (contests.Length > 0)
 			{
 				ContestsList = contests.ToList();
-				SetVisibility(true, true, false);				
+				SetVisibility(true, true, false);
 			}
 			else
 			{
 				SetVisibility(false, false, true);
 			}
-
-			RaisePropertyChanged();
 		}
 
 		public void SetVisibility(bool camera, bool list, bool info)
@@ -51,15 +51,8 @@ namespace DanceConventionClient.PageModels
 
 		public Contest SelectedContest
 		{
-			get
-			{
-				return null;
-			}
-			set
-			{
-				CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value);
-				RaisePropertyChanged();
-			}
+			get { return null; }
+			set { CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value); }
 		}
 
 		public Command CameraCommand

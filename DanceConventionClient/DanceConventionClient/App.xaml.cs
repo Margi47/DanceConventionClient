@@ -12,6 +12,7 @@ using DanceConventionClient.Services;
 using DanceConventionClient.Services.Models;
 using FreshMvvm;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Serilog;
 using Xamarin.Forms;
 
@@ -32,7 +33,8 @@ namespace DanceConventionClient
 
 			JsonConvert.DefaultSettings = () => new JsonSerializerSettings
 			{
-				DateTimeZoneHandling = DateTimeZoneHandling.Utc
+				DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+				ContractResolver = new CamelCasePropertyNamesContractResolver()
 			};
 		}
 

@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class ProfilePageModel:FreshMvvm.FreshBasePageModel
+	public class ProfilePageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public Profile CurrentProfile { get; set; }

@@ -9,7 +9,6 @@ namespace DanceConventionClient.Services
 {
 	public class EventPermission
 	{
-		[JsonProperty(PropertyName = "permission")]
 		public string Permission { get; set; }
 	}
 }

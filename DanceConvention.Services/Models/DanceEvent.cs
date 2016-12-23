@@ -9,21 +9,16 @@ using PropertyChanged;
 
 namespace DanceConventionClient.Services
 {
-	[ImplementPropertyChanged]
 	public class DanceEvent
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public DateTime StartDate { get; set; }
 		public DateTime EndDate { get; set; }
+
 		[JsonIgnore]
-		public string EventDates
-		{
-			get
-			{
-				return StartDate.ToString("d") + " - " + EndDate.ToString("d");
-			}
-		}
+		public string EventDates => StartDate.ToString("d") + " - " + EndDate.ToString("d");
+
 		public string WebsiteUrl { get; set; }
 		public string Description { get; set; }
 		public string Location { get; set; }

@@ -37,12 +37,6 @@ namespace DanceConventionClient.Services
 		public bool Attended { get; set; }
 
 		[JsonIgnore]
-		public string AttendedString
-		{
-			get
-			{
-				return Attended ? "ATTENDED" : "CHECK IN"; ;
-			}
-		}
+		public string AttendedString => Attended ? "ATTENDED" : "CHECK IN";
 	}
 }

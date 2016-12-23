@@ -12,7 +12,7 @@ using ZXing.Net.Mobile.Forms;
 namespace DanceConventionClient.PageModels
 {
 	[ImplementPropertyChanged]
-	public class CameraPageModel:FreshMvvm.FreshBasePageModel
+	public class CameraPageModel : FreshMvvm.FreshBasePageModel
 	{
 		private readonly IDCService _service;
 		public View ScannerView { get; set; }
@@ -27,7 +27,6 @@ namespace DanceConventionClient.PageModels
 		{
 			base.Init(initData);
 			InitScanner();
-
 		}
 
 		public void InitScanner()
@@ -39,7 +38,8 @@ namespace DanceConventionClient.PageModels
 			};
 
 			zxing.OnScanResult += (result) =>
-				Device.BeginInvokeOnMainThread(async () => {
+				Device.BeginInvokeOnMainThread(async () =>
+				{
 
 					zxing.IsAnalyzing = false;
 					ScannerView = null;
@@ -66,7 +66,8 @@ namespace DanceConventionClient.PageModels
 				}
 
 				await _service.AllContestCheckin(eventId, userId, signup.BibNumber.Value, true);
-				var answer = await CoreMethods.DisplayAlert("Successful", signup.ParticipantName + " was checked-in.", "Next", "Return");
+				var answer =
+					await CoreMethods.DisplayAlert("Successful", signup.ParticipantName + " was checked-in.", "Next", "Return");
 
 				if (!answer)
 				{

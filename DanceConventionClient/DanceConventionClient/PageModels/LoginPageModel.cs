@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DanceConventionClient.Services;
+using PropertyChanged;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.PageModels
 {
-	public class LoginPageModel:FreshMvvm.FreshBasePageModel
+	[ImplementPropertyChanged]
+	public class LoginPageModel : FreshMvvm.FreshBasePageModel
 	{
 		public string UserName { get; set; }
 		public string UserPassword { get; set; }
@@ -17,9 +19,9 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async() =>
+				return new Command(async () =>
 				{
-					var login = new DCLogin { Username = UserName, Password = UserPassword };
+					var login = new DCLogin {Username = UserName, Password = UserPassword};
 					var service = new DCServiceWrapper();
 					var loginResult = await service.Login(login);
 					if (loginResult.Successful)
@@ -39,7 +41,7 @@ namespace DanceConventionClient.PageModels
 		{
 			get
 			{
-				return new Command(async() =>
+				return new Command(async () =>
 				{
 					await CoreMethods.PushPageModel<SettingsPageModel>();
 				});
