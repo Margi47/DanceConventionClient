@@ -14,6 +14,8 @@ using FreshMvvm;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 using Xamarin.Forms;
 
 namespace DanceConventionClient
@@ -21,6 +23,7 @@ namespace DanceConventionClient
 	public partial class App : Application
 	{
 		public static IDCService MyService { get; set; }
+		public static LoggingLevelSwitch LevelSwitch = new LoggingLevelSwitch();
 		private readonly ILogger _logger;
 
 		public App()
@@ -66,6 +69,20 @@ namespace DanceConventionClient
 			if (!Properties.ContainsKey("url"))
 			{
 				Application.Current.Properties["url"] = "https://danceconvention.net";
+			}
+
+			if (!Properties.ContainsKey("logLevel"))
+			{
+				Application.Current.Properties["logLevel"] = "information";
+			}
+
+			if (Application.Current.Properties["logLevel"].ToString() == "information")
+			{
+				LevelSwitch.MinimumLevel = LogEventLevel.Information;
+			}
+			else if (Application.Current.Properties["logLevel"].ToString() == "verbose")
+			{
+				LevelSwitch.MinimumLevel = LogEventLevel.Verbose;
 			}
 
 			if (Properties.ContainsKey("userName") && Properties.ContainsKey("password"))
