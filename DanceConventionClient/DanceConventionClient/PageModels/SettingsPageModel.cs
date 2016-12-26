@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Plugin.Messaging;
 using PropertyChanged;
 using Serilog;
 using Serilog.Core;
@@ -17,6 +18,7 @@ namespace DanceConventionClient.PageModels
 		public string Url { get; set; }
 		private readonly ILogger _logger;
 		public string Text { get; set; }
+		public static Action SendLogsToEmail;
 
 		public bool SwitchToggled
 		{
@@ -50,6 +52,17 @@ namespace DanceConventionClient.PageModels
 		{
 			_logger = Serilog.Log.ForContext(GetType());
 			Url = Application.Current.Properties["url"].ToString();
+		}
+
+		public Command SendLogCommand
+		{
+			get
+			{
+				return new Command(() =>
+				{
+					SendLogsToEmail?.Invoke();
+				});
+			}
 		}
 
 		public Command UrlCommand
