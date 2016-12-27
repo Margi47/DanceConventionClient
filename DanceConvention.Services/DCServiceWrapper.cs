@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DanceConventionClient.Services.Models;
 using Serilog;
@@ -14,30 +15,49 @@ namespace DanceConventionClient.Services
 	{
 		private readonly IDCService _service;
 		private readonly ILogger _logger;
+		private HttpClientProvider _clientProvider;
 		private const int RETRY_COUNT = 3;
 
 		public DCServiceWrapper()
 		{
-			_service = new DCService();
+			_clientProvider = new HttpClientProvider();
+			_service = new DCService(_clientProvider);
 			_logger = Log.ForContext(GetType());
 		}
 
-		public async Task<T> RetryIfFails<T>(Func<IDCService, Task<T>> func)
+		public async Task<T> RetryIfFails<T>(Func<IDCService, Task<T>> func)where T: class
 		{
-			for (var i = 0; i < RETRY_COUNT; i++)
+			bool retry = false;
+			do
 			{
-				try
+				for (var i = 0; i < RETRY_COUNT; i++)
 				{
-					return await func(_service);
+					try
+					{
+						return await func(_service);
+					}
+					catch (HttpRequestException e)
+					{
+						_logger.Error(e, "Operation failed");
+						break;
+					}
+					catch (Exception e)
+					{
+						_logger.Warning(e, "An error occured");
+					}
 				}
-				catch (Exception e)
-				{
-					_logger.Error(e, "An error occured");
-				}
-			}
 
-			Device.BeginInvokeOnMainThread(() => Application.Current.MainPage.DisplayAlert("Error", "Operation failed", "OK"));
-			throw new Exception("Operation failed");
+
+				var answer = Application.Current.MainPage
+							.DisplayAlert("Error", "Operation failed. Please retry or re-run the application", "Retry", "Delay");
+				retry = await answer;
+				if (retry)
+				{
+					_clientProvider.InitClient();
+				}
+			} while (retry);
+
+			return await Task.FromResult((T) null);
 		}
 
 		public Task<LoginResult> Login(DCLogin login)

@@ -33,6 +33,11 @@ namespace DanceConventionClient.PageModels
 			var currentEvents = new List<DanceEvent>();
 			var pastEvents = new List<DanceEvent>();
 			var allEvents = await _service.GetEvents();
+			if (allEvents == null)
+			{
+				return;
+			}
+
 			var currentTime = DateTime.Now;
 
 			foreach (var ev in allEvents)
@@ -49,6 +54,8 @@ namespace DanceConventionClient.PageModels
 
 			CurrentEvents = currentEvents;
 			PastEvents = pastEvents;
+			
+			
 		}
 
 		public DanceEvent SelectedEvent

@@ -33,6 +33,11 @@ namespace DanceConventionClient.PageModels
 
 			CurrentContest = initData as Contest;
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
+			if (competitors == null)
+			{
+				return;
+			}
+
 			if (competitors.Length > 0)
 			{
 				Competitors = competitors.ToList();
@@ -62,9 +67,19 @@ namespace DanceConventionClient.PageModels
 			{
 				return new Command<Competitor>(async (competitor) =>
 				{
-					await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
+					var result = await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
 						competitor.BibNumber, false);
+					if (result == null)
+					{
+						return;
+					}
+
 					var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
+					if (competitors == null)
+					{
+						return;
+					}
+
 					Competitors = competitors.ToList();
 				});
 			}
@@ -77,6 +92,11 @@ namespace DanceConventionClient.PageModels
 				return new Command(async () =>
 				{
 					var competitors = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, Text);
+					if (competitors == null)
+					{
+						return;
+					}
+
 					if (competitors.Length > 0)
 					{
 						Competitors = competitors.ToList();

@@ -59,6 +59,11 @@ namespace DanceConventionClient.PageModels
 			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
 			{
 				var signup = await _service.GetSignup(eventId, userId);
+				if (signup == null)
+				{
+					return;
+				}
+
 				if (signup.BibNumber == null)
 				{
 					await CoreMethods.DisplayAlert("Error", "Not signed up for currently active competitions", "OK");

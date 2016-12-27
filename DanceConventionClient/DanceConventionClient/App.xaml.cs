@@ -95,10 +95,15 @@ namespace DanceConventionClient
 				var service = new DCServiceWrapper();
 				var loginResult = await service.Login(login);
 
+				if (loginResult == null)
+				{
+					return;
+				}
+
 				if (loginResult.Successful)
 				{
 					await InitializeService(loginResult, service);
-					_logger.Information("Navigating to events page {Url} for user {User}", Properties["url"], Properties["userName"]);					
+					_logger.Information("Navigating to events page {Url} for user {User}", Properties["url"], Properties["userName"]);
 					NavigateToMainPage();
 					return;
 				}

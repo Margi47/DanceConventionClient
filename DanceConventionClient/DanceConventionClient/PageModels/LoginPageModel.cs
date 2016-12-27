@@ -24,15 +24,21 @@ namespace DanceConventionClient.PageModels
 					var login = new DCLogin {Username = UserName, Password = UserPassword};
 					var service = new DCServiceWrapper();
 					var loginResult = await service.Login(login);
+					if (loginResult == null)
+					{
+						return;
+					}
+
 					if (loginResult.Successful)
-					{
-						await App.InitializeService(loginResult, service);
-						App.NavigateToMainPage();
-					}
-					else
-					{
-						await CoreMethods.DisplayAlert("Error", loginResult.ErrorMessage, "OK");
-					}
+						{
+							await App.InitializeService(loginResult, service);
+							App.NavigateToMainPage();
+						}
+						else
+						{
+							await CoreMethods.DisplayAlert("Error", loginResult.ErrorMessage, "OK");
+						}
+					
 				});
 			}
 		}

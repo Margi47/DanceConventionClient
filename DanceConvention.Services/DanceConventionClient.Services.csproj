@@ -38,6 +38,7 @@
     <Compile Include="DCService.cs" />
     <Compile Include="DCServiceWrapper.cs" />
     <Compile Include="HttpClientExtensions.cs" />
+    <Compile Include="HttpClientProvider.cs" />
     <Compile Include="IDCService.cs" />
     <Compile Include="LoggingHandler.cs" />
     <Compile Include="Models\Chekin.cs" />

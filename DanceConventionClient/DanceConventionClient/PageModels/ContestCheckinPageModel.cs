@@ -31,6 +31,11 @@ namespace DanceConventionClient.PageModels
 			CurrentEvent = initData as DanceEvent;
 
 			var contests = await _service.GetContests(CurrentEvent.Id);
+			if (contests == null)
+			{
+				return;
+			}
+
 			if (contests.Length > 0)
 			{
 				ContestsList = contests.ToList();

@@ -28,7 +28,17 @@ namespace DanceConventionClient.PageModels
 			base.Init(initData);
 			CurrentEvent = initData as DanceEvent;
 			var profile = await _service.GetProfile();
+			if (profile == null)
+			{
+				return;
+			}
+
 			var signup = await _service.GetSignup(CurrentEvent.Id, profile.Id);
+			if (signup == null)
+			{
+				return;
+			}
+
 			_identifier = new SignupIdentifier {CurrentEvent = CurrentEvent, Participant = signup};
 			await InitializeButtons();
 		}
@@ -37,6 +47,10 @@ namespace DanceConventionClient.PageModels
 		private async Task InitializeButtons()
 		{
 			var permissions = await _service.GetPermissions(CurrentEvent.Id);
+			if (permissions == null)
+			{
+				return;
+			}
 
 			var staffPermissions = new string[]
 				{"EVENT_OWNER", "STAFF_EVENT_ADMIN", "STAFF_REGDESK", "STAFF_FINANCE", "STAFF_SCORES", "STAFF_CONTEST_CHECKIN"};

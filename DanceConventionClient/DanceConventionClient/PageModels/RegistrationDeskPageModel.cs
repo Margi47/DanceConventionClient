@@ -59,6 +59,11 @@ namespace DanceConventionClient.PageModels
 				return new Command(async (dEvent) =>
 				{
 					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);
+					if (signups == null)
+					{
+						return;
+					}
+
 					if (signups.Length > 0)
 					{
 						SignupList = signups.ToList();
@@ -138,12 +143,22 @@ namespace DanceConventionClient.PageModels
 						if (answer)
 						{
 							var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+							if (signup == null)
+							{
+								return;
+							}
+
 							CurrentSignup = signup;
 						}
 					}
 					else
 					{
 						var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+						if (signup == null)
+						{
+							return;
+						}
+
 						CurrentSignup = signup;
 					}
 				});
@@ -160,6 +175,11 @@ namespace DanceConventionClient.PageModels
 					{
 						var signup =
 							await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, PaymentAmount, PaymentComment);
+						if (signup == null)
+						{
+							return;
+						}
+
 						CurrentSignup = signup;
 						PaymentAmount = CurrentSignup.AmountOwed;
 					}

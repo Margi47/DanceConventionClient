@@ -14,19 +14,21 @@ namespace DanceConventionClient.Services
 	public class LoggingHandler : DelegatingHandler
 	{
 		private readonly ILogger _logger;
+
 		public LoggingHandler(HttpMessageHandler innerHandler)
 			: base(innerHandler)
 		{
 			_logger = Serilog.Log.ForContext(GetType());
 		}
 
-		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+			CancellationToken cancellationToken)
 		{
 			if (_logger.IsEnabled(LogEventLevel.Verbose))
 			{
-				if (!(request.Method == HttpMethod.Post 
-					&& request.RequestUri.ToString().EndsWith("/eventdirector/rest/mobile/auth")) 
-					&& request.Content != null)
+				if (!(request.Method == HttpMethod.Post
+				      && request.RequestUri.ToString().EndsWith("/eventdirector/rest/mobile/auth"))
+				    && request.Content != null)
 				{
 					var requestContent = await request.Content.ReadAsStringAsync();
 					_logger.Verbose("Sending request {HttpRequest}, {RequestContent}", request.ToString(), requestContent);
@@ -35,19 +37,17 @@ namespace DanceConventionClient.Services
 				{
 					_logger.Verbose("Sending request {HttpRequest}", request.ToString());
 				}
-
 			}
 
 			var response = await base.SendAsync(request, cancellationToken);
 
 			if (_logger.IsEnabled(LogEventLevel.Verbose))
 			{
-				
+
 				if (response.Content != null)
 				{
 					var responseContent = await response.Content.ReadAsStringAsync();
 					_logger.Verbose("Received response {HttpResponse}, {ResponseContent}", response.ToString(), responseContent);
-
 				}
 				else
 				{
