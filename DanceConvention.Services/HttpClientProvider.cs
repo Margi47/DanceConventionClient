@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ModernHttpClient;
 using Xamarin.Forms;
 
 namespace DanceConventionClient.Services
@@ -21,7 +22,7 @@ namespace DanceConventionClient.Services
 
 		public void InitClient()
 		{
-			var clientHandler = new HttpClientHandler();
+			var clientHandler = new NativeMessageHandler();
 			clientHandler.CookieContainer = _container;
 			Client = new HttpClient(new LoggingHandler(clientHandler));
 			Client.BaseAddress = new Uri(Application.Current.Properties["url"].ToString());

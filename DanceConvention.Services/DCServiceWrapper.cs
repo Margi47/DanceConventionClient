@@ -15,7 +15,7 @@ namespace DanceConventionClient.Services
 	{
 		private readonly IDCService _service;
 		private readonly ILogger _logger;
-		private HttpClientProvider _clientProvider;
+		private readonly HttpClientProvider _clientProvider;
 		private const int RETRY_COUNT = 3;
 
 		public DCServiceWrapper()
@@ -47,14 +47,17 @@ namespace DanceConventionClient.Services
 					}
 				}
 
-
 				var answer = Application.Current.MainPage
 							.DisplayAlert("Error", "Operation failed. Please retry or re-run the application", "Retry", "Delay");
 				retry = await answer;
+
 				if (retry)
 				{
+					await Task.Delay(TimeSpan.FromSeconds(2));
 					_clientProvider.InitClient();
+					await Task.Delay(TimeSpan.FromSeconds(2));
 				}
+
 			} while (retry);
 
 			return await Task.FromResult((T) null);

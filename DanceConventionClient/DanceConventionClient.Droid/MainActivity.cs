@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Net;
+using System.Threading.Tasks;
 using DanceConventionClient.PageModels;
 using Plugin.Messaging;
 using Serilog;
@@ -18,6 +19,8 @@ namespace DanceConventionClient.Droid
 		 ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
+		private ILogger _logger;
+
 		protected override void OnCreate(Bundle bundle)
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
@@ -41,6 +44,13 @@ namespace DanceConventionClient.Droid
 				.CreateLogger();
 
 			SettingsPageModel.SendLogsToEmail = SendEmail;
+
+			_logger = Log.ForContext(GetType());
+
+			AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+			TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+
+			System.Net.ServicePointManager.DnsRefreshTimeout = 5;
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
@@ -65,6 +75,18 @@ namespace DanceConventionClient.Droid
 
 				emailMessenger.SendEmail(email);
 			}
+		}
+
+		private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+		{
+			var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+			_logger.Fatal(newExc, "An error occured in TaskScheduler");
+		}
+
+		private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+		{
+			var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+			_logger.Fatal(newExc, "An error occured in CurrentDomain");
 		}
 	}
 }
