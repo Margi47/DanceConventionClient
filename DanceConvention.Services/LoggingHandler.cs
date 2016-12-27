@@ -24,7 +24,9 @@ namespace DanceConventionClient.Services
 		{
 			if (_logger.IsEnabled(LogEventLevel.Verbose))
 			{
-				if (request.Content != null)
+				if (!(request.Method == HttpMethod.Post 
+					&& request.RequestUri.ToString().EndsWith("/eventdirector/rest/mobile/auth")) 
+					&& request.Content != null)
 				{
 					var requestContent = await request.Content.ReadAsStringAsync();
 					_logger.Verbose("Sending request {HttpRequest}, {RequestContent}", request.ToString(), requestContent);
