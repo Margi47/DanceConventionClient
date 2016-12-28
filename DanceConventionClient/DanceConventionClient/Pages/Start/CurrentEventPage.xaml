@@ -25,5 +25,10 @@
 				IsVisible="{Binding IsStaff}"
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding RegistrationCommand}"/>
+
+		<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
 	</StackLayout>
 </ContentPage>

@@ -37,7 +37,12 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-		
+
+		<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
+
 		<Label Text="No contests available for check-in"
 			   Style="{StaticResource InfoLabel}"
 			   IsVisible="{Binding ShowInfo}"/>

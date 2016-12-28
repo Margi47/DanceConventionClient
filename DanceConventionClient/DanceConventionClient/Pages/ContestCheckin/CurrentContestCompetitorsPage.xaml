@@ -45,7 +45,12 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-		
+
+		<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
+
 		<Label Text="No Results"
 			   Style="{StaticResource InfoLabel}"
 			   IsVisible="{Binding ShowInfo}"/>

@@ -15,6 +15,7 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public Contest CurrentContest { get; set; }
 		public List<Competitor> Competitors { get; set; }
+		public bool IsLoading { get; set; }
 
 		public string Text { get; set; }
 		public string InfoText { get; set; }
@@ -32,7 +33,10 @@ namespace DanceConventionClient.PageModels
 			base.Init(initData);
 
 			CurrentContest = initData as Contest;
+			IsLoading = true;
 			var competitors = await _service.GetCompetitors(CurrentContest.EventId, CurrentContest.CompetitionId);
+			IsLoading = false;
+
 			if (competitors == null)
 			{
 				return;
@@ -67,6 +71,7 @@ namespace DanceConventionClient.PageModels
 			{
 				return new Command<Competitor>(async (competitor) =>
 				{
+					IsLoading = true;
 					var result = await _service.ContestCheckin(CurrentContest.EventId, CurrentContest.CompetitionId, competitor.ParticipantId,
 						competitor.BibNumber, false);
 					if (result == null)
@@ -80,6 +85,8 @@ namespace DanceConventionClient.PageModels
 						return;
 					}
 
+					IsLoading = false;
+
 					Competitors = competitors.ToList();
 				});
 			}
@@ -91,7 +98,10 @@ namespace DanceConventionClient.PageModels
 			{
 				return new Command(async () =>
 				{
+					IsLoading = true;
 					var competitors = await _service.SearchCompetitor(CurrentContest.EventId, CurrentContest.CompetitionId, Text);
+					IsLoading = false;
+
 					if (competitors == null)
 					{
 						return;

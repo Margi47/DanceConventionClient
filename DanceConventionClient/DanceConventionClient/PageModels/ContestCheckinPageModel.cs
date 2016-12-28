@@ -15,6 +15,7 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public DanceEvent CurrentEvent { get; set; }
 		public List<Contest> ContestsList { get; set; }
+		public bool IsLoading { get; set; }
 
 		public bool ShowInfo { get; set; }
 		public bool ShowList { get; set; }
@@ -30,7 +31,10 @@ namespace DanceConventionClient.PageModels
 			base.Init(initData);
 			CurrentEvent = initData as DanceEvent;
 
+			IsLoading = true;
 			var contests = await _service.GetContests(CurrentEvent.Id);
+			IsLoading = false;
+
 			if (contests == null)
 			{
 				return;

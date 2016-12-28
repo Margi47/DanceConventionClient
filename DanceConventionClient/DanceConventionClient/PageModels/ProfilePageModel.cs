@@ -12,6 +12,7 @@ namespace DanceConventionClient.PageModels
 	{
 		private readonly IDCService _service;
 		public Profile CurrentProfile { get; set; }
+		public bool IsLoading { get; set; }
 
 		public ProfilePageModel()
 		{
@@ -20,8 +21,10 @@ namespace DanceConventionClient.PageModels
 
 		public override async void Init(object initData)
 		{
+			IsLoading = true;
 			base.Init(initData);
 			CurrentProfile = await _service.GetProfile();
+			IsLoading = false;
 		}
 
 		public Command LogoutCommand

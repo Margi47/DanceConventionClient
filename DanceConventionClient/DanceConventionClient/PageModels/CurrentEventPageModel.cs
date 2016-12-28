@@ -17,6 +17,7 @@ namespace DanceConventionClient.PageModels
 		public DanceEvent CurrentEvent { get; set; }
 		public bool IsStaff { get; set; }
 		public bool IsCompetitor { get; set; }
+		public bool IsLoading { get; set; }
 
 		public CurrentEventPageModel()
 		{
@@ -25,6 +26,7 @@ namespace DanceConventionClient.PageModels
 
 		public override async void Init(object initData)
 		{
+			IsLoading = true;
 			base.Init(initData);
 			CurrentEvent = initData as DanceEvent;
 			var profile = await _service.GetProfile();
@@ -41,6 +43,7 @@ namespace DanceConventionClient.PageModels
 
 			_identifier = new SignupIdentifier {CurrentEvent = CurrentEvent, Participant = signup};
 			await InitializeButtons();
+			IsLoading = false;
 		}
 
 

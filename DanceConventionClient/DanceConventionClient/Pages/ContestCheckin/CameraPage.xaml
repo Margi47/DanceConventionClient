@@ -10,6 +10,10 @@
 		<Grid.Children>
 			<ContentView Content="{Binding ScannerView}"
 						 IsVisible="{Binding ShowScanner}"/>
+			<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
 		</Grid.Children>
 	</Grid>
 </ContentPage>

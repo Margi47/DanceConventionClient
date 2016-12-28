@@ -15,6 +15,7 @@ namespace DanceConventionClient.PageModels
 		public List<DanceEvent> CurrentEvents { get; set; }
 		public List<DanceEvent> PastEvents { get; set; }
 		public Color BackgroundColor { get; set; }
+		public bool IsLoading { get; set; }
 
 		public MyEventsPageModel()
 		{
@@ -30,6 +31,7 @@ namespace DanceConventionClient.PageModels
 
 		private async Task InitializeEvents()
 		{
+			IsLoading = true;
 			var currentEvents = new List<DanceEvent>();
 			var pastEvents = new List<DanceEvent>();
 			var allEvents = await _service.GetEvents();
@@ -54,8 +56,8 @@ namespace DanceConventionClient.PageModels
 
 			CurrentEvents = currentEvents;
 			PastEvents = pastEvents;
-			
-			
+
+			IsLoading = false;
 		}
 
 		public DanceEvent SelectedEvent

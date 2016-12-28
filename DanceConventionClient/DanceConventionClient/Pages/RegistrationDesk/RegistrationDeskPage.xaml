@@ -20,7 +20,12 @@
 								  SelectedItem="{Binding SelectedItem}"/>
 
 			<pages:SignupView IsVisible="{Binding ShowCurrentSignup}"/>
-
+			
+			<ActivityIndicator IsVisible="{Binding IsLoading}" 
+							   IsRunning="{Binding IsLoading}"
+							   VerticalOptions="CenterAndExpand" 
+							   HorizontalOptions="CenterAndExpand" />
+			
 			<Label IsVisible="{Binding ShowInfo}"
 				   Style="{StaticResource InfoLabel}"
 				   Text="{Binding InfoText, Mode=TwoWay}"/>

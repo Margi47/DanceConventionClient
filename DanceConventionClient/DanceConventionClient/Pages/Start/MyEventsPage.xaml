@@ -63,5 +63,10 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
+
+		<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
 	</StackLayout>
 </ContentPage>

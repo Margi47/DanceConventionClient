@@ -39,5 +39,10 @@
 				Command="{Binding LoginCommand}"
 				Style="{StaticResource ButtonStyle}"
 				Margin="0,20,0,0"/>
-    </StackLayout>
+
+		<ActivityIndicator IsVisible="{Binding IsLoading}" 
+						   IsRunning="{Binding IsLoading}"
+						   VerticalOptions="CenterAndExpand" 
+						   HorizontalOptions="CenterAndExpand" />
+	</StackLayout>
 </ContentPage>

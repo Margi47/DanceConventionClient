@@ -17,6 +17,7 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		public View ScannerView { get; set; }
 		public bool ShowScanner { get; set; }
+		public bool IsLoading { get; set; }
 
 		public CameraPageModel()
 		{
@@ -70,7 +71,9 @@ namespace DanceConventionClient.PageModels
 					return;
 				}
 
+				IsLoading = true;
 				await _service.AllContestCheckin(eventId, userId, signup.BibNumber.Value, true);
+				IsLoading = false;
 				var answer =
 					await CoreMethods.DisplayAlert("Successful", signup.ParticipantName + " was checked-in.", "Next", "Return");
 

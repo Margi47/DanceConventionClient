@@ -20,6 +20,7 @@ namespace DanceConventionClient.PageModels
 		public DanceEvent CurrentEvent { get; set; }
 		public bool ShowInfo { get; set; }
 		public string InfoText { get; set; }
+		public bool IsLoading { get; set; }
 
 		public string Text { get; set; }
 		public List<Signup> SignupList { get; set; }
@@ -58,7 +59,10 @@ namespace DanceConventionClient.PageModels
 			{
 				return new Command(async (dEvent) =>
 				{
+					IsLoading = true;
 					var signups = await _service.SearchSignups(CurrentEvent.Id, Text);
+					IsLoading = false;
+
 					if (signups == null)
 					{
 						return;
@@ -142,7 +146,10 @@ namespace DanceConventionClient.PageModels
 
 						if (answer)
 						{
+							IsLoading = true;
 							var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+							IsLoading = false;
+
 							if (signup == null)
 							{
 								return;
@@ -153,7 +160,10 @@ namespace DanceConventionClient.PageModels
 					}
 					else
 					{
+						IsLoading = true;
 						var signup = await _service.UpdateAttendanceStatus(CurrentEvent.Id, CurrentSignup.ParticipantId);
+						IsLoading = false;
+
 						if (signup == null)
 						{
 							return;
@@ -173,8 +183,11 @@ namespace DanceConventionClient.PageModels
 				{
 					if (PaymentAmount > 0)
 					{
+						IsLoading = true;
 						var signup =
 							await _service.RecordPayment(CurrentEvent.Id, CurrentSignup.ParticipantId, PaymentAmount, PaymentComment);
+						IsLoading = false;
+
 						if (signup == null)
 						{
 							return;
@@ -224,7 +237,10 @@ namespace DanceConventionClient.PageModels
 
 			if ((int.TryParse(elements[1], out eventId)) && (int.TryParse(elements[2], out userId)))
 			{
+				IsLoading = true;
 				var signup = await _service.GetSignup(eventId, userId);
+				IsLoading = false;
+
 				CurrentSignup = signup;
 				SetVisibility(false, false, true);
 				GetStatusColor();
