@@ -101,12 +101,27 @@
 
 			<TableSection>
 				<ViewCell>
-					<Button Text="{Binding CurrentSignup.AttendedString}" 
-							Command="{Binding CheckinCommand}"
-							Style="{StaticResource ButtonStyle}"
-							TextColor="White"
-							BackgroundColor="Blue"
-							FontSize="18"/>
+				<StackLayout Orientation="Horizontal" BackgroundColor="Blue" HeightRequest="32">
+					<StackLayout.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding CheckinCommand}"/>
+					</StackLayout.GestureRecognizers>
+					
+					<Label Text="{Binding CurrentSignup.AttendedString}" 
+						   TextColor="White"
+						   FontSize="18"
+						   HorizontalOptions="FillAndExpand"
+						   HorizontalTextAlignment="Start"
+						   VerticalOptions="CenterAndExpand"
+						   Margin="15,0,0,0"/>
+
+					<Label Text="&#xf00c;"
+						   HorizontalOptions="End"
+						   Margin="0,0,15,0"
+						   IsVisible="{Binding CurrentSignup.Attended}"
+						   VerticalOptions="CenterAndExpand"
+						   TextColor="White"/>
+					</StackLayout>
+					
 				</ViewCell>
 			</TableSection>
 		</TableRoot>

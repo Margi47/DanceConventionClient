@@ -68,7 +68,7 @@ namespace DanceConventionClient.Droid
 			{
 				var email = new EmailMessageBuilder()
 					.To("vbgmargi@gmail.com")
-					.Subject("DanceConventionClientErrorReport")
+					.Subject("DanceConvention Client - Error Report")
 					.WithAttachment(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,
 						$"DanceConvention_log-{currentDate}.txt"))
 					.Build();
@@ -87,6 +87,12 @@ namespace DanceConventionClient.Droid
 		{
 			var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
 			_logger.Fatal(newExc, "An error occured in CurrentDomain");
+		}
+
+		protected override void OnDestroy()
+		{
+			Log.CloseAndFlush();
+			base.OnDestroy();
 		}
 	}
 }
