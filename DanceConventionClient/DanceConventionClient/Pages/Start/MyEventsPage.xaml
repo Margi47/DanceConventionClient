@@ -9,7 +9,7 @@
 		<ListView x:Name="ListView1"
 			Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SelectedEvent}"
+				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
 				  >
 			
 			<ListView.HeaderTemplate>

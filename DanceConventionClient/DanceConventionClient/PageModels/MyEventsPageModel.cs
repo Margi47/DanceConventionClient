@@ -63,7 +63,11 @@ namespace DanceConventionClient.PageModels
 		public DanceEvent SelectedEvent
 		{
 			get { return null; }
-			set { CoreMethods.PushPageModel<CurrentEventPageModel>(value); }
+			set
+			{
+				CoreMethods.PushPageModel<CurrentEventPageModel>(value);
+				RaisePropertyChanged();
+			}
 		}
 	}
 }

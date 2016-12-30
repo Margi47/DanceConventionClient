@@ -15,7 +15,7 @@ using Serilog.Core;
 
 namespace DanceConventionClient.Droid
 {
-	[Activity(Label = "DanceConventionClient", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false,
+	[Activity(Label = "DanceConventionClient", Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", MainLauncher = false,
 		 ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
