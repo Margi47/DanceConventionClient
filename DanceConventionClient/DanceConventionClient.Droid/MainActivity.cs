@@ -31,9 +31,6 @@ namespace DanceConventionClient.Droid
 			ServicePointManager.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-			LoadApplication(new App());
-
-			ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
 			Log.Logger = new LoggerConfiguration()
 				.MinimumLevel.ControlledBy(App.LevelSwitch)
@@ -43,9 +40,13 @@ namespace DanceConventionClient.Droid
 				.WriteTo.AndroidLog()
 				.CreateLogger();
 
-			SettingsPageModel.SendLogsToEmail = SendEmail;
-
 			_logger = Log.ForContext(GetType());
+			
+			LoadApplication(new App());
+
+			ZXing.Net.Mobile.Forms.Android.Platform.Init();
+
+			SettingsPageModel.SendLogsToEmail = SendEmail;
 
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 			TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;

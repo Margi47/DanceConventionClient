@@ -16,12 +16,14 @@
 					</Frame>
 				</ViewCell>
 
-				<ViewCell Height="40">
+				<ViewCell Height="50">
 					<StackLayout>
 						<Label Text="{Binding CurrentEvent.Location}"
-							   Style="{StaticResource Itemlabel}"/>
+							   Style="{StaticResource Itemlabel}"
+							   Margin="20,3,0,0"/>
 						<Label Text="{Binding CurrentEvent.EventDates}"
-							   Style="{StaticResource Detaillabel}"/>
+							   Style="{StaticResource Detaillabel}"
+							   Margin="40,0,0,5"/>
 					</StackLayout>
 				</ViewCell>
 
@@ -48,7 +50,7 @@
 						<Label Text="Invoiced:"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="Start"/>
-						<Label Text="{Binding CurrentSignup.AmountInvoiced}"
+						<Label Text="{Binding CurrentSignup.AmountInvoiced, StringFormat='{0:0.00}'}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="StartAndExpand"
 							   Margin="0,0,0,0"/>
@@ -56,7 +58,7 @@
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="EndAndExpand"
 							   TextColor="{Binding TextColor}"/>
-						<Label Text="{Binding CurrentSignup.AmountPaid}"
+						<Label Text="{Binding CurrentSignup.AmountPaid, StringFormat='{0:0.00}'}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="End"
 							   TextColor="{Binding TextColor}"
@@ -87,16 +89,18 @@
 
 						<ListView.ItemTemplate>
 							<DataTemplate>
-								<ViewCell Height="43">
+								<ViewCell Height="50">
 									<StackLayout Orientation="Horizontal"
 												 HorizontalOptions="FillAndExpand">
 										<StackLayout VerticalOptions="CenterAndExpand">
 											<Label Text="{Binding ContestName}"
 												   Style="{StaticResource Itemlabel}"
-												   VerticalOptions="CenterAndExpand"/>
+												   VerticalOptions="CenterAndExpand"
+												   Margin="20,3,0,0"/>
 											<Label Text="{Binding PartnerName }"
 												   Style="{StaticResource Detaillabel}"
-												   IsVisible="{Binding HasPartner}"/>
+												   IsVisible="{Binding HasPartner}"
+												   Margin="40,0,0,5"/>
 										</StackLayout>
 										<Label Text="&#xf222;"
 											   IsVisible="{Binding IsLeader}"

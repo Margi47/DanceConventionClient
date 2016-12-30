@@ -54,6 +54,7 @@ namespace DanceConventionClient
 			Application.Current.Properties["userName"] = login.Login.Username;
 			Application.Current.Properties["password"] = login.Login.Password;
 			await App.Current.SavePropertiesAsync();
+			Log.Verbose("Login information saved");
 		}
 
 		public static void NavigateToMainPage()
@@ -80,26 +81,33 @@ namespace DanceConventionClient
 			{
 				LevelSwitch.MinimumLevel = LogEventLevel.Information;
 			}
-			else if (Application.Current.Properties["logLevel"].ToString() == "verbose")
+			else
 			{
 				LevelSwitch.MinimumLevel = LogEventLevel.Verbose;
 			}
 
+			_logger.Verbose("Restoring login information");
+
 			if (Properties.ContainsKey("userName") && Properties.ContainsKey("password"))
 			{
+				_logger.Verbose("Login present");
+
 				var login = new DCLogin()
 				{
 					Username = Properties["userName"].ToString(),
 					Password = Properties["password"].ToString()
 				};
 				var service = new DCServiceWrapper();
-				var loginResult = await service.Login(login);
 
+				var loginResult = await service.Login(login);
 				if (loginResult == null)
 				{
+					_logger.Verbose("LoginResult empty, navigate to LoginPage");
+					NavigateToLoginPage();
 					return;
 				}
 
+				_logger.Verbose("LoginResult {@Result}", loginResult);
 				if (loginResult.Successful)
 				{
 					await InitializeService(loginResult, service);
@@ -107,6 +115,10 @@ namespace DanceConventionClient
 					NavigateToMainPage();
 					return;
 				}
+			}
+			else
+			{
+				_logger.Verbose("No login found");
 			}
 
 			_logger.Information("Navigating to login page {Url}", Properties["url"]);

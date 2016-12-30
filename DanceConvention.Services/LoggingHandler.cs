@@ -43,7 +43,6 @@ namespace DanceConventionClient.Services
 
 			if (_logger.IsEnabled(LogEventLevel.Verbose))
 			{
-
 				if (response.Content != null)
 				{
 					var responseContent = await response.Content.ReadAsStringAsync();

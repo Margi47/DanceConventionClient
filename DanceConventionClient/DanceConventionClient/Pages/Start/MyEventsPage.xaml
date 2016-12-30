@@ -7,7 +7,7 @@
 
 		<StackLayout Margin="0,3,0,0">
 		<ListView x:Name="ListView1"
-			Style="{StaticResource ListViewStyle}"
+				  Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
 				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
 				  >
@@ -27,9 +27,11 @@
 					<ViewCell>
 						<StackLayout>
 							<Label Text="{Binding Name}"
-								   Style="{StaticResource Itemlabel}"/>
+								   Style="{StaticResource Itemlabel}"
+								   Margin="20,3,0,0"/>
 							<Label Text="{Binding EventDates}"
-								   Style="{StaticResource Detaillabel}"/>
+								   Style="{StaticResource Detaillabel}"
+								   Margin="20,0,0,5"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>
@@ -45,7 +47,7 @@
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
 						<Label Text="Past Events"
-						   Style="{StaticResource Headerlabel}"/>
+							   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</DataTemplate>
 			</ListView.HeaderTemplate>
@@ -55,9 +57,11 @@
 					<ViewCell>
 						<StackLayout>
 							<Label Text="{Binding Name}"
-								   Style="{StaticResource Itemlabel}"/>
+								   Style="{StaticResource Itemlabel}"
+								   Margin="20,3,0,0"/>
 							<Label Text="{Binding EventDates}"
-								   Style="{StaticResource Detaillabel}"/>
+								   Style="{StaticResource Detaillabel}"
+								   Margin="20,0,0,5"/>
 						</StackLayout>
 					</ViewCell>
 				</DataTemplate>

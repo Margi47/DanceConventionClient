@@ -10,6 +10,6 @@ namespace DanceConventionClient.Services.Models
 	{
 		public DCLogin Login { get; set; }
 		public string ErrorMessage { get; set; }
-		public bool Successful => String.IsNullOrEmpty(ErrorMessage);
+		public bool Successful => string.IsNullOrEmpty(ErrorMessage);
 	}
 }
