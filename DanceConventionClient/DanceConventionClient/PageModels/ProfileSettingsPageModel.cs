@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PropertyChanged;
+using Serilog;
 using Serilog.Events;
 using Xamarin.Forms;
 
@@ -12,8 +13,14 @@ namespace DanceConventionClient.PageModels
 	[ImplementPropertyChanged]
 	public class ProfileSettingsPageModel:FreshMvvm.FreshBasePageModel
 	{
+		private readonly ILogger _logger;
 		public string Text { get; set; }
 		public static Action SendLogsToEmail;
+
+		public ProfileSettingsPageModel()
+		{
+			_logger = Serilog.Log.ForContext(GetType());
+		}
 
 		public bool SwitchToggled
 		{
@@ -25,6 +32,7 @@ namespace DanceConventionClient.PageModels
 			{
 				SetLogLevel(value);
 				Text = "Log level changed to " + Application.Current.Properties["logLevel"];
+				_logger.Information(Text);
 			}
 		}
 

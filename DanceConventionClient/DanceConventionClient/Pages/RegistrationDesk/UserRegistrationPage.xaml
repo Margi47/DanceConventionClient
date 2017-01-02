@@ -35,7 +35,7 @@
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal"
 								 HorizontalOptions="FillAndExpand">
-						<Label Text="CurrentEvent pass"
+						<Label Text="Event pass"
 							   Style="{StaticResource Itemlabel}"/>
 						<Label Text="{Binding CurrentSignup.SelectedPass}"
 							   Style="{StaticResource Itemlabel}"
@@ -65,7 +65,7 @@
 							   Margin="0,0,15,0"/>
 					</StackLayout>
 				</ViewCell>
-
+				
 				<ViewCell>
 					<Button Text="Registration QR Code" 
 							 Command="{Binding QrCodeCommand}"
