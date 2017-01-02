@@ -47,6 +47,7 @@ namespace DanceConventionClient.Droid
 			ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
 			SettingsPageModel.SendLogsToEmail = SendEmail;
+			ProfileSettingsPageModel.SendLogsToEmail = SendEmail;
 
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 			TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;

@@ -44,10 +44,14 @@
     <Compile Include="PageModels\CurrentContestCompetitorsPageModel.cs" />
     <Compile Include="PageModels\LoginPageModel.cs" />
     <Compile Include="PageModels\ProfilePageModel.cs" />
+    <Compile Include="PageModels\ProfileSettingsPageModel.cs" />
     <Compile Include="PageModels\RegistrationCameraPageModel.cs" />
     <Compile Include="PageModels\RegistrationDeskPageModel.cs" />
     <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="PageModels\UserRegistrationPageModel.cs" />
+    <Compile Include="Pages\Start\ProfileSettingsPage.xaml.cs">
+      <DependentUpon>ProfileSettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProfileItem.cs" />
     <Compile Include="PageModels\CurrentEventPageModel.cs" />
     <Compile Include="PageModels\MyEventsPageModel.cs" />
@@ -290,6 +294,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Start\ProfileSettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

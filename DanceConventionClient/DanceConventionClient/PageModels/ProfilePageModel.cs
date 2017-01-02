@@ -40,5 +40,16 @@ namespace DanceConventionClient.PageModels
 				});
 			}
 		}
+
+		public Command SettingsCommand
+		{
+			get
+			{
+				return new Command(async() =>
+				{
+					await CoreMethods.PushPageModel<ProfileSettingsPageModel>();
+				});
+			}
+		}
 	}
 }
