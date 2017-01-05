@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.CurrentEventPage"
-			 Title="Event">
+			 Title="{x:Static portable:AppResources.CurrentEventPageTitle}">
 
 	<StackLayout>
 		<Label Text="{Binding CurrentEvent.Name}"
@@ -10,18 +11,18 @@
 			   FontAttributes="Bold"
 			   HorizontalOptions="CenterAndExpand"
 			   TextColor="Black"/>
-		
-		<Button Text="My registration"
+
+		<Button Text="{x:Static portable:AppResources.CurrentEventPageRegButton}"
 				Command="{Binding MyRegistrationCommand}"
 				IsVisible="{Binding IsCompetitor}"
 				Style="{StaticResource ButtonStyle}"/>
-		
-		<Button Text="Contest check-in"
+
+		<Button Text="{x:Static portable:AppResources.CurrentEventPageContestButton}"
 				Command="{Binding ContestCheckinCommand}"
 				IsVisible="{Binding IsStaff}"
 				Style="{StaticResource ButtonStyle}"/>
-		
-		<Button Text="Registration desk"				
+
+		<Button Text="{x:Static portable:AppResources.CurrentEventPageRegDeskButton}"				
 				IsVisible="{Binding IsStaff}"
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding RegistrationCommand}"/>

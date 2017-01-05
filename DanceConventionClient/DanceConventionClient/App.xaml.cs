@@ -39,6 +39,10 @@ namespace DanceConventionClient
 				DateTimeZoneHandling = DateTimeZoneHandling.Utc,
 				ContractResolver = new CamelCasePropertyNamesContractResolver()
 			};
+
+			var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+			AppResources.Culture = ci;
+			DependencyService.Get<ILocalize>().SetLocale(ci);
 		}
 
 		public static void NavigateToLoginPage()

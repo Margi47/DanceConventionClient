@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.CurrentContestCompetitorsPage"
 			 Title="{Binding CurrentContest.Name}">
 	
@@ -30,15 +31,16 @@
 									   HorizontalOptions="StartAndExpand"/>
 								</StackLayout>
 								<Label Text="{Binding PartnerName}"
-								   Style="{StaticResource Detaillabel}"
-								   IsVisible="{Binding HasPartner}"/>
+									   Style="{StaticResource Detaillabel}"
+									   IsVisible="{Binding HasPartner}"/>
 							</StackLayout>
+							
 							<Label Text="&#xf00c;" 
-									   IsVisible="{Binding CheckedIn}"
-									   HorizontalOptions="EndAndExpand"
+								   IsVisible="{Binding CheckedIn}"
+								   HorizontalOptions="EndAndExpand"
 								   VerticalOptions="Center"
-									   Margin="0,0,15,0"
-									   TextColor="Blue"/>
+								   Margin="0,0,15,0"
+								   TextColor="Blue"/>
 						</StackLayout>
 						
 					</ViewCell>
@@ -51,7 +53,7 @@
 						   VerticalOptions="CenterAndExpand" 
 						   HorizontalOptions="CenterAndExpand" />
 
-		<Label Text="No Results"
+		<Label Text="{x:Static portable:AppResources.CompetitorsPageInfo}"
 			   Style="{StaticResource InfoLabel}"
 			   IsVisible="{Binding ShowInfo}"/>
 	</StackLayout>

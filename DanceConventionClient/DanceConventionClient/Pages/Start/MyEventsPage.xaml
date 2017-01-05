@@ -1,22 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.MyEventsPage"
-			 Title="My events"
-			 Style="{StaticResource PageStyle}">
+			 Title="{x:Static portable:AppResources.MyEventsPageTitle}">
 
 		<StackLayout Margin="0,3,0,0">
-		<ListView x:Name="ListView1"
-				  Style="{StaticResource ListViewStyle}"
+		<ListView Style="{StaticResource ListViewStyle}"
 				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
-				  >
+				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
 			
 			<ListView.HeaderTemplate>
 				<DataTemplate>
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-					<Label Text="Current Events"
+						<Label Text="{x:Static portable:AppResources.MyEventsPageCurrentHeader}"
 						   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</DataTemplate>
@@ -46,7 +44,7 @@
 				<DataTemplate>
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-						<Label Text="Past Events"
+						<Label Text="{x:Static portable:AppResources.MyEventsPagePastHeader}"
 							   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</DataTemplate>

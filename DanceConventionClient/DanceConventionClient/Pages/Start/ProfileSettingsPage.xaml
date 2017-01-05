@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.ProfileSettingsPage"
-			 Title="Settings">
+			 Title="{x:Static portable:AppResources.SettingsPageTitle}">
 
 	<StackLayout>
 		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-			<Label Text="Enable verbose logging"
+			<Label Text="{x:Static portable:AppResources.SettingsPageVerboseSwitchLabel}"
 				   Style="{StaticResource Itemlabel}"
 				   Margin="20,20,0,13"
 				   FontAttributes="Bold"/>
@@ -15,8 +16,8 @@
 					VerticalOptions="Center"
 					Margin="0,20,20,13"/>
 		</StackLayout>
-		
-		<Button Text="Report Error" 
+
+		<Button Text="{x:Static portable:AppResources.SettingsPageReportButton}" 
 				Command="{Binding SendLogCommand}"
 				Style="{StaticResource ButtonStyle}"/>
 

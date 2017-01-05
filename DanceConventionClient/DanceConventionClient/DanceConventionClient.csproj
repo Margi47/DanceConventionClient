@@ -38,6 +38,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppResources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ILocalize.cs" />
     <Compile Include="PageModels\BarcodePageModel.cs" />
     <Compile Include="PageModels\CameraPageModel.cs" />
     <Compile Include="PageModels\ContestCheckinPageModel.cs" />
@@ -52,6 +63,7 @@
     <Compile Include="Pages\Start\ProfileSettingsPage.xaml.cs">
       <DependentUpon>ProfileSettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlatformCulture.cs" />
     <Compile Include="ProfileItem.cs" />
     <Compile Include="PageModels\CurrentEventPageModel.cs" />
     <Compile Include="PageModels\MyEventsPageModel.cs" />
@@ -104,6 +116,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Start\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

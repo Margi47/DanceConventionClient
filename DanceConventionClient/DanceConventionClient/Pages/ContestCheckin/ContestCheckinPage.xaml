@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.ContestCheckinPage"
 			 Title="{Binding CurrentEvent.Name}">
 
 	<StackLayout>
-		<Button x:Name="CameraButton"
-				Text="Scan QR Code" 
+		<Button Text="{x:Static portable:AppResources.ContestPageCameraButton}" 
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding CameraCommand}"
 				IsEnabled="{Binding CameraEnabled}"/>
@@ -21,7 +21,7 @@
 				<DataTemplate>
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-						<Label Text="Contests"
+						<Label Text="{x:Static portable:AppResources.ContestPageHeader}"
 							   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</DataTemplate>
@@ -43,7 +43,7 @@
 						   VerticalOptions="CenterAndExpand" 
 						   HorizontalOptions="CenterAndExpand" />
 
-		<Label Text="No contests available for check-in"
+		<Label Text="{x:Static portable:AppResources.ContestPageInfo}"
 			   Style="{StaticResource InfoLabel}"
 			   IsVisible="{Binding ShowInfo}"/>
 	</StackLayout>

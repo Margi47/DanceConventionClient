@@ -29,7 +29,14 @@ namespace DanceConventionClient.PageModels
 			set
 			{
 				SetLogLevel(value);
-				Text = "Log level changed to " + Application.Current.Properties["logLevel"];
+				if (Application.Current.Properties["logLevel"].ToString() == "verbose")
+				{
+					Text = AppResources.SettingsPageInfoVerbose;
+				}
+				else
+				{
+					Text = AppResources.SettingsPageInfoInformation;
+				}
 			} 
 		}
 
@@ -74,7 +81,7 @@ namespace DanceConventionClient.PageModels
 					Application.Current.Properties["url"] = Url;
 					_logger.Information("Changing url to {Url}", Url);
 					await Application.Current.SavePropertiesAsync();
-					Text = "URL changed to " + Url;
+					Text = AppResources.SettingsPageInfoUrl + Url;
 				});
 			}
 		}
