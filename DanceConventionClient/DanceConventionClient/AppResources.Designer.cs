@@ -62,20 +62,38 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan QR Code.
+        /// </summary>
+        public static string CameraButton {
+            get {
+                return ResourceManager.GetString("CameraButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanning QR Code.
+        /// </summary>
+        public static string CameraPageTitle {
+            get {
+                return ResourceManager.GetString("CameraPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QR Code.
+        /// </summary>
+        public static string CodePageTitle {
+            get {
+                return ResourceManager.GetString("CodePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Results.
         /// </summary>
         public static string CompetitorsPageInfo {
             get {
                 return ResourceManager.GetString("CompetitorsPageInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scan QR Code.
-        /// </summary>
-        public static string ContestPageCameraButton {
-            get {
-                return ResourceManager.GetString("ContestPageCameraButton", resourceCulture);
             }
         }
         
@@ -224,6 +242,51 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string RegDeskPageAmount {
+            get {
+                return ResourceManager.GetString("RegDeskPageAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment  .
+        /// </summary>
+        public static string RegDeskPageComment {
+            get {
+                return ResourceManager.GetString("RegDeskPageComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ALL AMOUNTS DISPLAYED IN:.
+        /// </summary>
+        public static string RegDeskPageCurrency {
+            get {
+                return ResourceManager.GetString("RegDeskPageCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owed:.
+        /// </summary>
+        public static string RegDeskPageOwed {
+            get {
+                return ResourceManager.GetString("RegDeskPageOwed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record Payment.
+        /// </summary>
+        public static string RegDeskPagePaymentButton {
+            get {
+                return ResourceManager.GetString("RegDeskPagePaymentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log level changed to information.
         /// </summary>
         public static string SettingsPageInfoInformation {
@@ -292,6 +355,51 @@ namespace DanceConventionClient {
         public static string SettingsPageVerboseSwitchLabel {
             get {
                 return ResourceManager.GetString("SettingsPageVerboseSwitchLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signup Info.
+        /// </summary>
+        public static string UserRegPageHeader {
+            get {
+                return ResourceManager.GetString("UserRegPageHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoiced:.
+        /// </summary>
+        public static string UserRegPageInvoiced {
+            get {
+                return ResourceManager.GetString("UserRegPageInvoiced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid:.
+        /// </summary>
+        public static string UserRegPagePaid {
+            get {
+                return ResourceManager.GetString("UserRegPagePaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event pass.
+        /// </summary>
+        public static string UserRegPagePass {
+            get {
+                return ResourceManager.GetString("UserRegPagePass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration QR Code.
+        /// </summary>
+        public static string UserRegPageQrButton {
+            get {
+                return ResourceManager.GetString("UserRegPageQrButton", resourceCulture);
             }
         }
     }

@@ -6,7 +6,7 @@
 			 Title="{Binding CurrentEvent.Name}">
 
 	<StackLayout>
-		<Button Text="{x:Static portable:AppResources.ContestPageCameraButton}" 
+		<Button Text="{x:Static portable:AppResources.CameraButton}" 
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding CameraCommand}"
 				IsEnabled="{Binding CameraEnabled}"/>

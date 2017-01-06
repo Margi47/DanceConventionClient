@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:DanceConventionClient.Pages;assembly=DanceConventionClient"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.RegistrationDeskPage"
 			 Title="{Binding CurrentEvent.Name}">
 
 	<StackLayout>
-		<Button Text="Scan QR Code"
+		<Button Text="{x:Static portable:AppResources.CameraButton}"
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding ScannerCommand}"/>
 		

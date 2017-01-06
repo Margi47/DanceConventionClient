@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TableView xmlns="http://xamarin.com/schemas/2014/forms"
            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
            x:Class="DanceConventionClient.Pages.SignupView"
-		   x:Name="SignupTableView"
 		   Intent="Data"
 		   HasUnevenRows="True">
 		<TableRoot>
@@ -26,14 +26,14 @@
 								   Margin="0,0,0,0"/>
 						</StackLayout>
 						<StackLayout Orientation="Horizontal" Margin="0,0,0,5">
-							<Label Text="Paid:"
+							<Label Text="{x:Static portable:AppResources.UserRegPagePaid}"
 								   Style="{StaticResource Itemlabel}"
 								   TextColor="Blue"/>
 							<Label Text="{Binding CurrentSignup.AmountPaid, StringFormat='{0:0.00}'}"
 								   Style="{StaticResource Itemlabel}"
 								   Margin="0,0,0,0"
 								   TextColor="Blue"/>
-							<Label x:Name="OwedLabel" Text="Owed:"
+							<Label Text="{x:Static portable:AppResources.RegDeskPageOwed}"
 								   Style="{StaticResource Itemlabel}"
 								   TextColor="Red"/>
 							<Label Text="{Binding CurrentSignup.AmountOwed, StringFormat='{0:0.00}'}"
@@ -46,7 +46,7 @@
 				<ViewCell>
 					<StackLayout Orientation="Horizontal"
 								 HorizontalOptions="CenterAndExpand">
-						<Label Text="ALL AMOUNTS DISPLAYED IN: "
+						<Label Text="{x:Static portable:AppResources.RegDeskPageCurrency}"
 							   Style="{StaticResource InfoLabel}"
 							   FontSize="13"
 							   HorizontalOptions="Center"
@@ -58,8 +58,7 @@
 					</StackLayout>
 				</ViewCell>
 			<ViewCell Height="30">
-				<Label x:Name="Status"
-					   Text="{Binding CurrentSignup.Status}"
+				<Label Text="{Binding CurrentSignup.Status}"
 					   TextColor="White"
 					   HorizontalOptions="FillAndExpand"
 					   HorizontalTextAlignment="Center"
@@ -73,7 +72,7 @@
 			<TableSection>
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal">
-						<Label Text="Amount "
+						<Label Text="{x:Static portable:AppResources.RegDeskPageAmount}"
 							   Style="{StaticResource Itemlabel}"/>
 						<Entry Text="{Binding PaymentAmount, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
@@ -87,14 +86,14 @@
 				</ViewCell>
 				<ViewCell  Height="40">
 					<StackLayout Orientation="Horizontal">
-						<Label Text="Comment  "
+						<Label Text="{x:Static portable:AppResources.RegDeskPageComment}"
 							   Style="{StaticResource Itemlabel}"/>
 						<Entry Text="{Binding PaymentComment, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
 					</StackLayout>
 				</ViewCell>
 				<ViewCell>
-					<Button Text="RecordPayment"
+				<Button Text="{x:Static portable:AppResources.RegDeskPagePaymentButton}"
 							Command="{Binding PaymentCommand}"	
 							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>

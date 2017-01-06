@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:portable="clr-namespace:DanceConventionClient;assembly=DanceConventionClient"
              x:Class="DanceConventionClient.Pages.UserRegistrationPage"
 			 Title="{Binding CurrentEvent.Name}">
 	
@@ -11,7 +12,7 @@
 				<ViewCell Height="40">
 					<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-						<Label Text="Signup Info"
+						<Label Text="{x:Static portable:AppResources.UserRegPageHeader}"
 							   Style="{StaticResource Headerlabel}"/>
 					</Frame>
 				</ViewCell>
@@ -35,7 +36,7 @@
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal"
 								 HorizontalOptions="FillAndExpand">
-						<Label Text="Event pass"
+						<Label Text="{x:Static portable:AppResources.UserRegPagePass}"
 							   Style="{StaticResource Itemlabel}"/>
 						<Label Text="{Binding CurrentSignup.SelectedPass}"
 							   Style="{StaticResource Itemlabel}"
@@ -47,14 +48,14 @@
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal"
 								 HorizontalOptions="FillAndExpand">
-						<Label Text="Invoiced:"
+						<Label Text="{x:Static portable:AppResources.UserRegPageInvoiced}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="Start"/>
 						<Label Text="{Binding CurrentSignup.AmountInvoiced, StringFormat='{0:0.00}'}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="StartAndExpand"
 							   Margin="0,0,0,0"/>
-						<Label Text="Paid:"
+						<Label Text="{x:Static portable:AppResources.UserRegPagePaid}"
 							   Style="{StaticResource Itemlabel}"
 							   HorizontalOptions="EndAndExpand"
 							   TextColor="{Binding TextColor}"/>
@@ -67,7 +68,7 @@
 				</ViewCell>
 				
 				<ViewCell>
-					<Button Text="Registration QR Code" 
+					<Button Text="{x:Static portable:AppResources.UserRegPageQrButton}" 
 							 Command="{Binding QrCodeCommand}"
 							Style="{StaticResource ButtonStyle}"/>
 				</ViewCell>
@@ -81,7 +82,7 @@
 							<DataTemplate>
 								<Frame Style="{StaticResource HeaderFrame}"
 									   Padding="20,0,0,0">
-									<Label Text="Contests"
+									<Label Text="{x:Static portable:AppResources.ContestPageHeader}"
 										   Style="{StaticResource Headerlabel}"/>
 								</Frame>
 							</DataTemplate>

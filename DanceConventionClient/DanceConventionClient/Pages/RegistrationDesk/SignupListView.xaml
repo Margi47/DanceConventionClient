@@ -8,8 +8,7 @@
 	<ListView.ItemTemplate>
 		<DataTemplate>
 			<ViewCell>
-				<Label x:Name="ListLabel"
-					   Text="{Binding ParticipantName}"
+				<Label Text="{Binding ParticipantName}"
 					   Style="{StaticResource Itemlabel}"
 					   HeightRequest="40"/>
 			</ViewCell>
