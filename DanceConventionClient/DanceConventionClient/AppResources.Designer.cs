@@ -71,6 +71,42 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not signed up for currently active competitions.
+        /// </summary>
+        public static string CameraPageErrorBody {
+            get {
+                return ResourceManager.GetString("CameraPageErrorBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to was checked-in..
+        /// </summary>
+        public static string CameraPageSuccessBody {
+            get {
+                return ResourceManager.GetString("CameraPageSuccessBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return.
+        /// </summary>
+        public static string CameraPageSuccessNo {
+            get {
+                return ResourceManager.GetString("CameraPageSuccessNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string CameraPageSuccessYes {
+            get {
+                return ResourceManager.GetString("CameraPageSuccessYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scanning QR Code.
         /// </summary>
         public static string CameraPageTitle {
@@ -85,15 +121,6 @@ namespace DanceConventionClient {
         public static string CodePageTitle {
             get {
                 return ResourceManager.GetString("CodePageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Results.
-        /// </summary>
-        public static string CompetitorsPageInfo {
-            get {
-                return ResourceManager.GetString("CompetitorsPageInfo", resourceCulture);
             }
         }
         
@@ -148,6 +175,24 @@ namespace DanceConventionClient {
         public static string CurrentEventPageTitle {
             get {
                 return ResourceManager.GetString("CurrentEventPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string ErrorAnswer {
+            get {
+                return ResourceManager.GetString("ErrorAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
             }
         }
         
@@ -224,6 +269,15 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Results.
+        /// </summary>
+        public static string NoResultsInfo {
+            get {
+                return ResourceManager.GetString("NoResultsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string ProfilePageLogoutButton {
@@ -238,6 +292,42 @@ namespace DanceConventionClient {
         public static string ProfilePageTitle {
             get {
                 return ResourceManager.GetString("ProfilePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you really want to undo this check-in?.
+        /// </summary>
+        public static string RegDeskConfirmBody {
+            get {
+                return ResourceManager.GetString("RegDeskConfirmBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string RegDeskConfirmNo {
+            get {
+                return ResourceManager.GetString("RegDeskConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string RegDeskConfirmTitle {
+            get {
+                return ResourceManager.GetString("RegDeskConfirmTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string RegDeskConfirmYes {
+            get {
+                return ResourceManager.GetString("RegDeskConfirmYes", resourceCulture);
             }
         }
         
@@ -269,6 +359,15 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter participant name or scan QR code.
+        /// </summary>
+        public static string RegDeskPageInfo {
+            get {
+                return ResourceManager.GetString("RegDeskPageInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Owed:.
         /// </summary>
         public static string RegDeskPageOwed {
@@ -283,6 +382,15 @@ namespace DanceConventionClient {
         public static string RegDeskPagePaymentButton {
             get {
                 return ResourceManager.GetString("RegDeskPagePaymentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter payment amount.
+        /// </summary>
+        public static string RegDeskPaymentError {
+            get {
+                return ResourceManager.GetString("RegDeskPaymentError", resourceCulture);
             }
         }
         
@@ -355,6 +463,15 @@ namespace DanceConventionClient {
         public static string SettingsPageVerboseSwitchLabel {
             get {
                 return ResourceManager.GetString("SettingsPageVerboseSwitchLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful.
+        /// </summary>
+        public static string SuccessTitle {
+            get {
+                return ResourceManager.GetString("SuccessTitle", resourceCulture);
             }
         }
         

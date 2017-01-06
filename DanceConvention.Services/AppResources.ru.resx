@@ -117,157 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CameraButton" xml:space="preserve">
-    <value>Сканировать QR код</value>
+  <data name="ErrorBody" xml:space="preserve">
+    <value>Операция прервана. Повторите или перезапустите приложение.</value>
   </data>
-  <data name="CameraPageErrorBody" xml:space="preserve">
-    <value>Не найдено регистраций на соревнования</value>
-  </data>
-  <data name="CameraPageSuccessBody" xml:space="preserve">
-    <value>был зарегестрирован.</value>
-  </data>
-  <data name="CameraPageSuccessNo" xml:space="preserve">
-    <value>Вернуться</value>
-  </data>
-  <data name="CameraPageSuccessYes" xml:space="preserve">
-    <value>Следующий</value>
-  </data>
-  <data name="CameraPageTitle" xml:space="preserve">
-    <value>Сканирование</value>
-  </data>
-  <data name="CodePageTitle" xml:space="preserve">
-    <value>QR Код</value>
-  </data>
-  <data name="ContestPageHeader" xml:space="preserve">
-    <value>Соревнования</value>
-  </data>
-  <data name="ContestPageInfo" xml:space="preserve">
-    <value>Нет соревнований, открытых для регистрации</value>
-  </data>
-  <data name="CurrentEventPageContestButton" xml:space="preserve">
-    <value>Регистрация на соревнования</value>
-  </data>
-  <data name="CurrentEventPageRegButton" xml:space="preserve">
-    <value>Моя регистрация</value>
-  </data>
-  <data name="CurrentEventPageRegDeskButton" xml:space="preserve">
-    <value>Регистрация на мероприятие</value>
-  </data>
-  <data name="CurrentEventPageTitle" xml:space="preserve">
-    <value>Мероприятие</value>
-  </data>
-  <data name="ErrorAnswer" xml:space="preserve">
+  <data name="ErrorCancel" xml:space="preserve">
     <value>Отмена</value>
+  </data>
+  <data name="ErrorRetry" xml:space="preserve">
+    <value>Повторить</value>
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Ошибка</value>
-  </data>
-  <data name="LoginPageHeader" xml:space="preserve">
-    <value>danceConvention.net</value>
-  </data>
-  <data name="LoginPageLogButton" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="LoginPageLoginLabel" xml:space="preserve">
-    <value>Логин</value>
-  </data>
-  <data name="LoginPagePasswordLabel" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="LoginPageTitle" xml:space="preserve">
-    <value>Добро пожаловать</value>
-  </data>
-  <data name="MyEventsPageCurrentHeader" xml:space="preserve">
-    <value>Скоро</value>
-  </data>
-  <data name="MyEventsPagePastHeader" xml:space="preserve">
-    <value>Прошедшие</value>
-  </data>
-  <data name="MyEventsPageTitle" xml:space="preserve">
-    <value>Мои мероприятия</value>
-  </data>
-  <data name="NoResultsInfo" xml:space="preserve">
-    <value>Результатов не найдено</value>
-  </data>
-  <data name="ProfilePageLogoutButton" xml:space="preserve">
-    <value>Выйти</value>
-  </data>
-  <data name="ProfilePageTitle" xml:space="preserve">
-    <value>Профиль</value>
-  </data>
-  <data name="RegDeskConfirmBody" xml:space="preserve">
-    <value>Отменить регистрацию?</value>
-  </data>
-  <data name="RegDeskConfirmNo" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="RegDeskConfirmTitle" xml:space="preserve">
-    <value>Подтверждение</value>
-  </data>
-  <data name="RegDeskConfirmYes" xml:space="preserve">
-    <value>Да</value>
-  </data>
-  <data name="RegDeskPageAmount" xml:space="preserve">
-    <value>Сумма </value>
-  </data>
-  <data name="RegDeskPageComment" xml:space="preserve">
-    <value>Комментарий</value>
-  </data>
-  <data name="RegDeskPageCurrency" xml:space="preserve">
-    <value>ВСЕ ЦЕНЫ УКАЗАНЫ В: </value>
-  </data>
-  <data name="RegDeskPageInfo" xml:space="preserve">
-    <value>Введите имя участника или просканируйте код</value>
-  </data>
-  <data name="RegDeskPageOwed" xml:space="preserve">
-    <value>Не оплачено:</value>
-  </data>
-  <data name="RegDeskPagePaymentButton" xml:space="preserve">
-    <value>Внести платеж</value>
-  </data>
-  <data name="RegDeskPaymentError" xml:space="preserve">
-    <value>Введите сумму платежа</value>
-  </data>
-  <data name="SettingsPageInfoInformation" xml:space="preserve">
-    <value>Расширенное логгированиег отключено</value>
-  </data>
-  <data name="SettingsPageInfoUrl" xml:space="preserve">
-    <value>Адрес сервера изменен на:</value>
-  </data>
-  <data name="SettingsPageInfoVerbose" xml:space="preserve">
-    <value>Расширенное логгирование включено</value>
-  </data>
-  <data name="SettingsPageReportButton" xml:space="preserve">
-    <value>Отправить отчет</value>
-  </data>
-  <data name="SettingsPageSubmitButton" xml:space="preserve">
-    <value>Применить</value>
-  </data>
-  <data name="SettingsPageTitle" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="SettingsPageUrlLabel" xml:space="preserve">
-    <value>Адрес сервера</value>
-  </data>
-  <data name="SettingsPageVerboseSwitchLabel" xml:space="preserve">
-    <value>Расширенное логгирование</value>
-  </data>
-  <data name="SuccessTitle" xml:space="preserve">
-    <value>Готово</value>
-  </data>
-  <data name="UserRegPageHeader" xml:space="preserve">
-    <value>Регистрация</value>
-  </data>
-  <data name="UserRegPageInvoiced" xml:space="preserve">
-    <value>Выставлено:</value>
-  </data>
-  <data name="UserRegPagePaid" xml:space="preserve">
-    <value>Оплачено:</value>
-  </data>
-  <data name="UserRegPagePass" xml:space="preserve">
-    <value>Выбранный пасс</value>
-  </data>
-  <data name="UserRegPageQrButton" xml:space="preserve">
-    <value>Посмотреть QR код регистрации</value>
   </data>
 </root>

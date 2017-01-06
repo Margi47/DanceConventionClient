@@ -31,7 +31,15 @@ namespace DanceConventionClient.PageModels
 			set
 			{
 				SetLogLevel(value);
-				Text = "Log level changed to " + Application.Current.Properties["logLevel"];
+				if (Application.Current.Properties["logLevel"].ToString() == "verbose")
+				{
+					Text = AppResources.SettingsPageInfoVerbose;
+				}
+				else
+				{
+					Text = AppResources.SettingsPageInfoInformation;
+				}
+
 				_logger.Information(Text);
 			}
 		}

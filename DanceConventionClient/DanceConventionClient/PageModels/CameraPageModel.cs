@@ -67,7 +67,8 @@ namespace DanceConventionClient.PageModels
 
 				if (signup.BibNumber == null)
 				{
-					await CoreMethods.DisplayAlert("Error", "Not signed up for currently active competitions", "OK");
+					await CoreMethods.DisplayAlert(AppResources.ErrorTitle, 
+						AppResources.CameraPageErrorBody, AppResources.ErrorAnswer);
 					return;
 				}
 
@@ -75,7 +76,9 @@ namespace DanceConventionClient.PageModels
 				await _service.AllContestCheckin(eventId, userId, signup.BibNumber.Value, true);
 				IsLoading = false;
 				var answer =
-					await CoreMethods.DisplayAlert("Successful", signup.ParticipantName + " was checked-in.", "Next", "Return");
+					await CoreMethods.DisplayAlert(AppResources.SuccessTitle, 
+					signup.ParticipantName + " " + AppResources.CameraPageSuccessBody, 
+					AppResources.CameraPageSuccessYes, AppResources.CameraPageSuccessYes);
 
 				if (!answer)
 				{

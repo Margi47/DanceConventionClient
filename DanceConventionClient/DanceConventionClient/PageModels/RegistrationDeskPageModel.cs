@@ -37,7 +37,7 @@ namespace DanceConventionClient.PageModels
 		{
 			_service = App.MyService;
 			SetVisibility(true, false, false);
-			InfoText = "Enter participant name \n or scan QR code";
+			InfoText = AppResources.RegDeskPageInfo;
 		}
 
 		public override void Init(object initData)
@@ -75,7 +75,7 @@ namespace DanceConventionClient.PageModels
 					}
 					else
 					{
-						InfoText = "No Results";
+						InfoText = AppResources.NoResultsInfo;
 					}
 				});
 			}
@@ -103,7 +103,8 @@ namespace DanceConventionClient.PageModels
 
 		private void GetStatusColor()
 		{
-			if (CurrentSignup.Status == "ATTENDED" || CurrentSignup.Status == "CANCELLED" || CurrentSignup.Status == "APPROVED")
+			if (CurrentSignup.Status == "ATTENDED" 
+				|| CurrentSignup.Status == "CANCELLED" || CurrentSignup.Status == "APPROVED")
 			{
 				StatusColor = Color.Blue;
 			}
@@ -142,7 +143,8 @@ namespace DanceConventionClient.PageModels
 					if (CurrentSignup.Attended)
 					{
 						var answer =
-							await CoreMethods.DisplayAlert("Confirmation", "Do you really want to undo this check-in?", "Yes", "No");
+							await CoreMethods.DisplayAlert(AppResources.RegDeskConfirmTitle, 
+							AppResources.RegDeskConfirmBody, AppResources.RegDeskConfirmYes, AppResources.RegDeskConfirmNo);
 
 						if (answer)
 						{
@@ -198,7 +200,8 @@ namespace DanceConventionClient.PageModels
 					}
 					else
 					{
-						await CoreMethods.DisplayAlert("Error", "Please enter payment amount", "OK");
+						await CoreMethods.DisplayAlert(AppResources.ErrorTitle, AppResources.RegDeskPaymentError, 
+							AppResources.ErrorAnswer);
 					}
 				});
 			}

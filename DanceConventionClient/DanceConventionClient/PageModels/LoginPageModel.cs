@@ -42,7 +42,7 @@ namespace DanceConventionClient.PageModels
 					}
 					else
 					{
-						await CoreMethods.DisplayAlert("Error", loginResult.ErrorMessage, "OK");
+						await CoreMethods.DisplayAlert(AppResources.ErrorTitle, loginResult.ErrorMessage, AppResources.ErrorAnswer);
 					}
 
 				});

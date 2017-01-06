@@ -117,157 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CameraButton" xml:space="preserve">
-    <value>Scan QR Code</value>
+  <data name="ErrorBody" xml:space="preserve">
+    <value>Operation failed. Please retry or re-run the application</value>
   </data>
-  <data name="CameraPageErrorBody" xml:space="preserve">
-    <value>Not signed up for currently active competitions</value>
+  <data name="ErrorCancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="CameraPageSuccessBody" xml:space="preserve">
-    <value>was checked-in.</value>
-  </data>
-  <data name="CameraPageSuccessNo" xml:space="preserve">
-    <value>Return</value>
-  </data>
-  <data name="CameraPageSuccessYes" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="CameraPageTitle" xml:space="preserve">
-    <value>Scanning QR Code</value>
-  </data>
-  <data name="CodePageTitle" xml:space="preserve">
-    <value>QR Code</value>
-  </data>
-  <data name="ContestPageHeader" xml:space="preserve">
-    <value>Contests</value>
-  </data>
-  <data name="ContestPageInfo" xml:space="preserve">
-    <value>No contests available for check-in</value>
-  </data>
-  <data name="CurrentEventPageContestButton" xml:space="preserve">
-    <value>Contest check-in</value>
-  </data>
-  <data name="CurrentEventPageRegButton" xml:space="preserve">
-    <value>My registration</value>
-  </data>
-  <data name="CurrentEventPageRegDeskButton" xml:space="preserve">
-    <value>Registration desk</value>
-  </data>
-  <data name="CurrentEventPageTitle" xml:space="preserve">
-    <value>Event</value>
-  </data>
-  <data name="ErrorAnswer" xml:space="preserve">
-    <value>OK</value>
+  <data name="ErrorRetry" xml:space="preserve">
+    <value>Retry</value>
   </data>
   <data name="ErrorTitle" xml:space="preserve">
     <value>Error</value>
-  </data>
-  <data name="LoginPageHeader" xml:space="preserve">
-    <value>danceConvention.net</value>
-  </data>
-  <data name="LoginPageLogButton" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="LoginPageLoginLabel" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="LoginPagePasswordLabel" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="LoginPageTitle" xml:space="preserve">
-    <value>Welcome</value>
-  </data>
-  <data name="MyEventsPageCurrentHeader" xml:space="preserve">
-    <value>Current Events</value>
-  </data>
-  <data name="MyEventsPagePastHeader" xml:space="preserve">
-    <value>Past Events</value>
-  </data>
-  <data name="MyEventsPageTitle" xml:space="preserve">
-    <value>MyEvents</value>
-  </data>
-  <data name="NoResultsInfo" xml:space="preserve">
-    <value>No Results</value>
-  </data>
-  <data name="ProfilePageLogoutButton" xml:space="preserve">
-    <value>Logout</value>
-  </data>
-  <data name="ProfilePageTitle" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="RegDeskConfirmBody" xml:space="preserve">
-    <value>Do you really want to undo this check-in?</value>
-  </data>
-  <data name="RegDeskConfirmNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="RegDeskConfirmTitle" xml:space="preserve">
-    <value>Confirmation</value>
-  </data>
-  <data name="RegDeskConfirmYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="RegDeskPageAmount" xml:space="preserve">
-    <value>Amount</value>
-  </data>
-  <data name="RegDeskPageComment" xml:space="preserve">
-    <value>Comment  </value>
-  </data>
-  <data name="RegDeskPageCurrency" xml:space="preserve">
-    <value>ALL AMOUNTS DISPLAYED IN:</value>
-  </data>
-  <data name="RegDeskPageInfo" xml:space="preserve">
-    <value>Enter participant name or scan QR code</value>
-  </data>
-  <data name="RegDeskPageOwed" xml:space="preserve">
-    <value>Owed:</value>
-  </data>
-  <data name="RegDeskPagePaymentButton" xml:space="preserve">
-    <value>Record Payment</value>
-  </data>
-  <data name="RegDeskPaymentError" xml:space="preserve">
-    <value>Please enter payment amount</value>
-  </data>
-  <data name="SettingsPageInfoInformation" xml:space="preserve">
-    <value>Log level changed to information</value>
-  </data>
-  <data name="SettingsPageInfoUrl" xml:space="preserve">
-    <value>URL changed to: </value>
-  </data>
-  <data name="SettingsPageInfoVerbose" xml:space="preserve">
-    <value>Log level changed to verbose</value>
-  </data>
-  <data name="SettingsPageReportButton" xml:space="preserve">
-    <value>Report Error</value>
-  </data>
-  <data name="SettingsPageSubmitButton" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="SettingsPageTitle" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="SettingsPageUrlLabel" xml:space="preserve">
-    <value>Server URL</value>
-  </data>
-  <data name="SettingsPageVerboseSwitchLabel" xml:space="preserve">
-    <value>Enable verbose logging</value>
-  </data>
-  <data name="SuccessTitle" xml:space="preserve">
-    <value>Successful</value>
-  </data>
-  <data name="UserRegPageHeader" xml:space="preserve">
-    <value>Signup Info</value>
-  </data>
-  <data name="UserRegPageInvoiced" xml:space="preserve">
-    <value>Invoiced:</value>
-  </data>
-  <data name="UserRegPagePaid" xml:space="preserve">
-    <value>Paid:</value>
-  </data>
-  <data name="UserRegPagePass" xml:space="preserve">
-    <value>Event pass</value>
-  </data>
-  <data name="UserRegPageQrButton" xml:space="preserve">
-    <value>Registration QR Code</value>
   </data>
 </root>

@@ -26,6 +26,7 @@ namespace DanceConventionClient.PageModels
 		public CurrentContestCompetitorsPageModel()
 		{
 			_service = App.MyService;
+			InfoText = AppResources.ContestPageInfo;
 		}
 
 		public override async void Init(object initData)

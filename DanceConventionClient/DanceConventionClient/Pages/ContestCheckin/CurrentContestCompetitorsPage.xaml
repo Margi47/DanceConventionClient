@@ -53,7 +53,7 @@
 						   VerticalOptions="CenterAndExpand" 
 						   HorizontalOptions="CenterAndExpand" />
 
-		<Label Text="{x:Static portable:AppResources.CompetitorsPageInfo}"
+		<Label Text="{x:Static portable:AppResources.NoResultsInfo}"
 			   Style="{StaticResource InfoLabel}"
 			   IsVisible="{Binding ShowInfo}"/>
 	</StackLayout>

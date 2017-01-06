@@ -37,6 +37,8 @@ namespace DanceConventionClient.PageModels
 				{
 					Text = AppResources.SettingsPageInfoInformation;
 				}
+
+				_logger.Information(Text);
 			} 
 		}
 

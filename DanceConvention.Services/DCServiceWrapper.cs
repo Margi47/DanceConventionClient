@@ -46,9 +46,9 @@ namespace DanceConventionClient.Services
 						_logger.Warning(e, "An error occured");
 					}
 				}
-
 				var answer = Application.Current.MainPage
-							.DisplayAlert("Error", "Operation failed. Please retry or re-run the application", "Retry", "Delay");
+							.DisplayAlert(AppResources.ErrorTitle, AppResources.ErrorBody, 
+							AppResources.ErrorRetry, AppResources.ErrorCancel);
 				retry = await answer;
 
 				if (retry)
@@ -59,7 +59,7 @@ namespace DanceConventionClient.Services
 				}
 
 			} while (retry);
-
+			
 			return await Task.FromResult((T) null);
 		}
 
