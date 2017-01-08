@@ -124,7 +124,7 @@
     <value>Не найдено регистраций на соревнования</value>
   </data>
   <data name="CameraPageSuccessBody" xml:space="preserve">
-    <value>был зарегестрирован.</value>
+    <value> зарегистрирован(а).</value>
   </data>
   <data name="CameraPageSuccessNo" xml:space="preserve">
     <value>Вернуться</value>
@@ -228,8 +228,20 @@
   <data name="RegDeskPaymentError" xml:space="preserve">
     <value>Введите сумму платежа</value>
   </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="SettingsPageAlertBody" xml:space="preserve">
+    <value>Для изменения языка необходимо презагрузить приложение</value>
+  </data>
+  <data name="SettingsPageAlertTitle" xml:space="preserve">
+    <value>Внимание</value>
+  </data>
+  <data name="SettingsPageAlertYes" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="SettingsPageInfoInformation" xml:space="preserve">
-    <value>Расширенное логгированиег отключено</value>
+    <value>Расширенное логгирование отключено</value>
   </data>
   <data name="SettingsPageInfoUrl" xml:space="preserve">
     <value>Адрес сервера изменен на:</value>

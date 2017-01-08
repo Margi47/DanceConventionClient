@@ -73,7 +73,8 @@
 				<ViewCell Height="40">
 					<StackLayout Orientation="Horizontal">
 						<Label Text="{x:Static portable:AppResources.RegDeskPageAmount}"
-							   Style="{StaticResource Itemlabel}"/>
+							   Style="{StaticResource Itemlabel}"
+							   WidthRequest="100"/>
 						<Entry Text="{Binding PaymentAmount, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
 						<Label Text="{Binding CurrentEvent.Currency}"
@@ -87,7 +88,8 @@
 				<ViewCell  Height="40">
 					<StackLayout Orientation="Horizontal">
 						<Label Text="{x:Static portable:AppResources.RegDeskPageComment}"
-							   Style="{StaticResource Itemlabel}"/>
+							   Style="{StaticResource Itemlabel}"
+							   WidthRequest="100"/>
 						<Entry Text="{Binding PaymentComment, Mode=TwoWay}"
 							   Style="{StaticResource EntryStyle}"/>
 					</StackLayout>

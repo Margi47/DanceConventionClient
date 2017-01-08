@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -40,9 +41,19 @@ namespace DanceConventionClient
 				ContractResolver = new CamelCasePropertyNamesContractResolver()
 			};
 
-			var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-			AppResources.Culture = ci;
-			DependencyService.Get<ILocalize>().SetLocale(ci);
+
+			if (Application.Current.Properties["language"] == null)
+			{
+				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+				AppResources.Culture = ci;
+				DependencyService.Get<ILocalize>().SetLocale(ci);
+			}
+			else
+			{
+				var ci = new CultureInfo(Application.Current.Properties["language"].ToString());
+				AppResources.Culture = ci;
+				DependencyService.Get<ILocalize>().SetLocale(ci);
+			}
 		}
 
 		public static void NavigateToLoginPage()

@@ -96,5 +96,23 @@ namespace DanceConventionClient.Services {
                 return ResourceManager.GetString("ErrorTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed:.
+        /// </summary>
+        public static string LoginFailed {
+            get {
+                return ResourceManager.GetString("LoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Username or Password.
+        /// </summary>
+        public static string LoginInvalid {
+            get {
+                return ResourceManager.GetString("LoginInvalid", resourceCulture);
+            }
+        }
     }
 }

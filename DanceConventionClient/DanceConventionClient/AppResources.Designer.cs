@@ -395,6 +395,42 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string SettingsLanguage {
+            get {
+                return ResourceManager.GetString("SettingsLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application needs to be restarted to apply language changes.
+        /// </summary>
+        public static string SettingsPageAlertBody {
+            get {
+                return ResourceManager.GetString("SettingsPageAlertBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string SettingsPageAlertTitle {
+            get {
+                return ResourceManager.GetString("SettingsPageAlertTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string SettingsPageAlertYes {
+            get {
+                return ResourceManager.GetString("SettingsPageAlertYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log level changed to information.
         /// </summary>
         public static string SettingsPageInfoInformation {

@@ -129,4 +129,10 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Login failed:</value>
+  </data>
+  <data name="LoginInvalid" xml:space="preserve">
+    <value>Invalid Username or Password</value>
+  </data>
 </root>

@@ -78,7 +78,7 @@ namespace DanceConventionClient.PageModels
 				var answer =
 					await CoreMethods.DisplayAlert(AppResources.SuccessTitle, 
 					signup.ParticipantName + " " + AppResources.CameraPageSuccessBody, 
-					AppResources.CameraPageSuccessYes, AppResources.CameraPageSuccessYes);
+					AppResources.CameraPageSuccessYes, AppResources.CameraPageSuccessNo);
 
 				if (!answer)
 				{

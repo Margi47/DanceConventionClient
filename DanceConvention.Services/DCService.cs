@@ -42,7 +42,7 @@ namespace DanceConventionClient.Services
 				_logger.Information("User {UserName} was not authorized", login.Username);
 				var result = new LoginResult()
 				{
-					ErrorMessage = "Invalid Username or Password"
+					ErrorMessage = AppResources.LoginInvalid
 				};
 				return result;
 			}
@@ -51,7 +51,7 @@ namespace DanceConventionClient.Services
 				_logger.Information("Login failed for user {UserName} - received {StatusCode} status code, {Reason}, {Response}", login.Username, response.StatusCode, response.ReasonPhrase, response.Content);
 				var result = new LoginResult()
 				{
-					ErrorMessage = "Login failed: " + response.ReasonPhrase
+					ErrorMessage = AppResources.LoginFailed + response.ReasonPhrase
 				};
 				return result;
 			}

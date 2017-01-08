@@ -228,6 +228,18 @@
   <data name="RegDeskPaymentError" xml:space="preserve">
     <value>Please enter payment amount</value>
   </data>
+  <data name="SettingsLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsPageAlertBody" xml:space="preserve">
+    <value>Application needs to be restarted to apply language changes</value>
+  </data>
+  <data name="SettingsPageAlertTitle" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="SettingsPageAlertYes" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="SettingsPageInfoInformation" xml:space="preserve">
     <value>Log level changed to information</value>
   </data>

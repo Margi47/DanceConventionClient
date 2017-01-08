@@ -29,7 +29,8 @@
 			
 			<Label IsVisible="{Binding ShowInfo}"
 				   Style="{StaticResource InfoLabel}"
-				   Text="{Binding InfoText, Mode=TwoWay}"/>
+				   Text="{Binding InfoText, Mode=TwoWay}"
+				   Margin="40,0,40,0"/>
 		</StackLayout>
 	</StackLayout>
 </ContentPage>

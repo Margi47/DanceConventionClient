@@ -61,7 +61,11 @@ namespace DanceConventionClient.PageModels
 		public Contest SelectedContest
 		{
 			get { return null; }
-			set { CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value); }
+			set
+			{
+				CoreMethods.PushPageModel<CurrentContestCompetitorsPageModel>(value);
+				RaisePropertyChanged();
+			}
 		}
 
 		public Command CameraCommand

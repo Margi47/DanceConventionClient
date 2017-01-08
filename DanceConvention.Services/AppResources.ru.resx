@@ -129,4 +129,10 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Операция прервана</value>
+  </data>
+  <data name="LoginInvalid" xml:space="preserve">
+    <value>Неверное имя пользователя или пароль</value>
+  </data>
 </root>
