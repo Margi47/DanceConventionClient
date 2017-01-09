@@ -62,6 +62,15 @@ namespace DanceConventionClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File does not exist. Please,try to reproduce the problem again ang then send a report.
+        /// </summary>
+        public static string AppLogAlert {
+            get {
+                return ResourceManager.GetString("AppLogAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan QR Code.
         /// </summary>
         public static string CameraButton {

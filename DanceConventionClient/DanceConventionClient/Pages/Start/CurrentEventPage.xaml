@@ -19,11 +19,11 @@
 
 		<Button Text="{x:Static portable:AppResources.CurrentEventPageContestButton}"
 				Command="{Binding ContestCheckinCommand}"
-				IsVisible="{Binding IsStaff}"
+				IsVisible="{Binding IsAllStaff}"
 				Style="{StaticResource ButtonStyle}"/>
 
 		<Button Text="{x:Static portable:AppResources.CurrentEventPageRegDeskButton}"				
-				IsVisible="{Binding IsStaff}"
+				IsVisible="{Binding IsRegDeskStaff}"
 				Style="{StaticResource ButtonStyle}"
 				Command="{Binding RegistrationCommand}"/>
 

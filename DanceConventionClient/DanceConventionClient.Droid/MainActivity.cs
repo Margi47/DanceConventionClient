@@ -36,7 +36,8 @@ namespace DanceConventionClient.Droid
 				.MinimumLevel.ControlledBy(App.LevelSwitch)
 				.WriteTo.RollingFile(
 					Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DanceConvention_log-{Date}.txt")
-					, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}")
+					, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}",
+					retainedFileCountLimit: 3)
 				.WriteTo.AndroidLog()
 				.CreateLogger();
 
@@ -68,14 +69,22 @@ namespace DanceConventionClient.Droid
 
 			if (emailMessenger.CanSendEmail)
 			{
-				var email = new EmailMessageBuilder()
-					.To("vbgmargi@gmail.com")
-					.Subject("DanceConvention Client - Error Report")
-					.WithAttachment(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,
-						$"DanceConvention_log-{currentDate}.txt"))
-					.Build();
+				if (File.Exists(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,
+					$"DanceConvention_log-{currentDate}.txt")))
+				{
+					var email = new EmailMessageBuilder()
+						.To("vbgmargi@gmail.com")
+						.Subject("DanceConvention Client - Error Report")
+						.WithAttachment(Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,
+							$"DanceConvention_log-{currentDate}.txt"))
+						.Build();
 
-				emailMessenger.SendEmail(email);
+					emailMessenger.SendEmail(email);
+				}
+				else
+				{
+					App.DisplayLogAlert();
+				}
 			}
 		}
 

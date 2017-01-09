@@ -140,6 +140,13 @@ namespace DanceConventionClient
 			NavigateToLoginPage();
 		}
 
+		public static void DisplayLogAlert()
+		{
+			App.Current.MainPage.DisplayAlert(AppResources.ErrorTitle, AppResources.AppLogAlert, 
+				AppResources.ErrorAnswer);
+
+		}
+
 		protected override void OnSleep()
 		{
 			// Handle when your app sleeps

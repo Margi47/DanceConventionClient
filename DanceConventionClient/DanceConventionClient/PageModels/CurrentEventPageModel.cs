@@ -15,7 +15,8 @@ namespace DanceConventionClient.PageModels
 		private readonly IDCService _service;
 		private SignupIdentifier _identifier;
 		public DanceEvent CurrentEvent { get; set; }
-		public bool IsStaff { get; set; }
+		public bool IsAllStaff { get; set; }
+		public bool IsRegDeskStaff { get; set; }
 		public bool IsCompetitor { get; set; }
 		public bool IsLoading { get; set; }
 
@@ -55,12 +56,16 @@ namespace DanceConventionClient.PageModels
 				return;
 			}
 
-			var staffPermissions = new string[]
-				{"EVENT_OWNER", "STAFF_EVENT_ADMIN", "STAFF_REGDESK", "STAFF_FINANCE", "STAFF_SCORES", "STAFF_CONTEST_CHECKIN"};
+			var allPermissions = new string[]
+				{"EVENT_OWNER", "STAFF_EVENT_ADMIN",   "STAFF_SCORES", "STAFF_CONTEST_CHECKIN"};
+			var regDeskPermissions = new string[]
+				{"STAFF_REGDESK", "STAFF_FINANCE"};
 			var signupPermissions = new string[]
 				{"SIGNED_UP_FOR_EVENT", "INVOICE_OWNER", "SIGNUP_HOST", "SIGNUP_OWNER"};
 
-			IsStaff = permissions.Any(p => staffPermissions.Contains(p.Permission));
+			IsAllStaff = permissions.Any(p => allPermissions.Contains(p.Permission));
+			IsRegDeskStaff = permissions.Any(p => regDeskPermissions.Contains(p.Permission))||
+				permissions.Any(p => allPermissions.Contains(p.Permission));
 			IsCompetitor = permissions.Any(p => signupPermissions.Contains(p.Permission));
 		}
 
