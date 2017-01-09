@@ -42,7 +42,15 @@ namespace DanceConventionClient.PageModels
 			set
 			{
 				GetLanguage(value);
-				_logger.Information("Language changed to {Language}", Application.Current.Properties["language"]);
+				if (Application.Current.Properties.ContainsKey("language"))
+				{
+					_logger.Information("Language changed to {Language}", Application.Current.Properties["language"]);
+				}
+				else
+				{
+					_logger.Information("Language changed to default");
+				}
+
 				CoreMethods.DisplayAlert(AppResources.SettingsPageAlertTitle,
 					AppResources.SettingsPageAlertBody, AppResources.SettingsPageAlertYes);
 			}
