@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,15 +43,15 @@ namespace DanceConventionClient
 			};
 
 
-			if (Application.Current.Properties["language"] == null)
+			if (Properties.ContainsKey("language") && Properties["language"] != null)
 			{
-				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+				var ci = new CultureInfo(Application.Current.Properties["language"].ToString());
 				AppResources.Culture = ci;
-				DependencyService.Get<ILocalize>().SetLocale(ci);
+				DependencyService.Get<ILocalize>().SetLocale(ci);				
 			}
 			else
 			{
-				var ci = new CultureInfo(Application.Current.Properties["language"].ToString());
+				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 				AppResources.Culture = ci;
 				DependencyService.Get<ILocalize>().SetLocale(ci);
 			}

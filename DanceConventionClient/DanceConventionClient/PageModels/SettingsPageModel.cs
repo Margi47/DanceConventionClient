@@ -20,11 +20,17 @@ namespace DanceConventionClient.PageModels
 		public string Text { get; set; }
 		public static Action SendLogsToEmail;
 
+		public SettingsPageModel()
+		{
+			_logger = Serilog.Log.ForContext(GetType());
+			Url = Application.Current.Properties["url"].ToString();
+		}
+
 		public int SelectedLanguage
 		{
 			get
 			{
-				if (Application.Current.Properties["language"] != null)
+				if (Application.Current.Properties.ContainsKey("language"))
 				{
 					if (Application.Current.Properties["language"].ToString() == "en")
 					{
@@ -40,6 +46,7 @@ namespace DanceConventionClient.PageModels
 			set
 			{
 				GetLanguage(value);
+				_logger.Information("Language changed to {Language}", Application.Current.Properties["language"]);
 				CoreMethods.DisplayAlert(AppResources.SettingsPageAlertTitle,
 					AppResources.SettingsPageAlertBody, AppResources.SettingsPageAlertYes);				
 			}
@@ -57,7 +64,7 @@ namespace DanceConventionClient.PageModels
 			}
 			else
 			{
-				Application.Current.Properties["language"] = null;
+				Application.Current.Properties.Remove("language");
 			}
 
 			await Application.Current.SavePropertiesAsync();
@@ -98,12 +105,6 @@ namespace DanceConventionClient.PageModels
 				Application.Current.Properties["logLevel"] = "information";
 			}
 			await Application.Current.SavePropertiesAsync();
-		}
-
-		public SettingsPageModel()
-		{
-			_logger = Serilog.Log.ForContext(GetType());
-			Url = Application.Current.Properties["url"].ToString();
 		}
 
 		public Command SendLogCommand

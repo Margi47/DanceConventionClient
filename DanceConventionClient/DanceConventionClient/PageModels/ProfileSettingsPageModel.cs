@@ -22,6 +22,50 @@ namespace DanceConventionClient.PageModels
 			_logger = Serilog.Log.ForContext(GetType());
 		}
 
+		public int SelectedLanguage
+		{
+			get
+			{
+				if (Application.Current.Properties.ContainsKey("language"))
+				{
+					if (Application.Current.Properties["language"].ToString() == "en")
+					{
+						return 1;
+					}
+					if (Application.Current.Properties["language"].ToString() == "ru")
+					{
+						return 2;
+					}
+				}
+				return 0;
+			}
+			set
+			{
+				GetLanguage(value);
+				_logger.Information("Language changed to {Language}", Application.Current.Properties["language"]);
+				CoreMethods.DisplayAlert(AppResources.SettingsPageAlertTitle,
+					AppResources.SettingsPageAlertBody, AppResources.SettingsPageAlertYes);
+			}
+		}
+
+		private static async void GetLanguage(int value)
+		{
+			if (value == 1)
+			{
+				Application.Current.Properties["language"] = "en";
+			}
+			else if (value == 2)
+			{
+				Application.Current.Properties["language"] = "ru";
+			}
+			else
+			{
+				Application.Current.Properties.Remove("language");
+			}
+
+			await Application.Current.SavePropertiesAsync();
+		}
+
 		public bool SwitchToggled
 		{
 			get

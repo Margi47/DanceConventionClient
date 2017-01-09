@@ -30,7 +30,7 @@ namespace DanceConventionClient.Droid
 			Thread.CurrentThread.CurrentCulture = ci;
 			Thread.CurrentThread.CurrentUICulture = ci;
 
-			_logger.Information("CurrentCulture set: " + ci.Name);
+			_logger.Information("CurrentCulture set to {Culture}", ci.Name);
 		}
 
 		public CultureInfo GetCurrentCultureInfo()
