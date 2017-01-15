@@ -220,7 +220,7 @@
     <value>ВСЕ ЦЕНЫ УКАЗАНЫ В: </value>
   </data>
   <data name="RegDeskPageInfo" xml:space="preserve">
-    <value>Введите имя участника или просканируйте код</value>
+    <value>Введите имя участника или отсканируйте код</value>
   </data>
   <data name="RegDeskPageOwed" xml:space="preserve">
     <value>Не оплачено:</value>

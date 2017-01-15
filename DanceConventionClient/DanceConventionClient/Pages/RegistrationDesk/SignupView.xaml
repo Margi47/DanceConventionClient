@@ -75,7 +75,7 @@
 						<Label Text="{x:Static portable:AppResources.RegDeskPageAmount}"
 							   Style="{StaticResource Itemlabel}"
 							   WidthRequest="100"/>
-						<Entry Text="{Binding PaymentAmount, Mode=TwoWay}"
+						<Entry Text="{Binding PaymentAmount, Mode=TwoWay, StringFormat='{0:0.00}'}"
 							   Style="{StaticResource EntryStyle}"/>
 						<Label Text="{Binding CurrentEvent.Currency}"
 							   Style="{StaticResource Itemlabel}"

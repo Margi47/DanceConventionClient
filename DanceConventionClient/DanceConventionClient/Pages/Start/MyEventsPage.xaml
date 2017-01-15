@@ -6,19 +6,17 @@
 			 Title="{x:Static portable:AppResources.MyEventsPageTitle}">
 
 		<StackLayout Margin="0,3,0,0">
-		<ListView Style="{StaticResource ListViewStyle}"
-				  ItemsSource="{Binding CurrentEvents}"
-				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}">
-			
-			<ListView.HeaderTemplate>
-				<DataTemplate>
-					<Frame Style="{StaticResource HeaderFrame}"
+		<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-						<Label Text="{x:Static portable:AppResources.MyEventsPageCurrentHeader}"
+			<Label Text="{x:Static portable:AppResources.MyEventsPageCurrentHeader}"
 						   Style="{StaticResource Headerlabel}"/>
-					</Frame>
-				</DataTemplate>
-			</ListView.HeaderTemplate>
+		</Frame>
+			
+		<ListView ItemsSource="{Binding CurrentEvents}"
+				  SelectedItem="{Binding SelectedEvent, Mode=TwoWay}" 
+				  VerticalOptions="StartAndExpand"
+				  HasUnevenRows="True"
+				  SeparatorColor="Silver">
 
 			<ListView.ItemTemplate>
 				<DataTemplate>
@@ -36,19 +34,17 @@
 			</ListView.ItemTemplate>
 		</ListView>
 
-		<ListView Style="{StaticResource ListViewStyle}"
-				  ItemsSource="{Binding PastEvents}"
-				  SelectedItem="{Binding SelectedEvent}">
-
-			<ListView.HeaderTemplate>
-				<DataTemplate>
-					<Frame Style="{StaticResource HeaderFrame}"
+		<Frame Style="{StaticResource HeaderFrame}"
 						   Padding="20,0,0,0">
-						<Label Text="{x:Static portable:AppResources.MyEventsPagePastHeader}"
+			<Label Text="{x:Static portable:AppResources.MyEventsPagePastHeader}"
 							   Style="{StaticResource Headerlabel}"/>
-					</Frame>
-				</DataTemplate>
-			</ListView.HeaderTemplate>
+		</Frame>
+			
+		<ListView ItemsSource="{Binding PastEvents}"
+				  SelectedItem="{Binding SelectedEvent}"
+				  VerticalOptions="StartAndExpand"
+				  HasUnevenRows="True"
+				  SeparatorColor="Silver">
 
 			<ListView.ItemTemplate>
 				<DataTemplate>

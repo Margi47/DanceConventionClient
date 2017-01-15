@@ -16,7 +16,7 @@
 					SelectedIndex="{Binding SelectedLanguage, Mode=TwoWay}"
 					HorizontalOptions="EndAndExpand"
 					Margin="0,0,20,0"
-					WidthRequest="150">
+					WidthRequest="170">
 				<Picker.Items>
 					<x:String>System language</x:String>
 					<x:String>English</x:String>

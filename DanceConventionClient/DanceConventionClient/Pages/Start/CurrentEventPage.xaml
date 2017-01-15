@@ -10,7 +10,8 @@
 			   FontSize="20"
 			   FontAttributes="Bold"
 			   HorizontalOptions="CenterAndExpand"
-			   TextColor="Black"/>
+			   TextColor="Black"
+			   Margin="0,28,0,15"/>
 
 		<Button Text="{x:Static portable:AppResources.CurrentEventPageRegButton}"
 				Command="{Binding MyRegistrationCommand}"

@@ -123,7 +123,7 @@ namespace DanceConventionClient
 					return;
 				}
 
-				_logger.Verbose("LoginResult {@Result}", loginResult);
+				_logger.Verbose("LoginResult {Status}, Error message '{Message}'", loginResult.Successful, loginResult.ErrorMessage);
 				if (loginResult.Successful)
 				{
 					await InitializeService(loginResult, service);
